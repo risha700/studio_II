@@ -7,8 +7,11 @@ namespace PizzaApp.Models
 	{
 		public string Name { get; set; }
 		public double Price { get; set; }
+        //public Size()
+        //{
 
-        public static dynamic GetAvailableSizes()
+        //}
+        public static ObservableCollection<Size> GetAvailableSizes()
         {
             ObservableCollection<Size> availableToppings = new()
             {

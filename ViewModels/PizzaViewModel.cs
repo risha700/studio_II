@@ -16,20 +16,24 @@ namespace PizzaApp.ViewModels
 
 
         [ObservableProperty]
-        public ObservableCollection<Order> _currentOrder = new();
+        public static Order _currentOrder = new()
+        {
+            Id = Guid.NewGuid(),
+            Items = new()
+        };
 
         [ObservableProperty]
         public ObservableCollection<Topping> _allToppings = Topping.GetAvailableToppings();
 
 
         [ObservableProperty]
-        public static Pizza  _newPizza = new() { Img = "placeholder.png",Toppings=new()};
-      
+        public static Pizza  _newPizza = new() { Img = "placeholder.png", Toppings = new(), Size= new() };
+        
         
 
-        [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(PizzaViewModel.NewPizza))]
-        public ObservableCollection<Size> _pizzaSizes = Size.GetAvailableSizes();
+        //[ObservableProperty]
+        //[NotifyPropertyChangedFor(nameof(PizzaViewModel.NewPizza))]
+        //public ObservableCollection<Size> _pizzaSizes = Size.GetAvailableSizes();
 
 
 

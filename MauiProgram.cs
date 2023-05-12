@@ -22,8 +22,8 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
-        builder.Services.AddSingleton<MainPage>();
-        builder.Services.AddSingleton<PizzaViewModel>();
+        builder.Services.AddTransient<MainPage>();
+        builder.Services.AddTransient<PizzaViewModel>();
         
 
         return builder.Build();

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.ComponentModel;
+using Size = PizzaApp.Models.Size;
 
 namespace PizzaApp.Models
 {
 	public class Pizza
-	{
+    {
 
         
         public string Name { get; set; }
@@ -30,6 +32,14 @@ namespace PizzaApp.Models
             };
 
             return availablePizza;
+        }
+
+        public void CalculatePizzaPrice()
+        {
+
+            double toppingCost = this.Toppings.Sum((t) =>t.Price);
+            this.Price = this.Size.Price+ toppingCost;
+            // might be any coupon discounts later
         }
 
         public override string ToString()
