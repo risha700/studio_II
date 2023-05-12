@@ -10,11 +10,6 @@ namespace PizzaApp.Views;
 
 public partial class MainPage : ContentPage
 {
-    //public ObservableCollection<Size> _allSizes = Size.GetAvailableSizes();
-    //public ObservableCollection<Topping> _allToppings = Topping.GetAvailableToppings();
-
-
-
 
     public MainPage(PizzaViewModel viewModel)
 	{
@@ -53,7 +48,7 @@ public partial class MainPage : ContentPage
         }
 
         UpdateViewFields();
-        //await DisplayAlert("Alert", $"{e.Value} {ctx}", "OK");
+        
 
 
 
