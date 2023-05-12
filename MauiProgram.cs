@@ -24,7 +24,9 @@ public static class MauiProgram
 #endif
         builder.Services.AddTransient<MainPage>();
         builder.Services.AddTransient<PizzaViewModel>();
-        
+        builder.Services.AddTransient<CheckoutPage>();
+        builder.Services.AddTransient<CheckoutViewModel>();
+
 
         return builder.Build();
 	}

@@ -1,9 +1,8 @@
 @startuml
-class Topping {
+class Size {
     + Name : string <<get>> <<set>>
     + Price : double <<get>> <<set>>
-    + InStock : bool <<get>> <<set>>
+    + {static} GetAvailableSizes() : ObservableCollection<Size>
     + <<override>> ToString() : string
-    + {static} GetAvailableToppings() : dynamic
 }
 @enduml

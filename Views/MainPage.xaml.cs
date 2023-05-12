@@ -106,7 +106,12 @@ public partial class MainPage : ContentPage
             PizzaViewModel._currentOrder.Items.Add(PizzaViewModel._newPizza);
             PizzaViewModel._currentOrder.Total += PizzaViewModel._newPizza.Price;
             // success and navigate to checkout
-            PizzaViewModel._newPizza = new() { Img = "placeholder.png", Toppings = new(), Size = new() };
+            //PizzaViewModel._newPizza = new() { Img = "placeholder.png", Toppings = new(), Size = new() };
+
+            await Shell.Current.GoToAsync(nameof(CheckoutPage), true,
+                new Dictionary<string, object>{
+                    { "Order", PizzaViewModel._currentOrder }
+                });;
         }
 
         

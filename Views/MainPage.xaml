@@ -115,7 +115,8 @@
             <FlexLayout Direction="Row" JustifyContent="SpaceAround" AlignItems="Center" Grid.Column="1" Grid.Row="3">
 
                 <Button Text="Add Order" FontAttributes="Bold" FontSize="30"
-                        Command="{Binding AddPizzaCommand,Source={RelativeSource AncestorType={x:Type view:MainPage}}}"/>
+                        Command="{Binding AddPizzaCommand,Source={RelativeSource AncestorType={x:Type view:MainPage}}}"
+                        />
 
                 <Label x:Name="OrderTotalName" Text="Order Total:" FontAttributes="Bold" HorizontalOptions="Start"/>
             

@@ -2,11 +2,15 @@
 class Pizza {
     + Name : string <<get>> <<set>>
     + Details : string <<get>> <<set>>
-    + Size : string <<get>> <<set>>
     + Price : double <<get>> <<set>>
-    + Photo : string <<get>> <<set>>
+    + Img : string <<get>> <<set>>
+    + Pizza()
+    + {static} GetAvailablePizzas() : dynamic
+    + CalculatePizzaPrice() : void
+    + <<override>> ToString() : string
 }
-class "List`1"<T> {
+class "ObservableCollection`1"<T> {
 }
-Pizza --> "Toppings<Topping>" "List`1"
+Pizza --> "Size" Size
+Pizza --> "Toppings<Topping>" "ObservableCollection`1"
 @enduml

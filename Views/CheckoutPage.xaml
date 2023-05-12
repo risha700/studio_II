@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PizzaApp.Views.CheckoutPage"
+             Title="CheckoutPage">
+    <VerticalStackLayout>
+        <Label 
+            Text="Thank you for your order"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" FontSize="30" />
+        <Frame>
+            <VerticalStackLayout>
+                <Label Text="You have ordered"/>
+                <Label Text="{Binding Order.Items[0].Name}"/>
+                <Label Text="You Total"/>
+                <Label Text="{Binding Order.Total,StringFormat='{0:C2}'}"/>
+
+            </VerticalStackLayout>
+
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>
