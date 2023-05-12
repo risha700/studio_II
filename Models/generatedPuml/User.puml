@@ -1,0 +1,7 @@
+@startuml
+class User {
+    + Username : string <<get>> <<set>>
+    + Email : string <<get>> <<set>>
+}
+User --> "Id" Guid
+@enduml

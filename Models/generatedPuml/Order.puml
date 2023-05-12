@@ -1,0 +1,10 @@
+@startuml
+class Order {
+    + Total : double <<get>> <<set>>
+}
+class "List`1"<T> {
+}
+Order --> "Id" Guid
+Order --> "Items<Pizza>" "List`1"
+Order --> "Customer" User
+@enduml

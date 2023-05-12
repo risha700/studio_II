@@ -1,0 +1,6 @@
+@startuml
+class Topping {
+    + Name : string <<get>> <<set>>
+    + InStock : bool <<get>> <<set>>
+}
+@enduml
