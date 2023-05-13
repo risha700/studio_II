@@ -68,12 +68,14 @@ public partial class MainPage : ContentPage
         //Console.WriteLine($"{btn.Content} typeof {btn.BindingContext.GetType()} = value {e.Value}");
         if (e.Value is true)
         {
-            PizzaViewModel._newPizza.Name = "Build Your Own";
+            PizzaViewModel._newPizza.Name = PizzaViewModel._newPizza.Name??"Build Your Own";
             PizzaViewModel._newPizza.Size = (Size)btn.BindingContext;
+
             // cheap way for updating ui TODO:
             PizzaInfoBoxName.Text = PizzaViewModel._newPizza.Name;
             PizzaInfoBoxSizeName.Text = PizzaViewModel._newPizza.Size.Name.ToString();
             PizzaInfoBoxSizePrice.Text = PizzaViewModel._newPizza.Size.Price.ToString();
+
             UpdateViewFields();
             
         }
@@ -98,19 +100,51 @@ public partial class MainPage : ContentPage
         else
         {
 
+            
             PizzaViewModel._currentOrder.Items.Add(PizzaViewModel._newPizza);
             PizzaViewModel._currentOrder.Total += PizzaViewModel._newPizza.Price;
+
+            //PizzaViewModel._newPizza.Name = "";
+            //PizzaViewModel._newPizza.Toppings.Clear();
+            //PizzaViewModel._newPizza.Size = new();
+
+            PizzaViewModel._newPizza = new() { Img = "placeholder.png", Toppings = new(), Size = new(), Name="", Details="",Price=0 }; // loses reactivity 
+
             // success and navigate to checkout
-            //PizzaViewModel._newPizza = new() { Img = "placeholder.png", Toppings = new(), Size = new() };
 
             await Shell.Current.GoToAsync(nameof(CheckoutPage), true,
                 new Dictionary<string, object>{
                     { "Order", PizzaViewModel._currentOrder }
                 });;
+
+            ForceCleanup();
+            UpdateViewFields();
+
+            //await DisplayAlert("Alert", $"{activeToppingContainer.ToString()}", "OK");
+
+
         }
 
-        
-        
+
+
+    }
+
+    void ForceCleanup()
+    {
+        PizzaInfoBoxName.Text = "";
+        PizzaInfoBoxSizeName.Text = "";
+        PizzaInfoBoxSizePrice.Text = "";
+    }
+    async Task NavigateTo(dynamic NewPage, dynamic dict=null)
+    {
+        // Get current page
+        var page = Navigation.NavigationStack.LastOrDefault();
+
+        // Load new page
+        await Shell.Current.GoToAsync(nameof(NewPage), true, dict);
+
+        // Remove old page
+        Navigation.RemovePage(page);
     }
 }
 

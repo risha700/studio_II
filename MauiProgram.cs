@@ -23,7 +23,7 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
         builder.Services.AddTransient<MainPage>();
-        builder.Services.AddTransient<PizzaViewModel>();
+        builder.Services.AddSingleton<PizzaViewModel>();
         builder.Services.AddTransient<CheckoutPage>();
         builder.Services.AddTransient<CheckoutViewModel>();
 

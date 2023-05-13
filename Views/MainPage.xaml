@@ -15,8 +15,10 @@
             RowDefinitions="0.3*,*,100" >
 
             <FlexLayout Direction="Row" JustifyContent="SpaceBetween" AlignItems="Center" AlignContent="Start" Grid.Column="1" Grid.Row="0" >
-                    <!--<Image Source="{Binding NewPizza.Img}" WidthRequest="300" HeightRequest="200"/>-->
-                    <Image Source="{Binding NewPizza.Img}" WidthRequest="300" HeightRequest="200"/> 
+                
+                
+                    <Image Source="{Binding NewPizza.Img}" MaximumHeightRequest="200" MaximumWidthRequest="300" /> 
+                
                     <Label Text="Pizza Shop" FontSize="55" FontAttributes="Bold"></Label>               
                     <Image Source="logo.png" WidthRequest="300" HeightRequest="300"/>               
             </FlexLayout >
@@ -30,10 +32,12 @@
                                 <DataTemplate>
                                     <FlexLayout  Direction="Row" JustifyContent="Start"
                                                 AlignItems="Start" >
-                                        <RadioButton
+                                        <!--<RadioButton
                                                     IsChecked="{Binding BindingContext.IsSelected,
                                                     Source={RelativeSource AncestorType={x:Type x:String}}, Mode=TwoWay}"
                                                     Content="{Binding Path=Name, Source={RelativeSource AncestorType={x:Type model:Size}}}"
+                                                    GroupName="sizes" CheckedChanged="OnRadioBtnChange" />-->
+                                        <RadioButton Content="{Binding Path=Name, Source={RelativeSource AncestorType={x:Type model:Size}}}"
                                                     GroupName="sizes" CheckedChanged="OnRadioBtnChange" />
                                         <Label Margin="15,3,0,0" Text="{Binding Path=Price,
                                                      Source={RelativeSource AncestorType={x:Type model:Size}}, StringFormat='{0:C2}'}"/>
@@ -57,12 +61,12 @@
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
 
-                                        <FlexLayout  Direction="Row" JustifyContent="Start" AlignContent="Center">
+                                        <FlexLayout  Direction="Row" JustifyContent="Start" AlignContent="Center" >
                                                     
                                             <!--<CheckBox IsChecked="{Binding BindingContext.IsSelected,
                                                         Source={RelativeSource AncestorType={x:Type model:Topping}}, Mode=TwoWay}"
                                                         CheckedChanged="OnCheckBoxChange"  />-->
-                                            <CheckBox CheckedChanged="OnCheckBoxChange" />
+                                            <CheckBox CheckedChanged="OnCheckBoxChange"/>
                                             <Label VerticalTextAlignment="Center"
                                                     x:Name="element_val"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type model:Topping}}, Path=Name}"
