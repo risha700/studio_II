@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using PizzaApp.Models;
-using Size = PizzaApp.Models.Size;
+
 
 namespace PizzaApp.ViewModels
 {
@@ -16,30 +16,27 @@ namespace PizzaApp.ViewModels
 
 
         [ObservableProperty]
-        public static Order _currentOrder = new()
+        public static Order currentOrder = new()
         {
             Id = Guid.NewGuid(),
             Items = new()
         };
 
         [ObservableProperty]
-        public ObservableCollection<Topping> _allToppings = Topping.GetAvailableToppings();
+        [NotifyPropertyChangedFor(nameof(PizzaViewModel.NewPizza))]
+        public ObservableCollection<Topping> allToppings = Topping.GetAvailableToppings();
 
 
         [ObservableProperty]
-        public static Pizza  _newPizza = new() { Img = "placeholder.png", Toppings = new(), Size= new() };
+        public static Pizza  newPizza = new() { Img = "placeholder.png", Toppings = new(), Size= new() };
         
         
 
-        //[ObservableProperty]
-        //[NotifyPropertyChangedFor(nameof(PizzaViewModel.NewPizza))]
-        //public ObservableCollection<Size> _pizzaSizes = Size.GetAvailableSizes();
-
-
+        
 
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(PizzaViewModel.NewPizza))]
-        public ObservableCollection<Size> _allSizes = Size.GetAvailableSizes();
+        public ObservableCollection<CrustSize> allSizes = CrustSize.GetAvailableSizes();
 
 
 

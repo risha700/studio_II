@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PizzaApp.Views.OrderPage"
+             xmlns:model="clr-namespace:PizzaApp.Models"
+             xmlns:viewmodel="clr-namespace:PizzaApp.ViewModels"
+             xmlns:view="clr-namespace:PizzaApp.Views"
+             x:DataType="viewmodel:PizzaViewModel">
+
+        
+        <Grid
+            ColumnDefinitions="*"
+            ColumnSpacing="0"
+            RowSpacing="0"
+            RowDefinitions=".2*,.7*,110">
+
+            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" AlignItems="Center" AlignContent="Start" Grid.Column="0" Grid.Row="0" Wrap="Wrap" >
+                
+                
+                    <Image Source="{Binding NewPizza.Img}" HeightRequest="200" WidthRequest="300"/> 
+                
+                    <Label Text="Pizza Shop" FontSize="55" FontAttributes="Bold"></Label>               
+                    <Image Source="logo.png" WidthRequest="300" HeightRequest="300"/>               
+            </FlexLayout >
+
+            <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1" Grid.RowSpan="1"
+                  ColumnDefinitions=".6*,.3*" RowDefinitions="*,*" Padding="30">
+
+                 <!-- left side for size and topping col0 -->   
+                
+                    <StackLayout Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="2" >
+                            <HorizontalStackLayout Spacing="50">
+                             <Label Text="Pizza Size" FontSize="30" FontAttributes="Bold"  />
+                            <CollectionView ItemsSource="{Binding Path=AllSizes, Source={RelativeSource AncestorType={x:Type viewmodel:PizzaViewModel}}}"
+                                            RadioButtonGroup.GroupName="sizes" x:Name="sizeList" MaximumHeightRequest="330"
+                                            MaximumWidthRequest="600" ItemsLayout="VerticalGrid,3">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <FlexLayout Direction="Column" JustifyContent="Start" AlignContent="Center" AlignItems="Start"> 
+                                            <RadioButton Content="{Binding Path=Name, Source={RelativeSource AncestorType={x:Type model:CrustSize}}}"
+                                                         IsChecked="False"  GroupName="sizes" CheckedChanged="OnRadioBtnChange"   >
+                                                <!--<RadioButton.Content>
+                                                    <Label Text="{Binding Path=Name, Source={RelativeSource AncestorType={x:Type model:CrustSize}}}"
+                                                            HorizontalOptions="Center"
+                                                            VerticalOptions="End" Margin="10,0,0,0" FontAttributes="Bold" />
+                                                    
+                                                </RadioButton.Content>-->
+
+                                    </RadioButton>
+                                            <Label Margin="15,3,0,0" Text="{Binding Path=Price,
+                                                            Source={RelativeSource AncestorType={x:Type model:CrustSize}}, StringFormat='{0:C2}'}"/>                      
+                                        </FlexLayout>  
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="50">
+                                <Label Text="Extras"  FontSize="30"  FontAttributes="Bold"   />
+                        
+                                <CollectionView ItemsSource="{Binding Path=AllToppings, Source={RelativeSource AncestorType={x:Type viewmodel:PizzaViewModel}}}"
+                                                x:Name="allToppingsCollection" ItemsLayout="VerticalGrid,2" MaximumWidthRequest="900" >
+                                       
+                                
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate >
+
+                                                <FlexLayout  Direction="Row" JustifyContent="Start" AlignContent="SpaceBetween">
+                                                    <CheckBox CheckedChanged="OnCheckBoxChange"/>
+                                                    <Label x:Name="element_val" Margin="1,4,20,0"
+                                                            Text="{Binding Source={RelativeSource AncestorType={x:Type model:Topping}}, Path=Name}"
+                                                            FontAttributes="Bold" />
+                                      
+                                                    <Label  Margin="1,4,0,0"
+                                                            Text="{Binding Source={RelativeSource AncestorType={x:Type model:Topping}},
+                                                            Path=Price, StringFormat='{0:C2}'}"
+                                                            FontAttributes="Bold" />
+       
+                                                </FlexLayout>  
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                </CollectionView>
+                        </HorizontalStackLayout>
+                    </StackLayout>
+
+                
+                <!-- right side for total col 1-->   
+                <!-- not reactive-->
+                <Border Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="2" Padding="20">
+                    <StackLayout>
+                        <Label Text="Your Order:" FontAttributes="Bold" FontSize="30"/>
+                        <Label x:Name="PizzaInfoBoxName" Text="{Binding NewPizza.Name}"  Margin="0,10,0,0"/>
+                        <HorizontalStackLayout Spacing="20" MaximumHeightRequest="330">
+                            <Label x:Name="PizzaInfoBoxSizeName"  Text="{Binding NewPizza.Size.Name}"/>
+                            <Label  x:Name="PizzaInfoBoxSizePrice"  Text="{Binding NewPizza.Size.Price}"/>
+                        </HorizontalStackLayout>
+
+
+                        <VerticalStackLayout Padding="30, 0,0,0">
+                            <CollectionView ItemsSource="{Binding NewPizza.Toppings, Mode=TwoWay}" x:Name="orderView">
+                    
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <FlexLayout  Direction="Row" JustifyContent="SpaceBetween" MaximumWidthRequest="300">
+                                            <Label VerticalTextAlignment="Center"
+                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type model:Topping}}, Path=Name}"
+                                                    FontAttributes="Bold" />
+                                                <Label VerticalTextAlignment="Center"
+                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type model:Topping}}, Path=Price}"
+                                                    FontAttributes="Bold" />
+                                        </FlexLayout>  
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </VerticalStackLayout>
+                    </StackLayout>
+                  
+                </Border>
+                
+
+                    
+            </Grid>
+            <FlexLayout Direction="Row" JustifyContent="SpaceAround" AlignItems="Center" Grid.Column="1" Grid.Row="3">
+
+                <Button Text="Add Order" FontAttributes="Bold" FontSize="30"
+                        Command="{Binding AddPizzaCommand,Source={RelativeSource AncestorType={x:Type view:OrderPage}}}"
+                        />
+
+                <Label x:Name="OrderTotalName" Text="Order Total:" FontAttributes="Bold" HorizontalOptions="Start"/>
+            
+            
+            </FlexLayout>
+
+        </Grid>
+
+
+    
+
+
+</ContentPage>
+

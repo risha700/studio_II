@@ -1,151 +1,134 @@
 ﻿using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Layouts;
 using PizzaApp.Models;
 using PizzaApp.ViewModels;
-using Size = PizzaApp.Models.Size;
+
 
 
 namespace PizzaApp.Views;
 
 public partial class MainPage : ContentPage
 {
+    Grid mainLayout = new Grid
+    {
+        RowDefinitions = {new RowDefinition { Height=GridLength.Star} },
+        ColumnDefinitions = { new ColumnDefinition { Width = GridLength.Star} },
+        VerticalOptions = LayoutOptions.Fill,
+        HorizontalOptions = LayoutOptions.Fill,
 
-    public MainPage(PizzaViewModel viewModel)
+    };
+
+    Frame heroFrame = new Frame
+    {
+        HeightRequest = 400,
+        BackgroundColor = Colors.Orange,
+        CornerRadius = 0,
+        VerticalOptions = LayoutOptions.Start,
+        HorizontalOptions = LayoutOptions.Fill,
+        Padding = 0,
+        BorderColor = Colors.Transparent,
+        Background = Helpers.CreateGradient(),
+        Content = new Image
+        {
+            Source = ImageSource.FromFile("store_front.jpeg"),
+            Opacity = 0.4,
+            HorizontalOptions = LayoutOptions.Fill,
+            VerticalOptions = LayoutOptions.Fill,
+            Aspect = Aspect.Fill,
+
+        }
+
+    };
+
+
+
+    Button loginBtn = new Button
+    {
+        Text = "Login",
+        VerticalOptions = LayoutOptions.Center,
+        HorizontalOptions = LayoutOptions.Center,
+        BackgroundColor = Colors.Transparent,
+        CornerRadius = 10,
+        BorderColor = Colors.Orange,
+        BorderWidth = 3,
+        TextColor = Colors.White,
+        FontSize = 30,
+        MinimumHeightRequest = 80,
+
+        Shadow = new Shadow
+        {
+            Brush = Colors.Black,
+            Offset = new(20, 20),
+            Radius = 25,
+            Opacity = (float)0.8
+
+        }
+    };
+    Button guestOrderBtn = new Button
+    {
+        Text = "Guest Order",
+        VerticalOptions = LayoutOptions.Center,
+        HorizontalOptions = LayoutOptions.Center,
+        CornerRadius = 10,
+        FontSize = 30,
+        MinimumHeightRequest = 80,
+        Shadow = new Shadow
+        {
+            Brush = Colors.Black,
+            Offset = new(5, 7),
+            Radius = 10,
+            Opacity = (float)0.8
+
+        }
+
+    };
+
+
+
+
+
+    FlexLayout mainOptions = new FlexLayout
+    {
+        Direction = Microsoft.Maui.Layouts.FlexDirection.Row,
+        JustifyContent = Microsoft.Maui.Layouts.FlexJustify.SpaceAround,
+        AlignItems = Microsoft.Maui.Layouts.FlexAlignItems.Center,
+        AlignContent = Microsoft.Maui.Layouts.FlexAlignContent.Center,
+        HeightRequest = 300,
+        WidthRequest = 400,
+
+        Padding = 10,
+        Margin = new(0, 20, 0, 0),
+
+        
+
+    };
+
+    public MainPage()
 	{
-		InitializeComponent();
-		BindingContext = viewModel;
+        Shell.SetNavBarIsVisible(this, false);
+        Title = "Pizza way";
+
+
+        mainOptions.Children.Add(loginBtn);
+        mainOptions.Children.Add(guestOrderBtn);
+        mainLayout.Add(heroFrame);
+        mainLayout.Add(mainOptions);
+
+        guestOrderBtn.Clicked += async (sender, args) => {
+            guestOrderBtn.IsEnabled = false;
+            await Shell.Current.GoToAsync(nameof(OrderPage), false);
+            guestOrderBtn.IsEnabled = true;
+        };
+
+        Content = mainLayout;
+        BindingContext = this;
         
 	}
 
-    void OnCheckBoxChange(object sender, CheckedChangedEventArgs e)
-    {
-       
-        var btn = (CheckBox)sender;
-        //var ChosenTopping = _allToppings.Where((tp) => tp.Name == btn.Content.ToString().Trim());
-        Element v = (Element)btn.Parent.FindByName("element_val");
-        var ctx = v?.BindingContext;
 
-        if (ctx is Topping)
-        {
-            Topping topping = (Topping)ctx;
-            if (e.Value is true)
-            {
-                Console.WriteLine($"shoud add toppiung {topping}");
-                PizzaViewModel._newPizza.Toppings.Add(topping);
-                PizzaViewModel._newPizza.Img="pizza_placeholder.png";
-            }
-            else
-            {
-
-                if (PizzaViewModel._newPizza.Toppings.Contains(topping))
-                    PizzaViewModel._newPizza.Toppings.Remove(topping);
-            }
-        }
-        else
-        {
-            Console.Error.WriteLine($"{nameof(OnCheckBoxChange)}: Can't retrieve topping context");
-        }
-
-        UpdateViewFields();
-        
-
-
-
-    }
-    void UpdateViewFields()
-    {
-        PizzaViewModel._newPizza.CalculatePizzaPrice();
-        OrderTotalName.Text = $"Order Total: {PizzaViewModel._newPizza.Price.ToString("C2")}";
-
-    }
-
-    void OnRadioBtnChange(object sender, CheckedChangedEventArgs e)
-    {
-        
-        RadioButton btn = (RadioButton)sender;
-        //var ChosenTopping = _allToppings.Where((tp) => tp.Name == btn.Content.ToString().Trim());
-        //Console.WriteLine($"{btn.Content} typeof {btn.BindingContext.GetType()} = value {e.Value}");
-        if (e.Value is true)
-        {
-            PizzaViewModel._newPizza.Name = PizzaViewModel._newPizza.Name??"Build Your Own";
-            PizzaViewModel._newPizza.Size = (Size)btn.BindingContext;
-
-            // cheap way for updating ui TODO:
-            PizzaInfoBoxName.Text = PizzaViewModel._newPizza.Name;
-            PizzaInfoBoxSizeName.Text = PizzaViewModel._newPizza.Size.Name.ToString();
-            PizzaInfoBoxSizePrice.Text = PizzaViewModel._newPizza.Size.Price.ToString();
-
-            UpdateViewFields();
-            
-        }
-        else
-        {
-            Console.Error.WriteLine($"{nameof(OnRadioBtnChange)}: Can't retrieve size context");
-        }
-
-    }
-
-
-
-    [RelayCommand]
-    async private void AddPizza(User user)
-    {
-        // validation
-        if(String.IsNullOrEmpty(PizzaViewModel._newPizza.Size.Name))
-        {
-            await DisplayAlert("Alert", $"Please select pizza size", "OK");
-            return;
-        }
-        else
-        {
-
-            
-            PizzaViewModel._currentOrder.Items.Add(PizzaViewModel._newPizza);
-            PizzaViewModel._currentOrder.Total += PizzaViewModel._newPizza.Price;
-
-            //PizzaViewModel._newPizza.Name = "";
-            //PizzaViewModel._newPizza.Toppings.Clear();
-            //PizzaViewModel._newPizza.Size = new();
-
-            PizzaViewModel._newPizza = new() { Img = "placeholder.png", Toppings = new(), Size = new(), Name="", Details="",Price=0 }; // loses reactivity 
-
-            // success and navigate to checkout
-
-            await Shell.Current.GoToAsync(nameof(CheckoutPage), true,
-                new Dictionary<string, object>{
-                    { "Order", PizzaViewModel._currentOrder }
-                });;
-
-            ForceCleanup();
-            UpdateViewFields();
-
-            //await DisplayAlert("Alert", $"{activeToppingContainer.ToString()}", "OK");
-
-
-        }
-
-
-
-    }
-
-    void ForceCleanup()
-    {
-        PizzaInfoBoxName.Text = "";
-        PizzaInfoBoxSizeName.Text = "";
-        PizzaInfoBoxSizePrice.Text = "";
-    }
-    async Task NavigateTo(dynamic NewPage, dynamic dict=null)
-    {
-        // Get current page
-        var page = Navigation.NavigationStack.LastOrDefault();
-
-        // Load new page
-        await Shell.Current.GoToAsync(nameof(NewPage), true, dict);
-
-        // Remove old page
-        Navigation.RemovePage(page);
-    }
 }
 
 

@@ -22,10 +22,14 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+        builder.Services.AddSingleton<MenuPage>();
+        builder.Services.AddSingleton<Helpers>();
+        builder.Services.AddSingleton<GlobalActivityIndicator>();
         builder.Services.AddTransient<MainPage>();
-        builder.Services.AddSingleton<PizzaViewModel>();
+        builder.Services.AddTransient<PizzaViewModel>();
         builder.Services.AddTransient<CheckoutPage>();
         builder.Services.AddTransient<CheckoutViewModel>();
+        builder.Services.AddTransient<OrderPage>();
 
 
         return builder.Build();

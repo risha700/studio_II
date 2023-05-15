@@ -21,7 +21,11 @@ namespace PizzaApp.Models
                 new Topping {Name="Cheese it up",InStock=true,Price=0.75},
                 new Topping {Name="Pepperoni",InStock=true,Price=0.79},
                 new Topping {Name="Olives",InStock=true,Price=0.36},
-                new Topping {Name="Mushroom",InStock=true,Price=0.55}
+                new Topping {Name="Mushroom",InStock=true,Price=0.55},
+                new Topping {Name="Parmigiano",InStock=true,Price=0.55},
+                new Topping {Name="Corn",InStock=true,Price=0.55},
+                new Topping {Name="Chilli Flakes",InStock=true,Price=0.55},
+                new Topping {Name="Roasted Onions",InStock=true,Price=0.55}
 
             };
 

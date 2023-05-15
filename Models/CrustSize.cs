@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 
 namespace PizzaApp.Models
 {
-	public class Size
+	public class CrustSize
 	{
 		public string Name { get; set; }
 		public double Price { get; set; }
@@ -11,13 +11,13 @@ namespace PizzaApp.Models
         //{
 
         //}
-        public static ObservableCollection<Size> GetAvailableSizes()
+        public static ObservableCollection<CrustSize> GetAvailableSizes()
         {
-            ObservableCollection<Size> availableToppings = new()
+            ObservableCollection<CrustSize> availableToppings = new()
             {
-                new Size {Name="Small", Price=5.99},
-                new Size {Name="Medium", Price=7.99},
-                new Size {Name="Large", Price=9.99},
+                new CrustSize {Name="Small", Price=5.99},
+                new CrustSize {Name="Medium", Price=7.99},
+                new CrustSize {Name="Large", Price=9.99},
                 
             };
 

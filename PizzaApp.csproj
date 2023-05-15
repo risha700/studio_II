@@ -35,14 +35,14 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#F7B548" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+		<MauiImage Update="Resources\Images\logo.svg" BaseSize="168,208" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -61,9 +61,11 @@
 	  <None Remove="Models\" />
 	  <None Remove="ViewModels\" />
 	  <None Remove="Views\" />
-	  <None Remove="Resources\Images\logo.png" />
 	  <None Remove="Resources\Images\placeholder.png" />
 	  <None Remove="Resources\Images\pizza_placeholder.png" />
+	  <None Remove="Resources\AppIcon\logo.svg" />
+	  <None Remove="Resources\Images\duck.png" />
+	  <None Remove="Resources\Images\store_front.jpeg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Models\" />
@@ -71,11 +73,14 @@
 	  <Folder Include="Views\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <BundleResource Include="Resources\Images\logo.png" />
-	  <BundleResource Include="Resources\Images\logo.png" />
 	  <BundleResource Include="Resources\Images\placeholder.png" />
 	  <BundleResource Include="Resources\Images\placeholder.png" />
 	  <BundleResource Include="Resources\Images\pizza_placeholder.png" />
 	  <BundleResource Include="Resources\Images\pizza_placeholder.png" />
+	  <BundleResource Include="Resources\AppIcon\appicon.svg" />
+	  <BundleResource Include="Resources\Images\duck.png" />
+	  <BundleResource Include="Resources\Images\duck.png" />
+	  <BundleResource Include="Resources\Images\store_front.jpeg" />
+	  <BundleResource Include="Resources\Images\store_front.jpeg" />
 	</ItemGroup>
 </Project>
