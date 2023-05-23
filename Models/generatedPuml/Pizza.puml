@@ -11,6 +11,6 @@ class Pizza {
 }
 class "ObservableCollection`1"<T> {
 }
-Pizza --> "Size" Size
+Pizza --> "Size" CrustSize
 Pizza --> "Toppings<Topping>" "ObservableCollection`1"
 @enduml

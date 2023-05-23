@@ -6,12 +6,22 @@ using PizzaApp.Models;
 
 namespace PizzaApp.ViewModels
 {
-
+    //[QueryProperty(nameof(Pizza), "currentPizza")]
     public partial class PizzaViewModel : BaseViewModel
     {
 
+        //[ObservableProperty]
+        //Pizza currentPizza;
+
+        //[ObservableProperty]
+        //private Pizza currentPizza;
+
         public PizzaViewModel()
         {
+            //if (String.IsNullOrEmpty(CurrentPizza.Name))
+            //{
+            //    //newPizza = CurrentPizza;
+            //}
         }
 
 
@@ -28,21 +38,18 @@ namespace PizzaApp.ViewModels
 
 
         [ObservableProperty]
-        public static Pizza  newPizza = new() { Img = "placeholder.png", Toppings = new(), Size= new() };
-        
-        
+        public static Pizza newPizza = new() { Img = "placeholder.png", Toppings = new(), Size = new() };
+        //[ObservableProperty]
+        //public static Pizza newPizza = CurrentPizza??new();
 
-        
+
+
+
 
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(PizzaViewModel.NewPizza))]
         public ObservableCollection<CrustSize> allSizes = CrustSize.GetAvailableSizes();
-
-
-
-
-
-
+        
     }
 
 

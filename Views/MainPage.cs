@@ -14,16 +14,25 @@ public partial class MainPage : ContentPage
 {
     Grid mainLayout = new Grid
     {
-        RowDefinitions = {new RowDefinition { Height=GridLength.Star} },
-        ColumnDefinitions = { new ColumnDefinition { Width = GridLength.Star} },
-        VerticalOptions = LayoutOptions.Fill,
-        HorizontalOptions = LayoutOptions.Fill,
+        RowDefinitions =
+        {
+            new RowDefinition { Height = new GridLength(0.5, GridUnitType.Star) } ,
+            new RowDefinition { Height = new GridLength(0.5, GridUnitType.Star) }
+        },
+        ColumnDefinitions =
+        {
+            new ColumnDefinition { Width = GridLength.Star },
+            new ColumnDefinition { Width = GridLength.Star }
+        },
+        VerticalOptions = LayoutOptions.Start,
+        HorizontalOptions = LayoutOptions.Fill
+
 
     };
 
     Frame heroFrame = new Frame
     {
-        HeightRequest = 400,
+        //HeightRequest = 400,
         BackgroundColor = Colors.Orange,
         CornerRadius = 0,
         VerticalOptions = LayoutOptions.Start,
@@ -96,37 +105,39 @@ public partial class MainPage : ContentPage
         JustifyContent = Microsoft.Maui.Layouts.FlexJustify.SpaceAround,
         AlignItems = Microsoft.Maui.Layouts.FlexAlignItems.Center,
         AlignContent = Microsoft.Maui.Layouts.FlexAlignContent.Center,
-        HeightRequest = 300,
         WidthRequest = 400,
-
-        Padding = 10,
-        Margin = new(0, 20, 0, 0),
-
-        
+        Padding = 10
 
     };
 
     public MainPage()
-	{
+    {
         Shell.SetNavBarIsVisible(this, false);
         Title = "Pizza way";
 
-
+        mainLayout.SetColumnSpan(heroFrame, 2);
+        mainLayout.SetColumnSpan(mainOptions, 2);
+        
         mainOptions.Children.Add(loginBtn);
         mainOptions.Children.Add(guestOrderBtn);
         mainLayout.Add(heroFrame);
-        mainLayout.Add(mainOptions);
+        mainLayout.Add(mainOptions, 0,1);
+
+        
+
+
+
 
         guestOrderBtn.Clicked += async (sender, args) => {
             guestOrderBtn.IsEnabled = false;
-            await Shell.Current.GoToAsync(nameof(OrderPage), false);
+            await Shell.Current.GoToAsync(nameof(MenuPage), false);
             guestOrderBtn.IsEnabled = true;
         };
 
         Content = mainLayout;
         BindingContext = this;
-        
-	}
+
+    }
 
 
 }

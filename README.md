@@ -22,3 +22,24 @@ dotnet run  --framework net7.0-maccatalyst
 // or simply from visual studio BAU.
 
 ```
+
+
+---
+
+# Class Diagram
+
+![](./Resources/Raw/class_diagram.png)
+
+# Apple Simulator
+
+![](./Resources/Raw/apple_sim.gif)
+
+
+# Android Simulator
+
+
+![](./Resources/Raw/android_sim.gif)
+
+
+
+---

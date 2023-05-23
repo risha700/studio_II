@@ -10,12 +10,13 @@ namespace PizzaApp.Views;
 
 public partial class OrderPage : ContentPage
 {
-
+   
     public OrderPage(PizzaViewModel viewModel)
     {
         InitializeComponent();
         BindingContext = viewModel;
         Title = "New Order";
+       
 
     }
 

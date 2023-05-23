@@ -49,6 +49,9 @@
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+		<MauiImage Include="logo.svg">
+		  <BaseSize>168,208</BaseSize>
+		</MauiImage>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -66,6 +69,11 @@
 	  <None Remove="Resources\AppIcon\logo.svg" />
 	  <None Remove="Resources\Images\duck.png" />
 	  <None Remove="Resources\Images\store_front.jpeg" />
+	  
+	  
+	  <None Remove="Resources\Raw\android_sim.gif" />
+	  <None Remove="Resources\Raw\apple_sim.gif" />
+	  <None Remove="logo.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Models\" />
@@ -82,5 +90,20 @@
 	  <BundleResource Include="Resources\Images\duck.png" />
 	  <BundleResource Include="Resources\Images\store_front.jpeg" />
 	  <BundleResource Include="Resources\Images\store_front.jpeg" />
+	  <BundleResource Include="Resources\Raw\class_diagram.png" />
+	  <BundleResource Include="Resources\Images\appicon.svg">
+	    <BaseSize>168,208</BaseSize>
+	  </BundleResource>
+	  <BundleResource Include="Resources\Raw\android_sim.gif" />
+	  <BundleResource Include="Resources\Raw\android_sim.gif">
+	    <LogicalName>android_sim.gif</LogicalName>
+	  </BundleResource>
+	  <BundleResource Include="Resources\Raw\apple_sim.gif" />
+	  <BundleResource Include="Resources\Raw\apple_sim.gif">
+	    <LogicalName>apple_sim.gif</LogicalName>
+	  </BundleResource>
+	</ItemGroup>
+	<ItemGroup>
+	  
 	</ItemGroup>
 </Project>

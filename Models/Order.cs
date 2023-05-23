@@ -7,6 +7,7 @@ namespace PizzaApp.Models
 		public List<Pizza> Items {get;set;}
 		public double Total { get; set; }
 		public User Customer { get; set; }
+		public DateTime OrderDate { get; set; }
 	}
 
 	// todo: calcualte order total method
