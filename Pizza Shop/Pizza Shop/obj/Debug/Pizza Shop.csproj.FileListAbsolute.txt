@@ -14,3 +14,38 @@ F:\Otago Polytechnic\Level 5 (Year1)\Study Block 2(25 April 2023 - 16 June 2023)
 F:\Otago Polytechnic\Level 5 (Year1)\Study Block 2(25 April 2023 - 16 June 2023)\IA503001 Studio 2 23 AIC-02\Project\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.csproj.CoreCompileInputs.cache
 F:\Otago Polytechnic\Level 5 (Year1)\Study Block 2(25 April 2023 - 16 June 2023)\IA503001 Studio 2 23 AIC-02\Project\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.exe
 F:\Otago Polytechnic\Level 5 (Year1)\Study Block 2(25 April 2023 - 16 June 2023)\IA503001 Studio 2 23 AIC-02\Project\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.pdb
+F:\Otago Polytechnic\Level 5 (Year1)\Study Block 2(25 April 2023 - 16 June 2023)\IA503001 Studio 2 23 AIC-02\Project\studio_II\Pizza Shop\Pizza Shop\bin\Debug\Pizza Shop.exe.config
+F:\Otago Polytechnic\Level 5 (Year1)\Study Block 2(25 April 2023 - 16 June 2023)\IA503001 Studio 2 23 AIC-02\Project\studio_II\Pizza Shop\Pizza Shop\bin\Debug\Pizza Shop.exe
+F:\Otago Polytechnic\Level 5 (Year1)\Study Block 2(25 April 2023 - 16 June 2023)\IA503001 Studio 2 23 AIC-02\Project\studio_II\Pizza Shop\Pizza Shop\bin\Debug\Pizza Shop.pdb
+F:\Otago Polytechnic\Level 5 (Year1)\Study Block 2(25 April 2023 - 16 June 2023)\IA503001 Studio 2 23 AIC-02\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.csproj.AssemblyReference.cache
+F:\Otago Polytechnic\Level 5 (Year1)\Study Block 2(25 April 2023 - 16 June 2023)\IA503001 Studio 2 23 AIC-02\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.csproj.SuggestedBindingRedirects.cache
+F:\Otago Polytechnic\Level 5 (Year1)\Study Block 2(25 April 2023 - 16 June 2023)\IA503001 Studio 2 23 AIC-02\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.CartPage.resources
+F:\Otago Polytechnic\Level 5 (Year1)\Study Block 2(25 April 2023 - 16 June 2023)\IA503001 Studio 2 23 AIC-02\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.ColdDrinksMenuPage.resources
+F:\Otago Polytechnic\Level 5 (Year1)\Study Block 2(25 April 2023 - 16 June 2023)\IA503001 Studio 2 23 AIC-02\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.LoginPage.resources
+F:\Otago Polytechnic\Level 5 (Year1)\Study Block 2(25 April 2023 - 16 June 2023)\IA503001 Studio 2 23 AIC-02\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.PaymentPage.resources
+F:\Otago Polytechnic\Level 5 (Year1)\Study Block 2(25 April 2023 - 16 June 2023)\IA503001 Studio 2 23 AIC-02\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.PizzaMenuPage.resources
+F:\Otago Polytechnic\Level 5 (Year1)\Study Block 2(25 April 2023 - 16 June 2023)\IA503001 Studio 2 23 AIC-02\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.Properties.Resources.resources
+F:\Otago Polytechnic\Level 5 (Year1)\Study Block 2(25 April 2023 - 16 June 2023)\IA503001 Studio 2 23 AIC-02\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.RegisterPage.resources
+F:\Otago Polytechnic\Level 5 (Year1)\Study Block 2(25 April 2023 - 16 June 2023)\IA503001 Studio 2 23 AIC-02\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.csproj.GenerateResource.cache
+F:\Otago Polytechnic\Level 5 (Year1)\Study Block 2(25 April 2023 - 16 June 2023)\IA503001 Studio 2 23 AIC-02\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.csproj.CoreCompileInputs.cache
+F:\Otago Polytechnic\Level 5 (Year1)\Study Block 2(25 April 2023 - 16 June 2023)\IA503001 Studio 2 23 AIC-02\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.exe
+F:\Otago Polytechnic\Level 5 (Year1)\Study Block 2(25 April 2023 - 16 June 2023)\IA503001 Studio 2 23 AIC-02\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.pdb
+F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\bin\Debug\Pizza Shop.exe.config
+F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\bin\Debug\Pizza Shop.exe
+F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\bin\Debug\Pizza Shop.pdb
+F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\bin\Debug\System.Data.SQLite.dll
+F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\bin\Debug\System.Data.SQLite.xml
+F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.csproj.AssemblyReference.cache
+F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.csproj.SuggestedBindingRedirects.cache
+F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.CartPage.resources
+F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.ColdDrinksMenuPage.resources
+F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.LoginPage.resources
+F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.PaymentPage.resources
+F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.PizzaMenuPage.resources
+F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.Properties.Resources.resources
+F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.RegisterPage.resources
+F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.csproj.GenerateResource.cache
+F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.csproj.CoreCompileInputs.cache
+F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.csproj.CopyComplete
+F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.exe
+F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.pdb
