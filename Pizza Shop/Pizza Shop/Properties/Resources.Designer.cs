@@ -63,6 +63,16 @@ namespace Pizza_Shop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Password_Tag {
+            get {
+                object obj = ResourceManager.GetObject("Password_Tag", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pizzabg {
             get {
                 object obj = ResourceManager.GetObject("pizzabg", resourceCulture);
@@ -86,6 +96,16 @@ namespace Pizza_Shop.Properties {
         internal static System.Drawing.Bitmap symbol {
             get {
                 object obj = ResourceManager.GetObject("symbol", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Username_Tag {
+            get {
+                object obj = ResourceManager.GetObject("Username_Tag", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

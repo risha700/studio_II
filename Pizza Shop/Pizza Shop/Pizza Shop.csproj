@@ -134,5 +134,11 @@
   <ItemGroup>
     <None Include="Resources\Profile Symbol.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Username_Tag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Password_Tag.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

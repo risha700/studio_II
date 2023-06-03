@@ -17,5 +17,13 @@ namespace Pizza_Shop
             InitializeComponent();
             panelCenter.BackColor = Color.FromArgb(130, panelCenter.BackColor);
         }
+
+        private void textBoxPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Shift)
+            {
+                textBoxPassword.UseSystemPasswordChar = false;
+            }
+        }
     }
 }
