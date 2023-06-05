@@ -118,22 +118,34 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Profile Symbol" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Profile Symbol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pizzabg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pizzabg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="symbol" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\symbol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Username_Tag" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Username_Tag.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="heineken-original-bottle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\heineken-original-bottle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Profile Symbol" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Profile Symbol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hd-cold-coca-cola-classic-can-png-31625599176oikhh8d9si1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hd-cold-coca-cola-classic-can-png-31625599176oikhh8d9si1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hd-cold-coca-cola-classic-can-png-31625599176oikhh8d9si" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hd-cold-coca-cola-classic-can-png-31625599176oikhh8d9si.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Password_Tag" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Password_Tag.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="screenshot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\screenshot.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pizzabg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pizzabg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pump" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pump.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

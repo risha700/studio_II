@@ -150,6 +150,18 @@
   <ItemGroup>
     <None Include="Resources\screenshot.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heineken-original-bottle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hd-cold-coca-cola-classic-can-png-31625599176oikhh8d9si.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hd-cold-coca-cola-classic-can-png-31625599176oikhh8d9si1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pump.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
