@@ -51,9 +51,9 @@
             // pictureBoxPizzaShop
             // 
             this.pictureBoxPizzaShop.Image = global::Pizza_Shop.Properties.Resources.symbol;
-            this.pictureBoxPizzaShop.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxPizzaShop.Location = new System.Drawing.Point(21, 0);
             this.pictureBoxPizzaShop.Name = "pictureBoxPizzaShop";
-            this.pictureBoxPizzaShop.Size = new System.Drawing.Size(100, 86);
+            this.pictureBoxPizzaShop.Size = new System.Drawing.Size(139, 86);
             this.pictureBoxPizzaShop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxPizzaShop.TabIndex = 1;
             this.pictureBoxPizzaShop.TabStop = false;

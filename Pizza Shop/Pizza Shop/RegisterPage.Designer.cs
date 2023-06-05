@@ -32,6 +32,7 @@
             this.pictureBoxPizzaShop = new System.Windows.Forms.PictureBox();
             this.pictureBoxProfileIcon = new System.Windows.Forms.PictureBox();
             this.panelCenter = new System.Windows.Forms.Panel();
+            this.labelRegisterMessage = new System.Windows.Forms.Label();
             this.labelPasswordCondition = new System.Windows.Forms.Label();
             this.labelPasswordMessage = new System.Windows.Forms.Label();
             this.labelMailIDMessage = new System.Windows.Forms.Label();
@@ -52,7 +53,6 @@
             this.buttonRegister = new System.Windows.Forms.Button();
             this.buttonLoginTab = new System.Windows.Forms.Button();
             this.buttonRegisterTab = new System.Windows.Forms.Button();
-            this.labelRegisterMessage = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPizzaShop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfileIcon)).BeginInit();
@@ -74,9 +74,9 @@
             // pictureBoxPizzaShop
             // 
             this.pictureBoxPizzaShop.Image = global::Pizza_Shop.Properties.Resources.symbol;
-            this.pictureBoxPizzaShop.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxPizzaShop.Location = new System.Drawing.Point(21, 0);
             this.pictureBoxPizzaShop.Name = "pictureBoxPizzaShop";
-            this.pictureBoxPizzaShop.Size = new System.Drawing.Size(100, 86);
+            this.pictureBoxPizzaShop.Size = new System.Drawing.Size(139, 86);
             this.pictureBoxPizzaShop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxPizzaShop.TabIndex = 1;
             this.pictureBoxPizzaShop.TabStop = false;
@@ -117,13 +117,26 @@
             this.panelCenter.Size = new System.Drawing.Size(1231, 663);
             this.panelCenter.TabIndex = 1;
             // 
+            // labelRegisterMessage
+            // 
+            this.labelRegisterMessage.AutoSize = true;
+            this.labelRegisterMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRegisterMessage.ForeColor = System.Drawing.Color.Firebrick;
+            this.labelRegisterMessage.Location = new System.Drawing.Point(436, 600);
+            this.labelRegisterMessage.Name = "labelRegisterMessage";
+            this.labelRegisterMessage.Size = new System.Drawing.Size(0, 69);
+            this.labelRegisterMessage.TabIndex = 23;
+            this.labelRegisterMessage.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelRegisterMessage.UseMnemonic = false;
+            this.labelRegisterMessage.Visible = false;
+            // 
             // labelPasswordCondition
             // 
             this.labelPasswordCondition.AutoSize = true;
             this.labelPasswordCondition.BackColor = System.Drawing.Color.Transparent;
             this.labelPasswordCondition.Location = new System.Drawing.Point(542, 437);
             this.labelPasswordCondition.Name = "labelPasswordCondition";
-            this.labelPasswordCondition.Size = new System.Drawing.Size(230, 26);
+            this.labelPasswordCondition.Size = new System.Drawing.Size(286, 32);
             this.labelPasswordCondition.TabIndex = 22;
             this.labelPasswordCondition.Text = "Password should be at least 6 characters long !\r\nPassword should contain at least" +
     " one digit !";
@@ -136,7 +149,7 @@
             this.labelPasswordMessage.BackColor = System.Drawing.Color.Firebrick;
             this.labelPasswordMessage.Location = new System.Drawing.Point(430, 437);
             this.labelPasswordMessage.Name = "labelPasswordMessage";
-            this.labelPasswordMessage.Size = new System.Drawing.Size(0, 13);
+            this.labelPasswordMessage.Size = new System.Drawing.Size(0, 16);
             this.labelPasswordMessage.TabIndex = 21;
             this.labelPasswordMessage.Visible = false;
             // 
@@ -146,7 +159,7 @@
             this.labelMailIDMessage.BackColor = System.Drawing.Color.Firebrick;
             this.labelMailIDMessage.Location = new System.Drawing.Point(430, 261);
             this.labelMailIDMessage.Name = "labelMailIDMessage";
-            this.labelMailIDMessage.Size = new System.Drawing.Size(0, 13);
+            this.labelMailIDMessage.Size = new System.Drawing.Size(0, 16);
             this.labelMailIDMessage.TabIndex = 20;
             this.labelMailIDMessage.Visible = false;
             // 
@@ -160,7 +173,7 @@
             "Others"});
             this.comboBoxGender.Location = new System.Drawing.Point(938, 338);
             this.comboBoxGender.Name = "comboBoxGender";
-            this.comboBoxGender.Size = new System.Drawing.Size(160, 21);
+            this.comboBoxGender.Size = new System.Drawing.Size(160, 24);
             this.comboBoxGender.TabIndex = 19;
             // 
             // labelGender
@@ -170,7 +183,7 @@
             this.labelGender.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.labelGender.Location = new System.Drawing.Point(935, 316);
             this.labelGender.Name = "labelGender";
-            this.labelGender.Size = new System.Drawing.Size(68, 18);
+            this.labelGender.Size = new System.Drawing.Size(86, 24);
             this.labelGender.TabIndex = 18;
             this.labelGender.Text = "Gender:";
             // 
@@ -179,7 +192,7 @@
             this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F, System.Drawing.FontStyle.Bold);
             this.textBoxPassword.Location = new System.Drawing.Point(424, 392);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(348, 42);
+            this.textBoxPassword.Size = new System.Drawing.Size(348, 51);
             this.textBoxPassword.TabIndex = 17;
             this.textBoxPassword.UseSystemPasswordChar = true;
             this.textBoxPassword.Enter += new System.EventHandler(this.textBoxPassword_Enter);
@@ -193,7 +206,7 @@
             this.textBoxMobileNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F, System.Drawing.FontStyle.Bold);
             this.textBoxMobileNumber.Location = new System.Drawing.Point(424, 297);
             this.textBoxMobileNumber.Name = "textBoxMobileNumber";
-            this.textBoxMobileNumber.Size = new System.Drawing.Size(348, 42);
+            this.textBoxMobileNumber.Size = new System.Drawing.Size(348, 51);
             this.textBoxMobileNumber.TabIndex = 16;
             // 
             // textBoxEmailID
@@ -201,7 +214,7 @@
             this.textBoxEmailID.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F, System.Drawing.FontStyle.Bold);
             this.textBoxEmailID.Location = new System.Drawing.Point(424, 216);
             this.textBoxEmailID.Name = "textBoxEmailID";
-            this.textBoxEmailID.Size = new System.Drawing.Size(348, 42);
+            this.textBoxEmailID.Size = new System.Drawing.Size(348, 51);
             this.textBoxEmailID.TabIndex = 15;
             this.textBoxEmailID.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxEmailID_Validating);
             // 
@@ -210,7 +223,7 @@
             this.textBoxLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F, System.Drawing.FontStyle.Bold);
             this.textBoxLastName.Location = new System.Drawing.Point(424, 137);
             this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.Size = new System.Drawing.Size(348, 42);
+            this.textBoxLastName.Size = new System.Drawing.Size(348, 51);
             this.textBoxLastName.TabIndex = 14;
             // 
             // textBoxFirstName
@@ -218,7 +231,7 @@
             this.textBoxFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F, System.Drawing.FontStyle.Bold);
             this.textBoxFirstName.Location = new System.Drawing.Point(424, 63);
             this.textBoxFirstName.Name = "textBoxFirstName";
-            this.textBoxFirstName.Size = new System.Drawing.Size(348, 42);
+            this.textBoxFirstName.Size = new System.Drawing.Size(348, 51);
             this.textBoxFirstName.TabIndex = 13;
             // 
             // labelDOB
@@ -228,18 +241,18 @@
             this.labelDOB.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.labelDOB.Location = new System.Drawing.Point(935, 87);
             this.labelDOB.Name = "labelDOB";
-            this.labelDOB.Size = new System.Drawing.Size(111, 18);
+            this.labelDOB.Size = new System.Drawing.Size(133, 24);
             this.labelDOB.TabIndex = 12;
             this.labelDOB.Text = "Date Of Birth:";
             // 
             // dateTimePickerDOB
             // 
-            this.dateTimePickerDOB.CalendarFont = new System.Drawing.Font("Monotype Corsiva", 26.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerDOB.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerDOB.Location = new System.Drawing.Point(938, 108);
             this.dateTimePickerDOB.MaxDate = new System.DateTime(2023, 6, 3, 0, 0, 0, 0);
             this.dateTimePickerDOB.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dateTimePickerDOB.Name = "dateTimePickerDOB";
-            this.dateTimePickerDOB.Size = new System.Drawing.Size(255, 20);
+            this.dateTimePickerDOB.Size = new System.Drawing.Size(255, 22);
             this.dateTimePickerDOB.TabIndex = 11;
             this.dateTimePickerDOB.Value = new System.DateTime(2023, 6, 3, 0, 0, 0, 0);
             // 
@@ -250,7 +263,7 @@
             this.labelPassword.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.labelPassword.Location = new System.Drawing.Point(126, 397);
             this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(176, 37);
+            this.labelPassword.Size = new System.Drawing.Size(216, 46);
             this.labelPassword.TabIndex = 10;
             this.labelPassword.Text = "Password:";
             // 
@@ -260,7 +273,7 @@
             this.labelMobileNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMobileNumber.Location = new System.Drawing.Point(126, 302);
             this.labelMobileNumber.Name = "labelMobileNumber";
-            this.labelMobileNumber.Size = new System.Drawing.Size(257, 37);
+            this.labelMobileNumber.Size = new System.Drawing.Size(315, 46);
             this.labelMobileNumber.TabIndex = 9;
             this.labelMobileNumber.Text = "Mobile Number:";
             // 
@@ -270,7 +283,7 @@
             this.labelEmailID.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelEmailID.Location = new System.Drawing.Point(126, 221);
             this.labelEmailID.Name = "labelEmailID";
-            this.labelEmailID.Size = new System.Drawing.Size(155, 37);
+            this.labelEmailID.Size = new System.Drawing.Size(190, 46);
             this.labelEmailID.TabIndex = 8;
             this.labelEmailID.Text = "Email ID:";
             // 
@@ -280,7 +293,7 @@
             this.labelLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLastName.Location = new System.Drawing.Point(126, 142);
             this.labelLastName.Name = "labelLastName";
-            this.labelLastName.Size = new System.Drawing.Size(192, 37);
+            this.labelLastName.Size = new System.Drawing.Size(233, 46);
             this.labelLastName.TabIndex = 7;
             this.labelLastName.Text = "Last Name:";
             // 
@@ -290,7 +303,7 @@
             this.labelFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFirstName.Location = new System.Drawing.Point(126, 68);
             this.labelFirstName.Name = "labelFirstName";
-            this.labelFirstName.Size = new System.Drawing.Size(195, 37);
+            this.labelFirstName.Size = new System.Drawing.Size(236, 46);
             this.labelFirstName.TabIndex = 6;
             this.labelFirstName.Text = "First Name:";
             // 
@@ -341,19 +354,6 @@
             this.buttonRegisterTab.TabIndex = 4;
             this.buttonRegisterTab.Text = "Register Tab";
             this.buttonRegisterTab.UseVisualStyleBackColor = false;
-            // 
-            // labelRegisterMessage
-            // 
-            this.labelRegisterMessage.AutoSize = true;
-            this.labelRegisterMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRegisterMessage.ForeColor = System.Drawing.Color.Firebrick;
-            this.labelRegisterMessage.Location = new System.Drawing.Point(436, 600);
-            this.labelRegisterMessage.Name = "labelRegisterMessage";
-            this.labelRegisterMessage.Size = new System.Drawing.Size(0, 55);
-            this.labelRegisterMessage.TabIndex = 23;
-            this.labelRegisterMessage.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.labelRegisterMessage.UseMnemonic = false;
-            this.labelRegisterMessage.Visible = false;
             // 
             // RegisterPage
             // 

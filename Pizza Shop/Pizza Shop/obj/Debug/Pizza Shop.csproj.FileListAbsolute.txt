@@ -49,3 +49,22 @@ F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop
 F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.csproj.CopyComplete
 F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.exe
 F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.pdb
+C:\Users\mogil\Documents\GitHub\studio_II\Pizza Shop\Pizza Shop\bin\Debug\Pizza Shop.exe.config
+C:\Users\mogil\Documents\GitHub\studio_II\Pizza Shop\Pizza Shop\bin\Debug\Pizza Shop.exe
+C:\Users\mogil\Documents\GitHub\studio_II\Pizza Shop\Pizza Shop\bin\Debug\Pizza Shop.pdb
+C:\Users\mogil\Documents\GitHub\studio_II\Pizza Shop\Pizza Shop\bin\Debug\System.Data.SQLite.dll
+C:\Users\mogil\Documents\GitHub\studio_II\Pizza Shop\Pizza Shop\bin\Debug\System.Data.SQLite.xml
+C:\Users\mogil\Documents\GitHub\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.csproj.AssemblyReference.cache
+C:\Users\mogil\Documents\GitHub\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.csproj.SuggestedBindingRedirects.cache
+C:\Users\mogil\Documents\GitHub\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.CartPage.resources
+C:\Users\mogil\Documents\GitHub\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.ColdDrinksMenuPage.resources
+C:\Users\mogil\Documents\GitHub\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.LoginPage.resources
+C:\Users\mogil\Documents\GitHub\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.PaymentPage.resources
+C:\Users\mogil\Documents\GitHub\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.PizzaMenuPage.resources
+C:\Users\mogil\Documents\GitHub\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.Properties.Resources.resources
+C:\Users\mogil\Documents\GitHub\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.RegisterPage.resources
+C:\Users\mogil\Documents\GitHub\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.csproj.GenerateResource.cache
+C:\Users\mogil\Documents\GitHub\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.csproj.CoreCompileInputs.cache
+C:\Users\mogil\Documents\GitHub\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.csproj.CopyComplete
+C:\Users\mogil\Documents\GitHub\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.exe
+C:\Users\mogil\Documents\GitHub\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.pdb

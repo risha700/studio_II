@@ -121,16 +121,19 @@
   <data name="Profile Symbol" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Profile Symbol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Username_Tag" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Username_Tag.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pizzabg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pizzabg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="symbol" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\symbol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pizzabg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pizzabg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Username_Tag" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Username_Tag.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Password_Tag" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Password_Tag.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="screenshot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\screenshot.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
