@@ -15,7 +15,25 @@ namespace Pizza_Shop
         public ColdDrinksMenuPage()
         {
             InitializeComponent();
-            panelCenter.BackColor = Color.FromArgb(130, panelCenter.BackColor);
+            panel1.BackColor = Color.FromArgb(130, panel1.BackColor);
+            panel2.BackColor = Color.FromArgb(130, panel2.BackColor);
+            panel3.BackColor = Color.FromArgb(130, panel3.BackColor);
+        }
+
+        private void buttonLoginTab_Click(object sender, EventArgs e)
+        {
+            PizzaMenuPage Menu = (PizzaMenuPage)Application.OpenForms["PizzaMenuPage"];
+            if (Menu == null) // Creating a form if it doesnt exist
+            {
+                Menu = new PizzaMenuPage();
+                this.Hide();
+                Menu.Show();
+            }
+            else
+            {
+                this.Hide();
+                Menu.Show();
+            }
         }
     }
 }

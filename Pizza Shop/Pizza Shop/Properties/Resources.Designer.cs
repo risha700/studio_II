@@ -73,7 +73,41 @@ namespace Pizza_Shop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+<<<<<<< HEAD
         public static System.Drawing.Bitmap Password_Tag {
+=======
+        internal static System.Drawing.Bitmap hd_cold_coca_cola_classic_can_png_31625599176oikhh8d9si {
+            get {
+                object obj = ResourceManager.GetObject("hd-cold-coca-cola-classic-can-png-31625599176oikhh8d9si", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hd_cold_coca_cola_classic_can_png_31625599176oikhh8d9si1 {
+            get {
+                object obj = ResourceManager.GetObject("hd-cold-coca-cola-classic-can-png-31625599176oikhh8d9si1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap heineken_original_bottle {
+            get {
+                object obj = ResourceManager.GetObject("heineken-original-bottle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Password_Tag {
+>>>>>>> 69db3568b67580f1f79984c24facc8100cf75421
             get {
                 object obj = ResourceManager.GetObject("Password_Tag", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -103,7 +137,31 @@ namespace Pizza_Shop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+<<<<<<< HEAD
         public static System.Drawing.Bitmap symbol {
+=======
+        internal static System.Drawing.Bitmap pump {
+            get {
+                object obj = ResourceManager.GetObject("pump", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap screenshot {
+            get {
+                object obj = ResourceManager.GetObject("screenshot", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap symbol {
+>>>>>>> 69db3568b67580f1f79984c24facc8100cf75421
             get {
                 object obj = ResourceManager.GetObject("symbol", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
