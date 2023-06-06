@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.Net.Http.Headers;
+using Pizza_Shop.Properties;
+using System.IO;
 
 namespace Pizza_Shop
 {
@@ -122,6 +124,7 @@ namespace Pizza_Shop
             //string Gender = comboBoxGender.SelectedItem.ToString();
 
 
+            
             CustomerDatabase.Open();
 
             string createTableQuery = @"CREATE TABLE IF NOT EXISTS Customer (
@@ -168,12 +171,17 @@ namespace Pizza_Shop
                 labelRegisterMessage.Text = "Registration failed! Try Again Please";
             }
 
-            CustomerDatabase.Close();
+            
         }
 
         private void RegisterPage_Load(object sender, EventArgs e)
         {
             string connectionString = "Data Source=F:\\Otago Polytechnic\\Level 5\\Study Block 2\\Studio 2\\Project\\studio_II\\Pizza Shop\\Databases\\CustomerInformationDatabase.db";
+            //string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            //string relativePath = @"Databases\CustomerInformationDatabase.db";
+            //string databasePath = Path.Combine(baseDirectory, relativePath);
+
+            //string connectionString = $"Data Source={databasePath}";
 
             CustomerDatabase = new SQLiteConnection(connectionString);
 
@@ -202,5 +210,10 @@ namespace Pizza_Shop
             }
         }
 
+        private void RegisterPage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            CustomerDatabase.Close();
+
+        }
     }
 }

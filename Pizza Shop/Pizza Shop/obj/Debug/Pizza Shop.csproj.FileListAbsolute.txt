@@ -49,3 +49,5 @@ F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop
 F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.csproj.CopyComplete
 F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.exe
 F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza Shop.pdb
+F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.WelcomePage.resources
+F:\Otago Polytechnic\Level 5\Study Block 2\Studio 2\Project\studio_II\Pizza Shop\Pizza Shop\obj\Debug\Pizza_Shop.TrackOrderPage.resources

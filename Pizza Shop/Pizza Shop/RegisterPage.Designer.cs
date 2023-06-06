@@ -32,6 +32,7 @@
             this.pictureBoxPizzaShop = new System.Windows.Forms.PictureBox();
             this.pictureBoxProfileIcon = new System.Windows.Forms.PictureBox();
             this.panelCenter = new System.Windows.Forms.Panel();
+            this.labelRegisterMessage = new System.Windows.Forms.Label();
             this.labelPasswordCondition = new System.Windows.Forms.Label();
             this.labelPasswordMessage = new System.Windows.Forms.Label();
             this.labelMailIDMessage = new System.Windows.Forms.Label();
@@ -52,7 +53,6 @@
             this.buttonRegister = new System.Windows.Forms.Button();
             this.buttonLoginTab = new System.Windows.Forms.Button();
             this.buttonRegisterTab = new System.Windows.Forms.Button();
-            this.labelRegisterMessage = new System.Windows.Forms.Label();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPizzaShop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfileIcon)).BeginInit();
@@ -116,6 +116,19 @@
             this.panelCenter.Name = "panelCenter";
             this.panelCenter.Size = new System.Drawing.Size(1231, 663);
             this.panelCenter.TabIndex = 1;
+            // 
+            // labelRegisterMessage
+            // 
+            this.labelRegisterMessage.AutoSize = true;
+            this.labelRegisterMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRegisterMessage.ForeColor = System.Drawing.Color.Firebrick;
+            this.labelRegisterMessage.Location = new System.Drawing.Point(436, 600);
+            this.labelRegisterMessage.Name = "labelRegisterMessage";
+            this.labelRegisterMessage.Size = new System.Drawing.Size(0, 55);
+            this.labelRegisterMessage.TabIndex = 23;
+            this.labelRegisterMessage.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelRegisterMessage.UseMnemonic = false;
+            this.labelRegisterMessage.Visible = false;
             // 
             // labelPasswordCondition
             // 
@@ -342,19 +355,6 @@
             this.buttonRegisterTab.Text = "Register Tab";
             this.buttonRegisterTab.UseVisualStyleBackColor = false;
             // 
-            // labelRegisterMessage
-            // 
-            this.labelRegisterMessage.AutoSize = true;
-            this.labelRegisterMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRegisterMessage.ForeColor = System.Drawing.Color.Firebrick;
-            this.labelRegisterMessage.Location = new System.Drawing.Point(436, 600);
-            this.labelRegisterMessage.Name = "labelRegisterMessage";
-            this.labelRegisterMessage.Size = new System.Drawing.Size(0, 55);
-            this.labelRegisterMessage.TabIndex = 23;
-            this.labelRegisterMessage.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.labelRegisterMessage.UseMnemonic = false;
-            this.labelRegisterMessage.Visible = false;
-            // 
             // RegisterPage
             // 
             this.BackgroundImage = global::Pizza_Shop.Properties.Resources.pizzabg;
@@ -367,6 +367,7 @@
             this.DoubleBuffered = true;
             this.Name = "RegisterPage";
             this.Text = "Pizza Shop";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RegisterPage_FormClosed);
             this.Load += new System.EventHandler(this.RegisterPage_Load);
             this.panelTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPizzaShop)).EndInit();
