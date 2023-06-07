@@ -215,5 +215,14 @@ namespace Pizza_Shop
             CustomerDatabase.Close();
 
         }
+
+        private void textBoxMobileNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                // Prevent the input of non-digit characters
+                e.Handled = true;
+            }
+        }
     }
 }
