@@ -29,5 +29,10 @@ namespace Pizza_Shop
                 ColdDrinks.Show();
             }
         }
+
+        private void panelCenter_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

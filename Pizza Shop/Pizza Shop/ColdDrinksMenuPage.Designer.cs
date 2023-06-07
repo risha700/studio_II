@@ -76,7 +76,7 @@
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(1368, 86);
+            this.panelTop.Size = new System.Drawing.Size(1102, 66);
             this.panelTop.TabIndex = 0;
             // 
             // pictureBoxPizzaShop
@@ -414,7 +414,7 @@
             // 
             this.BackgroundImage = global::Pizza_Shop.Properties.Resources.pizzabg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1368, 946);
+            this.ClientSize = new System.Drawing.Size(1102, 816);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonRegisterTab);
