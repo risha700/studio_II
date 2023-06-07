@@ -15,9 +15,9 @@ namespace Pizza_Shop
         public ColdDrinksMenuPage()
         {
             InitializeComponent();
-            panel1.BackColor = Color.FromArgb(130, panel1.BackColor);
-            panel2.BackColor = Color.FromArgb(130, panel2.BackColor);
-            panel3.BackColor = Color.FromArgb(130, panel3.BackColor);
+            panel3.BackColor = Color.FromArgb(130, panel1.BackColor);
+            panel4.BackColor = Color.FromArgb(130, panel2.BackColor);
+            panel5.BackColor = Color.FromArgb(130, panel3.BackColor);
         }
 
         private void buttonLoginTab_Click(object sender, EventArgs e)

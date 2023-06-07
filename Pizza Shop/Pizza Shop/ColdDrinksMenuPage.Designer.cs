@@ -631,6 +631,7 @@
             this.Controls.Add(this.panelTop);
             this.DoubleBuffered = true;
             this.Name = "ColdDrinksMenuPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pizza Shop";
             this.panelTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPizzaShop)).EndInit();

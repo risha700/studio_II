@@ -369,6 +369,7 @@
             this.Controls.Add(this.panelTop);
             this.DoubleBuffered = true;
             this.Name = "RegisterPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pizza Shop";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RegisterPage_FormClosed);
             this.Load += new System.EventHandler(this.RegisterPage_Load);
