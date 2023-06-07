@@ -63,6 +63,26 @@ namespace Pizza_Shop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap hd_cold_coca_cola_classic_can_png_31625599176oikhh8d9si1 {
+            get {
+                object obj = ResourceManager.GetObject("hd_cold_coca_cola_classic_can_png_31625599176oikhh8d9si1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap heineken_original_bottle {
+            get {
+                object obj = ResourceManager.GetObject("heineken_original_bottle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap pizzabg {
             get {
                 object obj = ResourceManager.GetObject("pizzabg", resourceCulture);
@@ -76,6 +96,26 @@ namespace Pizza_Shop.Properties {
         public static System.Drawing.Bitmap Profile_Symbol {
             get {
                 object obj = ResourceManager.GetObject("Profile Symbol", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap pump {
+            get {
+                object obj = ResourceManager.GetObject("pump", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap screenshot {
+            get {
+                object obj = ResourceManager.GetObject("screenshot", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

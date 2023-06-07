@@ -289,6 +289,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Image = global::Pizza_Shop.Properties.Resources.screenshot;
             this.pictureBox1.Location = new System.Drawing.Point(10, 9);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(202, 177);
@@ -497,6 +498,7 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Image = global::Pizza_Shop.Properties.Resources.screenshot;
             this.pictureBox2.Location = new System.Drawing.Point(10, 9);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(202, 177);
@@ -673,6 +675,7 @@
             // 
             // pictureBox3
             // 
+            this.pictureBox3.Image = global::Pizza_Shop.Properties.Resources.screenshot;
             this.pictureBox3.Location = new System.Drawing.Point(10, 9);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(202, 177);
