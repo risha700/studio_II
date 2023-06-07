@@ -45,15 +45,15 @@
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(1368, 86);
+            this.panelTop.Size = new System.Drawing.Size(1102, 66);
             this.panelTop.TabIndex = 0;
             // 
             // pictureBoxPizzaShop
             // 
             this.pictureBoxPizzaShop.Image = global::Pizza_Shop.Properties.Resources.symbol;
-            this.pictureBoxPizzaShop.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxPizzaShop.Location = new System.Drawing.Point(21, 0);
             this.pictureBoxPizzaShop.Name = "pictureBoxPizzaShop";
-            this.pictureBoxPizzaShop.Size = new System.Drawing.Size(100, 86);
+            this.pictureBoxPizzaShop.Size = new System.Drawing.Size(109, 61);
             this.pictureBoxPizzaShop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxPizzaShop.TabIndex = 1;
             this.pictureBoxPizzaShop.TabStop = false;
@@ -61,25 +61,25 @@
             // pictureBoxProfileIcon
             // 
             this.pictureBoxProfileIcon.Image = global::Pizza_Shop.Properties.Resources.Profile_Symbol;
-            this.pictureBoxProfileIcon.Location = new System.Drawing.Point(1269, 0);
+            this.pictureBoxProfileIcon.Location = new System.Drawing.Point(966, 0);
             this.pictureBoxProfileIcon.Name = "pictureBoxProfileIcon";
-            this.pictureBoxProfileIcon.Size = new System.Drawing.Size(99, 86);
+            this.pictureBoxProfileIcon.Size = new System.Drawing.Size(72, 66);
             this.pictureBoxProfileIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxProfileIcon.TabIndex = 0;
             this.pictureBoxProfileIcon.TabStop = false;
             // 
             // panelCenter
             // 
-            this.panelCenter.Location = new System.Drawing.Point(62, 224);
+            this.panelCenter.Location = new System.Drawing.Point(72, 143);
             this.panelCenter.Name = "panelCenter";
-            this.panelCenter.Size = new System.Drawing.Size(1241, 663);
+            this.panelCenter.Size = new System.Drawing.Size(930, 531);
             this.panelCenter.TabIndex = 1;
             // 
             // PaymentPage
             // 
             this.BackgroundImage = global::Pizza_Shop.Properties.Resources.pizzabg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1368, 946);
+            this.ClientSize = new System.Drawing.Size(1102, 816);
             this.Controls.Add(this.panelCenter);
             this.Controls.Add(this.panelTop);
             this.DoubleBuffered = true;

@@ -57,7 +57,7 @@
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(1368, 86);
+            this.panelTop.Size = new System.Drawing.Size(1102, 66);
             this.panelTop.TabIndex = 0;
             // 
             // pictureBoxPizzaShop
@@ -65,7 +65,7 @@
             this.pictureBoxPizzaShop.Image = global::Pizza_Shop.Properties.Resources.symbol;
             this.pictureBoxPizzaShop.Location = new System.Drawing.Point(21, 0);
             this.pictureBoxPizzaShop.Name = "pictureBoxPizzaShop";
-            this.pictureBoxPizzaShop.Size = new System.Drawing.Size(139, 86);
+            this.pictureBoxPizzaShop.Size = new System.Drawing.Size(109, 61);
             this.pictureBoxPizzaShop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxPizzaShop.TabIndex = 1;
             this.pictureBoxPizzaShop.TabStop = false;
@@ -73,9 +73,9 @@
             // pictureBoxProfileIcon
             // 
             this.pictureBoxProfileIcon.Image = global::Pizza_Shop.Properties.Resources.Profile_Symbol;
-            this.pictureBoxProfileIcon.Location = new System.Drawing.Point(1269, 0);
+            this.pictureBoxProfileIcon.Location = new System.Drawing.Point(966, 0);
             this.pictureBoxProfileIcon.Name = "pictureBoxProfileIcon";
-            this.pictureBoxProfileIcon.Size = new System.Drawing.Size(99, 86);
+            this.pictureBoxProfileIcon.Size = new System.Drawing.Size(72, 66);
             this.pictureBoxProfileIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxProfileIcon.TabIndex = 0;
             this.pictureBoxProfileIcon.TabStop = false;
@@ -91,16 +91,16 @@
             this.panelCenter.Controls.Add(this.textBoxPassword);
             this.panelCenter.Controls.Add(this.textBoxUsername);
             this.panelCenter.Controls.Add(this.buttonLogin);
-            this.panelCenter.Location = new System.Drawing.Point(62, 224);
+            this.panelCenter.Location = new System.Drawing.Point(72, 143);
             this.panelCenter.Name = "panelCenter";
-            this.panelCenter.Size = new System.Drawing.Size(1231, 663);
+            this.panelCenter.Size = new System.Drawing.Size(930, 531);
             this.panelCenter.TabIndex = 1;
             // 
             // labelPasswordCondition
             // 
             this.labelPasswordCondition.AutoSize = true;
             this.labelPasswordCondition.BackColor = System.Drawing.Color.Transparent;
-            this.labelPasswordCondition.Location = new System.Drawing.Point(825, 314);
+            this.labelPasswordCondition.Location = new System.Drawing.Point(199, 329);
             this.labelPasswordCondition.Name = "labelPasswordCondition";
             this.labelPasswordCondition.Size = new System.Drawing.Size(286, 32);
             this.labelPasswordCondition.TabIndex = 14;
@@ -130,20 +130,20 @@
             // labelPassword
             // 
             this.labelPassword.AutoSize = true;
-            this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPassword.Location = new System.Drawing.Point(183, 274);
+            this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelPassword.Location = new System.Drawing.Point(41, 274);
             this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(216, 46);
+            this.labelPassword.Size = new System.Drawing.Size(155, 32);
             this.labelPassword.TabIndex = 11;
             this.labelPassword.Text = "Password:";
             // 
             // labelUsername
             // 
             this.labelUsername.AutoSize = true;
-            this.labelUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUsername.Location = new System.Drawing.Point(183, 143);
+            this.labelUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelUsername.Location = new System.Drawing.Point(27, 143);
             this.labelUsername.Name = "labelUsername";
-            this.labelUsername.Size = new System.Drawing.Size(230, 46);
+            this.labelUsername.Size = new System.Drawing.Size(165, 32);
             this.labelUsername.TabIndex = 10;
             this.labelUsername.Text = "UserName:";
             // 
@@ -151,19 +151,19 @@
             // 
             this.linkLabelForgetPassword.AutoSize = true;
             this.linkLabelForgetPassword.Cursor = System.Windows.Forms.Cursors.Help;
-            this.linkLabelForgetPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabelForgetPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.linkLabelForgetPassword.LinkVisited = true;
-            this.linkLabelForgetPassword.Location = new System.Drawing.Point(519, 388);
+            this.linkLabelForgetPassword.Location = new System.Drawing.Point(491, 341);
             this.linkLabelForgetPassword.Name = "linkLabelForgetPassword";
-            this.linkLabelForgetPassword.Size = new System.Drawing.Size(319, 39);
+            this.linkLabelForgetPassword.Size = new System.Drawing.Size(167, 20);
             this.linkLabelForgetPassword.TabIndex = 9;
             this.linkLabelForgetPassword.TabStop = true;
-            this.linkLabelForgetPassword.Text = "Forget Password ?";
+            this.linkLabelForgetPassword.Text = "Forgot Password ?";
             // 
             // textBoxPassword
             // 
             this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F);
-            this.textBoxPassword.Location = new System.Drawing.Point(554, 269);
+            this.textBoxPassword.Location = new System.Drawing.Point(202, 261);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(498, 51);
             this.textBoxPassword.TabIndex = 8;
@@ -177,7 +177,7 @@
             // textBoxUsername
             // 
             this.textBoxUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F);
-            this.textBoxUsername.Location = new System.Drawing.Point(554, 138);
+            this.textBoxUsername.Location = new System.Drawing.Point(202, 130);
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(498, 51);
             this.textBoxUsername.TabIndex = 7;
@@ -188,12 +188,12 @@
             this.buttonLogin.BackColor = System.Drawing.Color.Firebrick;
             this.buttonLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonLogin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonLogin.Location = new System.Drawing.Point(938, 600);
+            this.buttonLogin.Location = new System.Drawing.Point(661, 459);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(293, 63);
+            this.buttonLogin.Size = new System.Drawing.Size(241, 46);
             this.buttonLogin.TabIndex = 4;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = false;
@@ -204,12 +204,12 @@
             this.buttonLoginTab.BackColor = System.Drawing.Color.Firebrick;
             this.buttonLoginTab.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonLoginTab.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonLoginTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLoginTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonLoginTab.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonLoginTab.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonLoginTab.Location = new System.Drawing.Point(375, 115);
+            this.buttonLoginTab.Location = new System.Drawing.Point(323, 72);
             this.buttonLoginTab.Name = "buttonLoginTab";
-            this.buttonLoginTab.Size = new System.Drawing.Size(293, 63);
+            this.buttonLoginTab.Size = new System.Drawing.Size(235, 44);
             this.buttonLoginTab.TabIndex = 2;
             this.buttonLoginTab.Text = "Login Tab";
             this.buttonLoginTab.UseVisualStyleBackColor = false;
@@ -219,12 +219,12 @@
             this.buttonRegisterTab.BackColor = System.Drawing.Color.Gainsboro;
             this.buttonRegisterTab.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonRegisterTab.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonRegisterTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRegisterTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonRegisterTab.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonRegisterTab.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonRegisterTab.Location = new System.Drawing.Point(668, 115);
+            this.buttonRegisterTab.Location = new System.Drawing.Point(550, 72);
             this.buttonRegisterTab.Name = "buttonRegisterTab";
-            this.buttonRegisterTab.Size = new System.Drawing.Size(293, 63);
+            this.buttonRegisterTab.Size = new System.Drawing.Size(235, 44);
             this.buttonRegisterTab.TabIndex = 3;
             this.buttonRegisterTab.Text = "Register Tab";
             this.buttonRegisterTab.UseVisualStyleBackColor = false;
@@ -234,7 +234,7 @@
             // 
             this.BackgroundImage = global::Pizza_Shop.Properties.Resources.pizzabg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1368, 946);
+            this.ClientSize = new System.Drawing.Size(1102, 816);
             this.Controls.Add(this.buttonRegisterTab);
             this.Controls.Add(this.buttonLoginTab);
             this.Controls.Add(this.panelCenter);
