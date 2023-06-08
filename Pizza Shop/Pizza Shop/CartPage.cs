@@ -7,15 +7,67 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Pizza_Shop
 {
     public partial class CartPage : Form
     {
+        PizzaMenuPage mainCart;
         public CartPage()
         {
             InitializeComponent();
-            panelCenter.BackColor = Color.FromArgb(130, panelCenter.BackColor);
+            ////Form form = new Form();
+            ////form = mainCart;
+            
+            //panelCenter.BackColor = Color.FromArgb(130, panelCenter.BackColor);
+
+            //// Attach the event handler
+            //treeViewCart.NodeMouseDoubleClick += treeViewCart_NodeMouseDoubleClick;
+
+            //// Populate the tree view with cart items
+            //PopulateTreeView();
         }
+
+        //private void PopulateTreeView()
+        //{
+        //    // Assuming you have a cart object
+        //    foreach (Pizza pizza in cart.Pizzas)
+        //    {
+        //        TreeNode pizzaNode = new TreeNode(pizza.Name);
+
+        //        // Add toppings as child nodes
+        //        foreach (string topping in pizza.Toppings)
+        //        {
+        //            TreeNode toppingNode = new TreeNode(topping);
+        //            pizzaNode.Nodes.Add(toppingNode);
+        //        }
+
+        //        // Add the pizza node to the tree view
+        //        treeViewCart.Nodes.Add(pizzaNode);
+        //    }
+        //}
+
+        //private void RemoveSelectedItem()
+        //{
+        //    TreeNode selectedNode = treeViewCart.SelectedNode;
+
+        //    if (selectedNode != null)
+        //    {
+        //        // Remove the item from the cart
+        //        selectedNode.Remove();
+
+        //        // Perform any additional actions or updates
+        //        // ...
+
+        //        MessageBox.Show("Item removed from cart.");
+        //    }
+        //}
+
+        //private void treeViewCart_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        //{
+        //    RemoveSelectedItem();
+        //}
+
     }
 }

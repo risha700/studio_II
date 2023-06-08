@@ -139,7 +139,7 @@
             this.radioButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioButton5.Location = new System.Drawing.Point(534, 31);
             this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(66, 24);
+            this.radioButton5.Size = new System.Drawing.Size(58, 21);
             this.radioButton5.TabIndex = 15;
             this.radioButton5.TabStop = true;
             this.radioButton5.Text = "0.5L";
@@ -151,7 +151,7 @@
             this.radioButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioButton6.Location = new System.Drawing.Point(429, 30);
             this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(51, 24);
+            this.radioButton6.Size = new System.Drawing.Size(44, 21);
             this.radioButton6.TabIndex = 14;
             this.radioButton6.TabStop = true;
             this.radioButton6.Text = "1L";
@@ -163,7 +163,7 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.Location = new System.Drawing.Point(288, 30);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(105, 25);
+            this.label6.Size = new System.Drawing.Size(86, 20);
             this.label6.TabIndex = 13;
             this.label6.Text = "Bottle Size";
             // 
@@ -188,7 +188,7 @@
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label9.Location = new System.Drawing.Point(310, 191);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(62, 25);
+            this.label9.Size = new System.Drawing.Size(48, 20);
             this.label9.TabIndex = 10;
             this.label9.Text = "Total:";
             // 
@@ -198,7 +198,7 @@
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label12.Location = new System.Drawing.Point(50, 191);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(121, 25);
+            this.label12.Size = new System.Drawing.Size(97, 20);
             this.label12.TabIndex = 7;
             this.label12.Text = "Pump Water";
             // 
@@ -232,7 +232,7 @@
             this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioButton3.Location = new System.Drawing.Point(534, 30);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(66, 24);
+            this.radioButton3.Size = new System.Drawing.Size(58, 21);
             this.radioButton3.TabIndex = 15;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "0.5L";
@@ -244,7 +244,7 @@
             this.radioButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioButton4.Location = new System.Drawing.Point(429, 29);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(51, 24);
+            this.radioButton4.Size = new System.Drawing.Size(44, 21);
             this.radioButton4.TabIndex = 14;
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "1L";
@@ -256,7 +256,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(288, 29);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(105, 25);
+            this.label3.Size = new System.Drawing.Size(86, 20);
             this.label3.TabIndex = 13;
             this.label3.Text = "Bottle Size";
             // 
@@ -281,7 +281,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.Location = new System.Drawing.Point(310, 191);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 25);
+            this.label5.Size = new System.Drawing.Size(48, 20);
             this.label5.TabIndex = 10;
             this.label5.Text = "Total:";
             // 
@@ -291,7 +291,7 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label8.Location = new System.Drawing.Point(50, 191);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(105, 25);
+            this.label8.Size = new System.Drawing.Size(82, 20);
             this.label8.TabIndex = 7;
             this.label8.Text = "Coca Cola";
             // 
@@ -365,6 +365,7 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "Add To Cart";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // radioButton2
             // 
@@ -372,7 +373,7 @@
             this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioButton2.Location = new System.Drawing.Point(534, 25);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(66, 24);
+            this.radioButton2.Size = new System.Drawing.Size(58, 21);
             this.radioButton2.TabIndex = 12;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "0.5L";
@@ -384,7 +385,7 @@
             this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioButton1.Location = new System.Drawing.Point(429, 24);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(51, 24);
+            this.radioButton1.Size = new System.Drawing.Size(44, 21);
             this.radioButton1.TabIndex = 11;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "1L";
@@ -396,7 +397,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.Location = new System.Drawing.Point(262, 151);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 25);
+            this.label4.Size = new System.Drawing.Size(48, 20);
             this.label4.TabIndex = 10;
             this.label4.Text = "Total:";
             // 
@@ -406,7 +407,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(288, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 25);
+            this.label2.Size = new System.Drawing.Size(86, 20);
             this.label2.TabIndex = 8;
             this.label2.Text = "Bottle Size";
             // 
@@ -416,7 +417,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(50, 151);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 25);
+            this.label1.Size = new System.Drawing.Size(77, 20);
             this.label1.TabIndex = 7;
             this.label1.Text = "Heineken";
             // 
@@ -458,6 +459,7 @@
             this.button4.TabIndex = 7;
             this.button4.Text = "Add To Cart";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // radioButton7
             // 
@@ -465,7 +467,7 @@
             this.radioButton7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioButton7.Location = new System.Drawing.Point(534, 25);
             this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(66, 24);
+            this.radioButton7.Size = new System.Drawing.Size(58, 21);
             this.radioButton7.TabIndex = 12;
             this.radioButton7.TabStop = true;
             this.radioButton7.Text = "0.5L";
@@ -477,7 +479,7 @@
             this.radioButton8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioButton8.Location = new System.Drawing.Point(429, 24);
             this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(51, 24);
+            this.radioButton8.Size = new System.Drawing.Size(44, 21);
             this.radioButton8.TabIndex = 11;
             this.radioButton8.TabStop = true;
             this.radioButton8.Text = "1L";
@@ -489,7 +491,7 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label7.Location = new System.Drawing.Point(262, 151);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 25);
+            this.label7.Size = new System.Drawing.Size(48, 20);
             this.label7.TabIndex = 10;
             this.label7.Text = "Total:";
             // 
@@ -499,7 +501,7 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label10.Location = new System.Drawing.Point(288, 24);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(105, 25);
+            this.label10.Size = new System.Drawing.Size(86, 20);
             this.label10.TabIndex = 8;
             this.label10.Text = "Bottle Size";
             // 
@@ -509,7 +511,7 @@
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label11.Location = new System.Drawing.Point(50, 151);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(95, 25);
+            this.label11.Size = new System.Drawing.Size(77, 20);
             this.label11.TabIndex = 7;
             this.label11.Text = "Heineken";
             // 
@@ -551,6 +553,7 @@
             this.button5.TabIndex = 7;
             this.button5.Text = "Add To Cart";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // radioButton9
             // 
@@ -558,7 +561,7 @@
             this.radioButton9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioButton9.Location = new System.Drawing.Point(534, 25);
             this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(66, 24);
+            this.radioButton9.Size = new System.Drawing.Size(58, 21);
             this.radioButton9.TabIndex = 12;
             this.radioButton9.TabStop = true;
             this.radioButton9.Text = "0.5L";
@@ -570,7 +573,7 @@
             this.radioButton10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioButton10.Location = new System.Drawing.Point(429, 24);
             this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(51, 24);
+            this.radioButton10.Size = new System.Drawing.Size(44, 21);
             this.radioButton10.TabIndex = 11;
             this.radioButton10.TabStop = true;
             this.radioButton10.Text = "1L";
@@ -582,7 +585,7 @@
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label13.Location = new System.Drawing.Point(262, 151);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(62, 25);
+            this.label13.Size = new System.Drawing.Size(48, 20);
             this.label13.TabIndex = 10;
             this.label13.Text = "Total:";
             // 
@@ -592,7 +595,7 @@
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label14.Location = new System.Drawing.Point(288, 24);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(105, 25);
+            this.label14.Size = new System.Drawing.Size(86, 20);
             this.label14.TabIndex = 8;
             this.label14.Text = "Bottle Size";
             // 
@@ -602,7 +605,7 @@
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label15.Location = new System.Drawing.Point(50, 151);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(95, 25);
+            this.label15.Size = new System.Drawing.Size(77, 20);
             this.label15.TabIndex = 7;
             this.label15.Text = "Heineken";
             // 

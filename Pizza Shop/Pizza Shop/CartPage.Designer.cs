@@ -32,9 +32,15 @@
             this.pictureBoxPizzaShop = new System.Windows.Forms.PictureBox();
             this.pictureBoxProfileIcon = new System.Windows.Forms.PictureBox();
             this.panelCenter = new System.Windows.Forms.Panel();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPizzaShop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfileIcon)).BeginInit();
+            this.panelCenter.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTop
@@ -61,7 +67,7 @@
             // pictureBoxProfileIcon
             // 
             this.pictureBoxProfileIcon.Image = global::Pizza_Shop.Properties.Resources.Profile_Symbol;
-            this.pictureBoxProfileIcon.Location = new System.Drawing.Point(966, 0);
+            this.pictureBoxProfileIcon.Location = new System.Drawing.Point(1030, 0);
             this.pictureBoxProfileIcon.Name = "pictureBoxProfileIcon";
             this.pictureBoxProfileIcon.Size = new System.Drawing.Size(72, 66);
             this.pictureBoxProfileIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -70,10 +76,45 @@
             // 
             // panelCenter
             // 
-            this.panelCenter.Location = new System.Drawing.Point(62, 224);
+            this.panelCenter.Controls.Add(this.listView1);
+            this.panelCenter.Location = new System.Drawing.Point(79, 111);
             this.panelCenter.Name = "panelCenter";
             this.panelCenter.Size = new System.Drawing.Size(930, 567);
             this.panelCenter.TabIndex = 1;
+            // 
+            // listView1
+            // 
+            this.listView1.BackColor = System.Drawing.SystemColors.Window;
+            this.listView1.CheckBoxes = true;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
+            this.listView1.FullRowSelect = true;
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(328, 205);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(244, 97);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Name";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Size";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Price";
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Toppings";
             // 
             // CartPage
             // 
@@ -88,6 +129,7 @@
             this.panelTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPizzaShop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfileIcon)).EndInit();
+            this.panelCenter.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -98,5 +140,10 @@
         private System.Windows.Forms.PictureBox pictureBoxPizzaShop;
         private System.Windows.Forms.PictureBox pictureBoxProfileIcon;
         private System.Windows.Forms.Panel panelCenter;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }
