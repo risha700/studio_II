@@ -37,7 +37,6 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button1 = new System.Windows.Forms.Button();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPizzaShop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfileIcon)).BeginInit();
@@ -77,7 +76,6 @@
             // 
             // panelCenter
             // 
-            this.panelCenter.Controls.Add(this.button1);
             this.panelCenter.Controls.Add(this.listView1);
             this.panelCenter.Location = new System.Drawing.Point(79, 111);
             this.panelCenter.Name = "panelCenter";
@@ -95,9 +93,9 @@
             this.columnHeader4});
             this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(31, 26);
+            this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(403, 276);
+            this.listView1.Size = new System.Drawing.Size(930, 240);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -117,17 +115,6 @@
             // columnHeader4
             // 
             this.columnHeader4.Text = "Toppings";
-            this.columnHeader4.Width = 73;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(767, 491);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(138, 55);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Back to menu";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // CartPage
             // 
@@ -158,6 +145,5 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.Button button1;
     }
 }
