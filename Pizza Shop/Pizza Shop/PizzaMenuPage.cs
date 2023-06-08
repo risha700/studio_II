@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Pizza_Shop
 {
     public partial class PizzaMenuPage : Form
     {
-        public CartMenu cart;
+        public  static CartMenu PizzaCart { get; set; }
         public PizzaMenuPage()
         {
             InitializeComponent();
 
-            cart = new CartMenu();
+            if (PizzaCart == null)
+                PizzaCart = new CartMenu();
 
             panelCenter.BackColor = Color.FromArgb(130, panelCenter.BackColor);
             panel1.BackColor = Color.FromArgb(130, panelCenter.BackColor);
@@ -100,7 +102,7 @@ namespace Pizza_Shop
             }
             else
             {
-                cart.AddPizzaToCart(pizza1);
+                PizzaCart.AddPizzaToCart(pizza1);
 
                 MessageBox.Show($"Pizza Added Successfully ! \n Pizza Cost: {pizzaPrice}");
 
@@ -186,7 +188,7 @@ namespace Pizza_Shop
             }
             else
             {
-                cart.AddPizzaToCart(pizza2);
+                PizzaCart.AddPizzaToCart(pizza2);
 
                 MessageBox.Show($"Pizza Added Successfully ! \n Pizza Cost: {pizzaPrice}");
 
@@ -273,7 +275,7 @@ namespace Pizza_Shop
             }
             else
             {
-                cart.AddPizzaToCart(pizza3);
+                PizzaCart.AddPizzaToCart(pizza3);
 
                 MessageBox.Show($"Pizza Added Successfully ! \n Pizza Cost: {pizzaPrice}");
 

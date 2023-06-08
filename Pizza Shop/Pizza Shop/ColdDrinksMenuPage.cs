@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Pizza_Shop
 {
     public partial class ColdDrinksMenuPage : Form
     {
-        PizzaMenuPage pizzaMenu;
+        public static CartMenu ColdDrinkCart { get; set; }
         public ColdDrinksMenuPage()
         {
             InitializeComponent();
@@ -20,7 +21,8 @@ namespace Pizza_Shop
             panel4.BackColor = Color.FromArgb(130, panel2.BackColor);
             panel5.BackColor = Color.FromArgb(130, panel3.BackColor);
 
-            pizzaMenu = new PizzaMenuPage();
+            if (ColdDrinkCart == null)
+                ColdDrinkCart = new CartMenu();
         }
 
         private void buttonLoginTab_Click(object sender, EventArgs e)
@@ -73,7 +75,7 @@ namespace Pizza_Shop
             }
             else
             {
-                pizzaMenu.cart.AddColdDrinkToCart(coldDrink1);
+                ColdDrinkCart.AddColdDrinkToCart(coldDrink1);
 
                 MessageBox.Show($"Drink added to cart. \n Drink Price: {coldDrinkPrice}");
 
@@ -124,7 +126,7 @@ namespace Pizza_Shop
             }
             else
             {
-                pizzaMenu.cart.AddColdDrinkToCart(coldDrink2);
+                ColdDrinkCart.AddColdDrinkToCart(coldDrink2);
 
                 MessageBox.Show($"Drink added to cart. \n Drink Price: {coldDrinkPrice}");
 
@@ -174,7 +176,7 @@ namespace Pizza_Shop
             }
             else
             {
-                pizzaMenu.cart.AddColdDrinkToCart(coldDrink3);
+                ColdDrinkCart.AddColdDrinkToCart(coldDrink3);
 
                 MessageBox.Show($"Drink added to cart. \n Drink Price: {coldDrinkPrice}");
 
