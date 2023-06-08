@@ -29,6 +29,22 @@ namespace Pizza_Shop
             //PopulateTreeView();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PizzaMenuPage MenuPage = (PizzaMenuPage)Application.OpenForms["PizzaMenuPage"];
+            if (MenuPage == null) // Creating a form if it doesnt exist
+            {
+                MenuPage = new PizzaMenuPage();
+                this.Hide();
+                MenuPage.Show();
+            }
+            else
+            {
+                this.Hide();
+                MenuPage.Show();
+            }
+        }
+
         //private void PopulateTreeView()
         //{
         //    // Assuming you have a cart object
