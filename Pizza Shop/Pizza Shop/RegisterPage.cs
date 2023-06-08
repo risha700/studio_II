@@ -17,7 +17,7 @@ namespace Pizza_Shop
 {
     public partial class RegisterPage : Form
     {
-        private SQLiteConnection CustomerDatabase;
+        //private SQLiteConnection CustomerDatabase;
         private bool PasswordValidated;
         private bool EmailValidated;
         public RegisterPage()
@@ -125,67 +125,67 @@ namespace Pizza_Shop
 
 
             
-            CustomerDatabase.Open();
+          //  CustomerDatabase.Open();
 
-            string createTableQuery = @"CREATE TABLE IF NOT EXISTS Customer (
-                ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                FirstName TEXT NOT NULL,
-                LastName TEXT NOT NULL,
-                Email TEXT NOT NULL,
-                MobileNumber INTEGER NOT NULL,
-                Password TEXT NOT NULL,
-                DateOfBirth TEXT NOT NULL,
-                Gender TEXT NOT NULL
-            );";
+         //   string createTableQuery = @"CREATE TABLE IF NOT EXISTS Customer (
+           //     ID INTEGER PRIMARY KEY AUTOINCREMENT,
+          //      FirstName TEXT NOT NULL,
+          //      LastName TEXT NOT NULL,
+          //      Email TEXT NOT NULL,
+          //      MobileNumber INTEGER NOT NULL,
+          //      Password TEXT NOT NULL,
+         //       DateOfBirth TEXT NOT NULL,
+         //       Gender TEXT NOT NULL
+         //   );";
 
-            SQLiteCommand createTableCommand = new SQLiteCommand(createTableQuery, CustomerDatabase);
-            createTableCommand.ExecuteNonQuery();
-
-
-            string insertCommand = "INSERT INTO Customer (FirstName, LastName, Email, MobileNumber, Password, DateOfBirth, Gender)" +
-                $"Values (@FirstName, @LastName, @Email, @MobileNumber, @Password, @DOB, @Gender)";
-
-            SQLiteCommand addCustomerData = new SQLiteCommand(insertCommand, CustomerDatabase);
-
-            addCustomerData.Parameters.AddWithValue("@FirstName", textBoxFirstName.Text);
-            addCustomerData.Parameters.AddWithValue("@LastName", textBoxLastName.Text);
-            addCustomerData.Parameters.AddWithValue("@Email", textBoxEmailID.Text);
-            addCustomerData.Parameters.AddWithValue("@MobileNumber", textBoxMobileNumber.Text);
-            addCustomerData.Parameters.AddWithValue("@Password", textBoxPassword.Text);
-            addCustomerData.Parameters.AddWithValue("@DOB", dateTimePickerDOB.Value.ToString());
-            addCustomerData.Parameters.AddWithValue("@Gender", comboBoxGender.SelectedItem.ToString());
+           // SQLiteCommand createTableCommand = new SQLiteCommand(createTableQuery, CustomerDatabase);
+          //  createTableCommand.ExecuteNonQuery();
 
 
-            int rowsAffected = addCustomerData.ExecuteNonQuery();
+            //string insertCommand = "INSERT INTO Customer (FirstName, LastName, Email, MobileNumber, Password, DateOfBirth, Gender)" +
+            //    $"Values (@FirstName, @LastName, @Email, @MobileNumber, @Password, @DOB, @Gender)";
 
-            if (rowsAffected > 0)
-            {
+           // SQLiteCommand addCustomerData = new SQLiteCommand(insertCommand, CustomerDatabase);
+
+           // addCustomerData.Parameters.AddWithValue("@FirstName", textBoxFirstName.Text);
+           // addCustomerData.Parameters.AddWithValue("@LastName", textBoxLastName.Text);
+          //  addCustomerData.Parameters.AddWithValue("@Email", textBoxEmailID.Text);
+          //  addCustomerData.Parameters.AddWithValue("@MobileNumber", textBoxMobileNumber.Text);
+           // addCustomerData.Parameters.AddWithValue("@Password", textBoxPassword.Text);
+           // addCustomerData.Parameters.AddWithValue("@DOB", dateTimePickerDOB.Value.ToString());
+           // addCustomerData.Parameters.AddWithValue("@Gender", comboBoxGender.SelectedItem.ToString());
+
+
+          //  int rowsAffected = addCustomerData.ExecuteNonQuery();
+
+        //    if (rowsAffected > 0)
+         //   {
                 // Insert successful
-                labelRegisterMessage.Visible = true;
-                labelRegisterMessage.Text = "Registration successful!";
-            }
-            else
-            {
+         //       labelRegisterMessage.Visible = true;
+         //       labelRegisterMessage.Text = "Registration successful!";
+         //   }
+          //  else
+          //  {
                 // Insert failed
-                labelRegisterMessage.Visible = true;
-                labelRegisterMessage.Text = "Registration failed! Try Again Please";
-            }
+           //     labelRegisterMessage.Visible = true;
+            //    labelRegisterMessage.Text = "Registration failed! Try Again Please";
+          //  }
 
             
         }
 
         private void RegisterPage_Load(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=F:\\Otago Polytechnic\\Level 5\\Study Block 2\\Studio 2\\Project\\studio_II\\Pizza Shop\\Databases\\CustomerInformationDatabase.db";
+          //  string connectionString = "Data Source=F:\\Otago Polytechnic\\Level 5\\Study Block 2\\Studio 2\\Project\\studio_II\\Pizza Shop\\Databases\\CustomerInformationDatabase.db";
             //string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
             //string relativePath = @"Databases\CustomerInformationDatabase.db";
             //string databasePath = Path.Combine(baseDirectory, relativePath);
 
             //string connectionString = $"Data Source={databasePath}";
 
-            CustomerDatabase = new SQLiteConnection(connectionString);
+           // CustomerDatabase = new SQLiteConnection(connectionString);
 
-            labelRegisterMessage.Font = new Font(labelRegisterMessage.Font.FontFamily, 12, FontStyle.Regular);
+           // labelRegisterMessage.Font = new Font(labelRegisterMessage.Font.FontFamily, 12, FontStyle.Regular);
         }
 
         private void buttonRegister_Click(object sender, EventArgs e)
@@ -206,14 +206,8 @@ namespace Pizza_Shop
             }
             else
             {
-                WriteCustomerDataToCustomerDatabase();
+               // WriteCustomerDataToCustomerDatabase();
             }
-        }
-
-        private void RegisterPage_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            CustomerDatabase.Close();
-
         }
 
         private void textBoxMobileNumber_KeyPress(object sender, KeyPressEventArgs e)
