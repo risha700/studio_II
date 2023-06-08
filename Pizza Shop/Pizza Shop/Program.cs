@@ -16,7 +16,7 @@ namespace Pizza_Shop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CartPage());
+            Application.Run(new WelcomePage());
         }
     }
 }

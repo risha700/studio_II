@@ -293,5 +293,21 @@ namespace Pizza_Shop
 
 
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            CartPage CartPage = (CartPage)Application.OpenForms["CartPage"];
+            if (CartPage == null) // Creating a form if it doesnt exist
+            {
+                CartPage = new CartPage();
+                this.Hide();
+                CartPage.Show();
+            }
+            else
+            {
+                this.Hide();
+                CartPage.Show();
+            }
+        }
     }
 }
