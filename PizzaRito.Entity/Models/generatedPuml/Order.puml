@@ -1,0 +1,11 @@
+@startuml
+class Order {
+    + Total : double <<get>> <<set>>
+}
+class "ObservableCollection`1"<T> {
+}
+Order --> "Id" Guid
+Order --> "Items<Pizza>" "ObservableCollection`1"
+Order --> "Customer" User
+Order --> "OrderDate" DateTime
+@enduml

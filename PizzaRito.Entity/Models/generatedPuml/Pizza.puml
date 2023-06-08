@@ -1,0 +1,14 @@
+@startuml
+class Pizza {
+    + Name : string <<get>> <<set>>
+    + Details : string? <<get>> <<set>>
+    + Size : CrustSize? <<get>> <<set>>
+    + Price : double <<get>> <<set>>
+    + Toppings : ObservableCollection<Topping>? <<get>> <<set>>
+    + Img : string? <<get>> <<set>>
+    + {static} GetAvailablePizzas() : dynamic
+    + CalculatePizzaPrice() : void
+    + <<override>> ToString() : string
+}
+Pizza --> "Id" Guid
+@enduml

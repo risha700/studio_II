@@ -27,7 +27,7 @@ public partial class MenuPage : ContentPage
     };
     public MenuPage()
 	{
-		Title = "PizzaWay Menu";
+		Title = "Menu";
 
         dynamic availablePizza = Pizza.GetAvailablePizzas();
 

@@ -34,6 +34,15 @@
 	  <CreatePackage>false</CreatePackage>
 	</PropertyGroup>
 	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\duck.png" />
+	  <MauiImage Remove="Resources\Images\store_front.jpeg" />
+	  <MauiImage Remove="Resources\Images\placeholder.png" />
+	  <MauiImage Remove="Resources\Images\pizza_placeholder.png" />
+	  <MauiImage Remove="Resources\Images\appicon.svg" />
+	  <MauiImage Remove="Resources\Images\logo.svg" />
+	  <MauiImage Remove="Resources\Images\race.jpeg" />
+	</ItemGroup>
+	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
@@ -69,6 +78,17 @@
 	<ItemGroup>
 	  <None Remove="Utilities\" />
 	  <None Remove="ViewModels\" />
+	  <None Remove="Resources\Images\duck.png" />
+	  <None Remove="Resources\Images\store_front.jpeg" />
+	  <None Remove="Resources\Images\placeholder.png" />
+	  <None Remove="Resources\Images\pizza_placeholder.png" />
+	  <None Remove="Resources\Images\appicon.svg" />
+	  <None Remove="Resources\Images\logo.svg" />
+	  <None Remove="Resources\Images\race.jpeg" />
+	  <None Remove="Resources\Raw\android_sim.gif" />
+	  <None Remove="Resources\Raw\apple_sim.gif" />
+	  <None Remove="Resources\Raw\class_diagram.png" />
+	  <None Remove="Resources\Raw\include.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Utilities\" />
@@ -76,5 +96,38 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\PizzaRito.Entity\PizzaRito.Entity.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <BundleResource Include="Resources\Images\duck.png" />
+	  <BundleResource Include="Resources\Images\duck.png" />
+	  <BundleResource Include="Resources\Images\store_front.jpeg" />
+	  <BundleResource Include="Resources\Images\store_front.jpeg" />
+	  <BundleResource Include="Resources\Images\placeholder.png" />
+	  <BundleResource Include="Resources\Images\placeholder.png" />
+	  <BundleResource Include="Resources\Images\pizza_placeholder.png" />
+	  <BundleResource Include="Resources\Images\pizza_placeholder.png" />
+	  <BundleResource Include="Resources\Images\appicon.svg" />
+	  <BundleResource Include="Resources\Images\appicon.svg" />
+	  <BundleResource Include="Resources\Images\logo.svg" />
+	  <BundleResource Include="Resources\Images\logo.svg" />
+	  <BundleResource Include="Resources\Images\race.jpeg" />
+	  <BundleResource Include="Resources\Images\race.jpeg" />
+	  <BundleResource Include="Resources\Images\duck.png" />
+	  <BundleResource Include="Resources\Images\store_front.jpeg" />
+	  <BundleResource Include="Resources\Images\placeholder.png" />
+	  <BundleResource Include="Resources\Images\pizza_placeholder.png" />
+	  <BundleResource Include="Resources\Images\appicon.svg" />
+	  <BundleResource Include="Resources\Images\logo.svg" />
+	  <BundleResource Include="Resources\Images\race.jpeg" />
+	  <BundleResource Include="Resources\Raw\android_sim.gif">
+	    <LogicalName>android_sim.gif</LogicalName>
+	  </BundleResource>
+	  <BundleResource Include="Resources\Raw\apple_sim.gif">
+	    <LogicalName>apple_sim.gif</LogicalName>
+	  </BundleResource>
+	  <BundleResource Include="Resources\Raw\class_diagram.png">
+	    <LogicalName>class_diagram.png</LogicalName>
+	  </BundleResource>
+	  <BundleResource Include="Resources\Raw\include.png" />
 	</ItemGroup>
 </Project>
