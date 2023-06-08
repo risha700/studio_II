@@ -1,8 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using PizzaRito.Entity;
 using PizzaRito.Utilities;
+using PizzaRito.ViewModels;
+using PizzaRito.Views;
 
 namespace PizzaRito;
 
@@ -13,7 +16,8 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
+            .UseMauiCommunityToolkit()
+            .ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
@@ -31,6 +35,13 @@ public static class MauiProgram
         builder.Services.AddDbContext<AppDbContext>(opts=>opts.UseSqlite($"Data Source={dbPath}"));
 
 		builder.Services.AddSingleton<MainPage>();
+
+        builder.Services.AddTransient<MainPage>();
+        builder.Services.AddTransient<PizzaViewModel>();
+        builder.Services.AddTransient<CheckoutPage>();
+        builder.Services.AddTransient<CheckoutViewModel>();
+        builder.Services.AddTransient<OrderPage>();
+        builder.Services.AddSingleton<MenuPage>();
         var app = builder.Build();
 
         app.SeedDatabase();

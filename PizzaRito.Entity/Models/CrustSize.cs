@@ -13,9 +13,9 @@ public class CrustSize
     public string Name { get; set; }
 	public double Price { get; set; }
 
-    public static List<CrustSize> GetAvailableSizes()
+    public static ObservableCollection<CrustSize> GetAvailableSizes()
     {
-        List<CrustSize> availableToppings = new()
+        ObservableCollection<CrustSize> availableToppings = new()
         {
             new CrustSize {Name="Small", Price=5.99},
             new CrustSize {Name="Medium", Price=7.99},

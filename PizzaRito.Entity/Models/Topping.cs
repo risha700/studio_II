@@ -20,7 +20,7 @@ public class Topping
         }
         public static dynamic GetAvailableToppings()
         {
-            List<Topping> availableToppings = new()
+        ObservableCollection<Topping> availableToppings = new()
             {
                 new Topping {Name="Salami", InStock=true, Price=0.99},
                 new Topping {Name="Cheese it up",InStock=true,Price=0.75},
