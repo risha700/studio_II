@@ -189,5 +189,52 @@ namespace Pizza_Shop
                 }
             }
         }
+
+        private void buttonRegisterTab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBoxPizzaShop_Click(object sender, EventArgs e)
+        {
+            PizzaMenuPage Menu = (PizzaMenuPage)Application.OpenForms["PizzaMenuPage"];
+            if (Menu == null) // Creating a form if it doesnt exist
+            {
+                Menu = new PizzaMenuPage();
+                this.Hide();
+                Menu.Show();
+            }
+            else
+            {
+                this.Hide();
+                Menu.Show();
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            CartPage CartPage = (CartPage)Application.OpenForms["CartPage"];
+            if (CartPage == null) // Creating a form if it doesnt exist
+            {
+                CartPage = new CartPage();
+                this.Hide();
+                CartPage.Show();
+            }
+            else
+            {
+                this.Hide();
+                CartPage.Show();
+            }
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton10_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

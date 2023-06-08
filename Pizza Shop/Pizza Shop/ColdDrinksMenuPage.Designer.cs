@@ -30,7 +30,6 @@
         {
             this.panelTop = new System.Windows.Forms.Panel();
             this.pictureBoxPizzaShop = new System.Windows.Forms.PictureBox();
-            this.pictureBoxProfileIcon = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
@@ -53,7 +52,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -61,7 +59,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -73,9 +70,9 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.button6 = new System.Windows.Forms.Button();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPizzaShop)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfileIcon)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel1.SuspendLayout();
@@ -91,8 +88,8 @@
             // panelTop
             // 
             this.panelTop.BackColor = System.Drawing.Color.Firebrick;
+            this.panelTop.Controls.Add(this.button6);
             this.panelTop.Controls.Add(this.pictureBoxPizzaShop);
-            this.panelTop.Controls.Add(this.pictureBoxProfileIcon);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
@@ -108,16 +105,7 @@
             this.pictureBoxPizzaShop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxPizzaShop.TabIndex = 1;
             this.pictureBoxPizzaShop.TabStop = false;
-            // 
-            // pictureBoxProfileIcon
-            // 
-            this.pictureBoxProfileIcon.Image = global::Pizza_Shop.Properties.Resources.Profile_Symbol;
-            this.pictureBoxProfileIcon.Location = new System.Drawing.Point(966, 0);
-            this.pictureBoxProfileIcon.Name = "pictureBoxProfileIcon";
-            this.pictureBoxProfileIcon.Size = new System.Drawing.Size(72, 66);
-            this.pictureBoxProfileIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxProfileIcon.TabIndex = 0;
-            this.pictureBoxProfileIcon.TabStop = false;
+            this.pictureBoxPizzaShop.Click += new System.EventHandler(this.pictureBoxPizzaShop_Click);
             // 
             // panel2
             // 
@@ -319,6 +307,7 @@
             this.buttonRegisterTab.TabIndex = 23;
             this.buttonRegisterTab.Text = "Cold Drinks";
             this.buttonRegisterTab.UseVisualStyleBackColor = false;
+            this.buttonRegisterTab.Click += new System.EventHandler(this.buttonRegisterTab_Click);
             // 
             // buttonLoginTab
             // 
@@ -342,7 +331,6 @@
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.radioButton2);
             this.panel3.Controls.Add(this.radioButton1);
-            this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.pictureBox1);
@@ -373,10 +361,10 @@
             this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioButton2.Location = new System.Drawing.Point(534, 25);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(58, 21);
+            this.radioButton2.Size = new System.Drawing.Size(81, 21);
             this.radioButton2.TabIndex = 12;
             this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "0.5L";
+            this.radioButton2.Text = "0.5L 5$";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // radioButton1
@@ -385,21 +373,11 @@
             this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioButton1.Location = new System.Drawing.Point(429, 24);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(44, 21);
+            this.radioButton1.Size = new System.Drawing.Size(67, 21);
             this.radioButton1.TabIndex = 11;
             this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "1L";
+            this.radioButton1.Text = "1L 8$";
             this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(262, 151);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 20);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Total:";
             // 
             // label2
             // 
@@ -436,7 +414,6 @@
             this.panel4.Controls.Add(this.button4);
             this.panel4.Controls.Add(this.radioButton7);
             this.panel4.Controls.Add(this.radioButton8);
-            this.panel4.Controls.Add(this.label7);
             this.panel4.Controls.Add(this.label10);
             this.panel4.Controls.Add(this.label11);
             this.panel4.Controls.Add(this.pictureBox4);
@@ -467,10 +444,10 @@
             this.radioButton7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioButton7.Location = new System.Drawing.Point(534, 25);
             this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(58, 21);
+            this.radioButton7.Size = new System.Drawing.Size(81, 21);
             this.radioButton7.TabIndex = 12;
             this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "0.5L";
+            this.radioButton7.Text = "0.5L 5$";
             this.radioButton7.UseVisualStyleBackColor = true;
             // 
             // radioButton8
@@ -479,21 +456,11 @@
             this.radioButton8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioButton8.Location = new System.Drawing.Point(429, 24);
             this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(44, 21);
+            this.radioButton8.Size = new System.Drawing.Size(67, 21);
             this.radioButton8.TabIndex = 11;
             this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "1L";
+            this.radioButton8.Text = "1L 8$";
             this.radioButton8.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(262, 151);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 20);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Total:";
             // 
             // label10
             // 
@@ -511,13 +478,14 @@
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label11.Location = new System.Drawing.Point(50, 151);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(77, 20);
+            this.label11.Size = new System.Drawing.Size(97, 20);
             this.label11.TabIndex = 7;
-            this.label11.Text = "Heineken";
+            this.label11.Text = "Pump Water";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::Pizza_Shop.Properties.Resources.heineken_original_bottle;
+            this.pictureBox4.Image = global::Pizza_Shop.Properties.Resources.pump;
             this.pictureBox4.Location = new System.Drawing.Point(10, 9);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(167, 130);
@@ -561,10 +529,10 @@
             this.radioButton9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioButton9.Location = new System.Drawing.Point(534, 25);
             this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(58, 21);
+            this.radioButton9.Size = new System.Drawing.Size(81, 21);
             this.radioButton9.TabIndex = 12;
             this.radioButton9.TabStop = true;
-            this.radioButton9.Text = "0.5L";
+            this.radioButton9.Text = "0.5L 5$";
             this.radioButton9.UseVisualStyleBackColor = true;
             // 
             // radioButton10
@@ -573,11 +541,12 @@
             this.radioButton10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radioButton10.Location = new System.Drawing.Point(429, 24);
             this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(44, 21);
+            this.radioButton10.Size = new System.Drawing.Size(67, 21);
             this.radioButton10.TabIndex = 11;
             this.radioButton10.TabStop = true;
-            this.radioButton10.Text = "1L";
+            this.radioButton10.Text = "1L 8$";
             this.radioButton10.UseVisualStyleBackColor = true;
+            this.radioButton10.CheckedChanged += new System.EventHandler(this.radioButton10_CheckedChanged);
             // 
             // label13
             // 
@@ -585,9 +554,8 @@
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label13.Location = new System.Drawing.Point(262, 151);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(48, 20);
+            this.label13.Size = new System.Drawing.Size(0, 20);
             this.label13.TabIndex = 10;
-            this.label13.Text = "Total:";
             // 
             // label14
             // 
@@ -603,21 +571,34 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(50, 151);
+            this.label15.Location = new System.Drawing.Point(71, 151);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(77, 20);
+            this.label15.Size = new System.Drawing.Size(41, 20);
             this.label15.TabIndex = 7;
-            this.label15.Text = "Heineken";
+            this.label15.Text = "Cola";
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = global::Pizza_Shop.Properties.Resources.heineken_original_bottle;
+            this.pictureBox5.Image = global::Pizza_Shop.Properties.Resources.hd_cold_coca_cola_classic_can_png_31625599176oikhh8d9si1;
             this.pictureBox5.Location = new System.Drawing.Point(10, 9);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(167, 130);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 0;
             this.pictureBox5.TabStop = false;
+            // 
+            // button6
+            // 
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button6.ForeColor = System.Drawing.SystemColors.Control;
+            this.button6.Location = new System.Drawing.Point(1015, 7);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 54);
+            this.button6.TabIndex = 3;
+            this.button6.Text = "Cart";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // ColdDrinksMenuPage
             // 
@@ -638,7 +619,6 @@
             this.Text = "Pizza Shop";
             this.panelTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPizzaShop)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfileIcon)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -662,7 +642,6 @@
 
         private System.Windows.Forms.Panel panelTop;
         private System.Windows.Forms.PictureBox pictureBoxPizzaShop;
-        private System.Windows.Forms.PictureBox pictureBoxProfileIcon;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label9;
@@ -679,7 +658,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -693,7 +671,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.RadioButton radioButton7;
         private System.Windows.Forms.RadioButton radioButton8;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.PictureBox pictureBox4;
@@ -705,5 +682,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Button button6;
     }
 }

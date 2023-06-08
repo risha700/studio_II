@@ -31,17 +31,54 @@ namespace Pizza_Shop
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PizzaMenuPage MenuPage = (PizzaMenuPage)Application.OpenForms["PizzaMenuPage"];
-            if (MenuPage == null) // Creating a form if it doesnt exist
+
+        }
+
+        private void pictureBoxPizzaShop_Click(object sender, EventArgs e)
+        {
+            PizzaMenuPage Menu = (PizzaMenuPage)Application.OpenForms["PizzaMenuPage"];
+            if (Menu == null) // Creating a form if it doesnt exist
             {
-                MenuPage = new PizzaMenuPage();
+                Menu = new PizzaMenuPage();
                 this.Hide();
-                MenuPage.Show();
+                Menu.Show();
             }
             else
             {
                 this.Hide();
-                MenuPage.Show();
+                Menu.Show();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            PizzaMenuPage Menu = (PizzaMenuPage)Application.OpenForms["PizzaMenuPage"];
+            if (Menu == null) // Creating a form if it doesnt exist
+            {
+                Menu = new PizzaMenuPage();
+                this.Hide();
+                Menu.Show();
+            }
+            else
+            {
+                this.Hide();
+                Menu.Show();
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            TrackOrderPage track = (TrackOrderPage)Application.OpenForms["TrackOrderPage"];
+            if (track == null) // Creating a form if it doesnt exist
+            {
+                track = new TrackOrderPage();
+                this.Hide();
+                track.Show();
+            }
+            else
+            {
+                this.Hide();
+                track.Show();
             }
         }
 

@@ -60,6 +60,7 @@
             this.pictureBoxPizzaShop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxPizzaShop.TabIndex = 1;
             this.pictureBoxPizzaShop.TabStop = false;
+            this.pictureBoxPizzaShop.Click += new System.EventHandler(this.pictureBoxPizzaShop_Click);
             // 
             // pictureBoxProfileIcon
             // 
@@ -70,6 +71,7 @@
             this.pictureBoxProfileIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxProfileIcon.TabIndex = 0;
             this.pictureBoxProfileIcon.TabStop = false;
+            this.pictureBoxProfileIcon.Click += new System.EventHandler(this.pictureBoxProfileIcon_Click);
             // 
             // panelCenter
             // 

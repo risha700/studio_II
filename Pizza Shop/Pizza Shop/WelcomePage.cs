@@ -32,5 +32,26 @@ namespace Pizza_Shop
             TrackOrder.Show();
             this.Hide();
         }
+
+        private void pictureBoxProfileIcon_Click(object sender, EventArgs e)
+        {
+            LoginPage LogPage = (LoginPage)Application.OpenForms["LoginPage"];
+            if (LogPage == null) // Creating a form if it doesnt exist
+            {
+                LogPage = new LoginPage();
+                this.Hide();
+                LogPage.Show();
+            }
+            else
+            {
+                this.Hide();
+                LogPage.Show();
+            }
+        }
+
+        private void pictureBoxPizzaShop_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
