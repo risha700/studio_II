@@ -35,6 +35,7 @@
             this.textBoxOrderID = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonGoBack = new System.Windows.Forms.Button();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPizzaShop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfileIcon)).BeginInit();
@@ -74,6 +75,7 @@
             // 
             // panelCenter
             // 
+            this.panelCenter.Controls.Add(this.buttonGoBack);
             this.panelCenter.Controls.Add(this.textBoxOrderID);
             this.panelCenter.Controls.Add(this.button1);
             this.panelCenter.Controls.Add(this.label1);
@@ -87,7 +89,7 @@
             this.textBoxOrderID.Font = new System.Drawing.Font("Microsoft Sans Serif", 23.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxOrderID.Location = new System.Drawing.Point(228, 48);
             this.textBoxOrderID.Name = "textBoxOrderID";
-            this.textBoxOrderID.Size = new System.Drawing.Size(535, 51);
+            this.textBoxOrderID.Size = new System.Drawing.Size(535, 43);
             this.textBoxOrderID.TabIndex = 2;
             // 
             // button1
@@ -109,9 +111,23 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(43, 58);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(144, 36);
+            this.label1.Size = new System.Drawing.Size(120, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Order ID:";
+            // 
+            // buttonGoBack
+            // 
+            this.buttonGoBack.BackColor = System.Drawing.Color.Firebrick;
+            this.buttonGoBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonGoBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonGoBack.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonGoBack.Location = new System.Drawing.Point(32, 454);
+            this.buttonGoBack.Name = "buttonGoBack";
+            this.buttonGoBack.Size = new System.Drawing.Size(230, 61);
+            this.buttonGoBack.TabIndex = 3;
+            this.buttonGoBack.Text = "Back";
+            this.buttonGoBack.UseVisualStyleBackColor = false;
+            this.buttonGoBack.Click += new System.EventHandler(this.buttonGoBack_Click);
             // 
             // TrackOrderPage
             // 
@@ -141,5 +157,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxOrderID;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonGoBack;
     }
 }
