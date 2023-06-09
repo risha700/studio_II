@@ -13,20 +13,9 @@ namespace Pizza_Shop
 {
     public partial class CartPage : Form
     {
-        PizzaMenuPage mainCart;
         public CartPage()
         {
-            InitializeComponent();
-            ////Form form = new Form();
-            ////form = mainCart;
-            
-            //panelCenter.BackColor = Color.FromArgb(130, panelCenter.BackColor);
-
-            //// Attach the event handler
-            //treeViewCart.NodeMouseDoubleClick += treeViewCart_NodeMouseDoubleClick;
-
-            //// Populate the tree view with cart items
-            //PopulateTreeView();
+            InitializeComponent();      
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -82,45 +71,48 @@ namespace Pizza_Shop
             }
         }
 
-        //private void PopulateTreeView()
-        //{
-        //    // Assuming you have a cart object
-        //    foreach (Pizza pizza in cart.Pizzas)
-        //    {
-        //        TreeNode pizzaNode = new TreeNode(pizza.Name);
+        private void CartPage_Load(object sender, EventArgs e)
+        {
+            DisplayCartItems();
+        }
 
-        //        // Add toppings as child nodes
-        //        foreach (string topping in pizza.Toppings)
-        //        {
-        //            TreeNode toppingNode = new TreeNode(topping);
-        //            pizzaNode.Nodes.Add(toppingNode);
-        //        }
+        private void DisplayCartItems()
+        {
+            // Clear existing items in the ListView
+            listViewCart.Items.Clear();
 
-        //        // Add the pizza node to the tree view
-        //        treeViewCart.Nodes.Add(pizzaNode);
-        //    }
-        //}
+            // Access the shared cart instances from PizzaMenuPage and ColdDrinksMenuPage
+            CartMenu pizzaCart = PizzaMenuPage.PizzaCart;
+            CartMenu coldDrinkCart = ColdDrinksMenuPage.ColdDrinkCart;
 
-        //private void RemoveSelectedItem()
-        //{
-        //    TreeNode selectedNode = treeViewCart.SelectedNode;
+            // Display pizza items
+            foreach (Pizza pizza in pizzaCart.GetPizzas())
+            {
+                // Add pizza item to the ListView
+                ListViewItem pizzaItem = new ListViewItem(pizza.Name);
+                pizzaItem.SubItems.Add(pizza.Size);
+                pizzaItem.SubItems.Add(string.Join(", ", pizza.Toppings));
+                pizzaItem.SubItems.Add(pizza.Price.ToString());
 
-        //    if (selectedNode != null)
-        //    {
-        //        // Remove the item from the cart
-        //        selectedNode.Remove();
+                listViewCart.Items.Add(pizzaItem);
+            }
 
-        //        // Perform any additional actions or updates
-        //        // ...
+            // Display cold drink items
+            foreach (ColdDrink coldDrink in coldDrinkCart.GetColdDrinks())
+            {
+                // Add cold drink item to the ListView
+                ListViewItem coldDrinkItem = new ListViewItem(coldDrink.Name);
+                coldDrinkItem.SubItems.Add(coldDrink.Size);
+                coldDrinkItem.SubItems.Add(string.Empty);  // Toppings column is empty for cold drinks
+                coldDrinkItem.SubItems.Add(coldDrink.Price.ToString());
 
-        //        MessageBox.Show("Item removed from cart.");
-        //    }
-        //}
+                listViewCart.Items.Add(coldDrinkItem);
+            }
+        }
 
-        //private void treeViewCart_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
-        //{
-        //    RemoveSelectedItem();
-        //}
-
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            DisplayCartItems();
+        }
     }
 }

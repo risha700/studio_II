@@ -17,6 +17,16 @@ namespace Pizza_Shop
             coldDrinks = new List<ColdDrink>();
         }
 
+        public List<Pizza> GetPizzas()
+        {
+            return pizzas;
+        }
+
+        public List<ColdDrink> GetColdDrinks()
+        {
+            return coldDrinks;
+        }
+
         public void AddPizzaToCart(Pizza pizza)
         {
             pizzas.Add(pizza);
