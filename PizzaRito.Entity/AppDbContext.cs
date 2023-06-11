@@ -36,9 +36,9 @@ public class AppDbContext:DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         //modelBuilder.Entity<Pizza>()
-        //    .HasOne(p => p.Size)
+        //    .HasOne(p => p.Size!)
         //    .WithMany("Toppings");
-            
+
         base.OnModelCreating(modelBuilder);
     }
 }

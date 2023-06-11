@@ -11,7 +11,7 @@ using PizzaRito.Entity;
 namespace PizzaRito.Entity.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230609235746_InitialCreate")]
+    [Migration("20230611030546_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -19,6 +19,21 @@ namespace PizzaRito.Entity.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
+
+            modelBuilder.Entity("OrderPizza", b =>
+                {
+                    b.Property<int>("ItemsId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid>("OrdersId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ItemsId", "OrdersId");
+
+                    b.HasIndex("OrdersId");
+
+                    b.ToTable("OrderPizza");
+                });
 
             modelBuilder.Entity("PizzaRito.Entity.Models.CrustSize", b =>
                 {
@@ -79,9 +94,6 @@ namespace PizzaRito.Entity.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("OrderId")
-                        .HasColumnType("TEXT");
-
                     b.Property<double>("Price")
                         .HasColumnType("REAL");
 
@@ -92,8 +104,6 @@ namespace PizzaRito.Entity.Migrations
 
                     b.HasIndex("Name")
                         .IsUnique();
-
-                    b.HasIndex("OrderId");
 
                     b.HasIndex("SizeId");
 
@@ -158,6 +168,21 @@ namespace PizzaRito.Entity.Migrations
                     b.ToTable("PizzaTopping");
                 });
 
+            modelBuilder.Entity("OrderPizza", b =>
+                {
+                    b.HasOne("PizzaRito.Entity.Models.Pizza", null)
+                        .WithMany()
+                        .HasForeignKey("ItemsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PizzaRito.Entity.Models.Order", null)
+                        .WithMany()
+                        .HasForeignKey("OrdersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("PizzaRito.Entity.Models.Order", b =>
                 {
                     b.HasOne("PizzaRito.Entity.Models.User", "Customer")
@@ -169,10 +194,6 @@ namespace PizzaRito.Entity.Migrations
 
             modelBuilder.Entity("PizzaRito.Entity.Models.Pizza", b =>
                 {
-                    b.HasOne("PizzaRito.Entity.Models.Order", null)
-                        .WithMany("Items")
-                        .HasForeignKey("OrderId");
-
                     b.HasOne("PizzaRito.Entity.Models.CrustSize", "Size")
                         .WithMany()
                         .HasForeignKey("SizeId");
@@ -193,11 +214,6 @@ namespace PizzaRito.Entity.Migrations
                         .HasForeignKey("ToppingsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("PizzaRito.Entity.Models.Order", b =>
-                {
-                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }

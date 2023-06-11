@@ -55,6 +55,28 @@ namespace PizzaRito.Entity.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "pizzas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Details = table.Column<string>(type: "TEXT", nullable: true),
+                    SizeId = table.Column<int>(type: "INTEGER", nullable: true),
+                    Price = table.Column<double>(type: "REAL", nullable: false),
+                    Img = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_pizzas", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_pizzas_crusts_SizeId",
+                        column: x => x.SizeId,
+                        principalTable: "crusts",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "orders",
                 columns: table => new
                 {
@@ -70,34 +92,6 @@ namespace PizzaRito.Entity.Migrations
                         name: "FK_orders_users_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "users",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "pizzas",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Details = table.Column<string>(type: "TEXT", nullable: true),
-                    SizeId = table.Column<int>(type: "INTEGER", nullable: true),
-                    Price = table.Column<double>(type: "REAL", nullable: false),
-                    Img = table.Column<string>(type: "TEXT", nullable: true),
-                    OrderId = table.Column<Guid>(type: "TEXT", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_pizzas", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_pizzas_crusts_SizeId",
-                        column: x => x.SizeId,
-                        principalTable: "crusts",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_pizzas_orders_OrderId",
-                        column: x => x.OrderId,
-                        principalTable: "orders",
                         principalColumn: "Id");
                 });
 
@@ -125,11 +119,40 @@ namespace PizzaRito.Entity.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "OrderPizza",
+                columns: table => new
+                {
+                    ItemsId = table.Column<int>(type: "INTEGER", nullable: false),
+                    OrdersId = table.Column<Guid>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderPizza", x => new { x.ItemsId, x.OrdersId });
+                    table.ForeignKey(
+                        name: "FK_OrderPizza_orders_OrdersId",
+                        column: x => x.OrdersId,
+                        principalTable: "orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrderPizza_pizzas_ItemsId",
+                        column: x => x.ItemsId,
+                        principalTable: "pizzas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_crusts_Name",
                 table: "crusts",
                 column: "Name",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderPizza_OrdersId",
+                table: "OrderPizza",
+                column: "OrdersId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_orders_CustomerId",
@@ -141,11 +164,6 @@ namespace PizzaRito.Entity.Migrations
                 table: "pizzas",
                 column: "Name",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_pizzas_OrderId",
-                table: "pizzas",
-                column: "OrderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_pizzas_SizeId",
@@ -168,7 +186,13 @@ namespace PizzaRito.Entity.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "OrderPizza");
+
+            migrationBuilder.DropTable(
                 name: "PizzaTopping");
+
+            migrationBuilder.DropTable(
+                name: "orders");
 
             migrationBuilder.DropTable(
                 name: "pizzas");
@@ -177,13 +201,10 @@ namespace PizzaRito.Entity.Migrations
                 name: "toppings");
 
             migrationBuilder.DropTable(
-                name: "crusts");
-
-            migrationBuilder.DropTable(
-                name: "orders");
-
-            migrationBuilder.DropTable(
                 name: "users");
+
+            migrationBuilder.DropTable(
+                name: "crusts");
         }
     }
 }

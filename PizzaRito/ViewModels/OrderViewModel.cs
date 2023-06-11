@@ -35,14 +35,16 @@ public partial class OrderViewModel : BaseViewModel, IQueryAttributable, INotify
         //Console.WriteLine($"ApplyQueryAttributes=> {PizzaDetail} ");
     }
 
-    public OrderViewModel(AppDbContext dbCtx):base()
+    public OrderViewModel(AppDbContext dbCtx)
 
     {
 
         AllToppings = dbCtx.Toppings.OrderBy(t => t.Name).ToList();
         AllSizes = dbCtx.CrustSizes.OrderBy(t => t.Name).ToList();
         //AllPizzas = dbCtx.Pizzas.OrderBy(e => e.Name).ToList();
-        AllPizzas = dbCtx.Pizzas.OrderBy(p => p.Name).Include(p => p.Toppings).ToList();
+        AllPizzas = dbCtx.Pizzas.OrderBy(p => p.Name).Include(p => p.Size).Include(p => p.Toppings).ToList();
+        //dbCtx.Pizzas.OrderBy(p => p.Name).Include(p => p.Toppings).Include(p => p.Size).Load();
+        //AllPizzas = dbCtx.Pizzas.ToList();
     }
 
 

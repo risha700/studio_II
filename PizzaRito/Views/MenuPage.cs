@@ -20,7 +20,7 @@ public partial class MenuPage : ContentPage
 
         Title = "Menu";
         
-        List<Pizza> availablePizza = dbCtx.Pizzas.OrderBy(e => e.Name).Include(p=>p.Toppings).ToList();
+        List<Pizza> availablePizza = dbCtx.Pizzas.OrderBy(e => e.Name).Include(p=>p.Size).Include(p=>p.Toppings).ToList();
 
         CollectionView menuCollectionView = new CollectionView
         {
@@ -36,7 +36,7 @@ public partial class MenuPage : ContentPage
                 VerticalItemSpacing = 20,
                 HorizontalItemSpacing = 20,
             },
-
+            Header = "",
             ItemSizingStrategy = ItemSizingStrategy.MeasureAllItems,
             SelectionMode = SelectionMode.Single,
             
@@ -54,11 +54,9 @@ public partial class MenuPage : ContentPage
 
                 var image = new Image { Source = "placeholder.png", WidthRequest = 150, HeightRequest=100};
                 //image.SetBinding(Image.SourceProperty, "Img");
-
-
-                return new Border
+                var layout = new Border
                 {
-                    Margin = new Thickness(0,0,0, 50),
+                    Margin = new Thickness(0, 0, 0, 50),
                     StrokeThickness = 2,
                     Padding = new Thickness(10, 10),
                     HorizontalOptions = LayoutOptions.Fill,
@@ -73,6 +71,22 @@ public partial class MenuPage : ContentPage
                         Children = { nameLabel, image, detailsLabel, priceLabel }
                     }
                 };
+                // Create the visual states
+                var normalState = new VisualState { Name = "Normal" };
+                var selectedState = new VisualState { Name = "Selected" };
+
+                // Create the setter for the selected state
+                var selectedSetter = new Setter { Property = VisualElement.BackgroundColorProperty, Value = Colors.Orange };
+                selectedState.Setters.Add(selectedSetter);
+
+                // Create the visual state group and add the states
+                var commonStatesGroup = new VisualStateGroup { Name = "CommonStates" };
+                commonStatesGroup.States.Add(normalState);
+                commonStatesGroup.States.Add(selectedState);
+
+                // Set the visual state group on the grid
+                VisualStateManager.SetVisualStateGroups(layout, new VisualStateGroupList { commonStatesGroup });
+                return layout;
             })
 
         };

@@ -14,7 +14,7 @@ public class Pizza
 
     public string Name { get; set; }
     public string? Details { get; set; }
-    public CrustSize? Size { get; set; }
+    public virtual CrustSize? Size { get; set; }
     public double Price { get; set; }
     public virtual ObservableCollection<Topping>? Toppings { get; set; }
     public string? Img { get; set; }
