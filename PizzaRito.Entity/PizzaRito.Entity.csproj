@@ -21,10 +21,11 @@
 
   <ItemGroup>
     <None Remove="DatabaseSeeders\" />
-    <None Remove="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DatabaseSeeders\" />
-    <Folder Include="Migrations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PizzaRito.Shared\PizzaRito.Shared.csproj" />
   </ItemGroup>
 </Project>

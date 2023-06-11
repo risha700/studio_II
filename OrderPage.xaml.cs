@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using PizzaRito.Entity;
 using PizzaRito.Entity.Models;
 using PizzaRito.ViewModels;
 
@@ -10,13 +11,13 @@ namespace PizzaRito.Views;
 
 public partial class OrderPage : ContentPage
 {
-   
-    public OrderPage(PizzaViewModel viewModel)
+    AppDbContext databaseContext;
+    public OrderPage(PizzaViewModel viewModel, AppDbContext ctx)
     {
         InitializeComponent();
         BindingContext = viewModel;
         Title = "New Order";
-       
+        databaseContext = ctx;
 
     }
 

@@ -1,9 +1,0 @@
-@startuml
-class CrustSize {
-    + Name : string <<get>> <<set>>
-    + Price : double <<get>> <<set>>
-    + {static} GetAvailableSizes() : ObservableCollection<CrustSize>
-    + <<override>> ToString() : string
-}
-CrustSize --> "Id" Guid
-@enduml

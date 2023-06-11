@@ -6,6 +6,7 @@ using PizzaRito.Entity;
 using PizzaRito.Utilities;
 using PizzaRito.ViewModels;
 using PizzaRito.Views;
+using PizzaRito.Shared;
 
 namespace PizzaRito;
 
@@ -26,27 +27,25 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
-		// todo: as shared lib constant
-        var folder = Environment.SpecialFolder.LocalApplicationData;
-        var path = Environment.GetFolderPath(folder);
-        string dbPath = System.IO.Path.Join(path, "MauiPizza.db");
-        
+        // todo: as shared lib constant
+        //var folder = Environment.SpecialFolder.LocalApplicationData;
+        //var path = Environment.GetFolderPath(folder);
+        ////var path = FileSystem.Current.AppDataDirectory;
+        //string dbPath = System.IO.Path.Join(path, "MauiPizza.db");
+        //builder.Services.AddDbContext<AppDbContext>(opts=>opts.UseSqlite($"Data Source={dbPath}"));
+        builder.Services.AddDbContext<AppDbContext>(opts=>opts.UseSqlite(ProjectConfig.DatabasePath));
 
-        builder.Services.AddDbContext<AppDbContext>(opts=>opts.UseSqlite($"Data Source={dbPath}"));
-
-		builder.Services.AddSingleton<MainPage>();
-
-        builder.Services.AddTransient<MainPage>();
-        builder.Services.AddTransient<PizzaViewModel>();
-        builder.Services.AddTransient<CheckoutPage>();
-        builder.Services.AddTransient<CheckoutViewModel>();
-        builder.Services.AddTransient<OrderPage>();
+        builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<MenuPage>();
+        builder.Services.AddTransient<OrderViewModel>();
+        builder.Services.AddTransient<OrderPage>();
+        builder.Services.AddTransient<CheckoutViewModel>();
+        builder.Services.AddTransient<CheckoutPage>();
         var app = builder.Build();
 
         app.SeedDatabase();
 
-		return app;
+        return app;
         //return builder.Build();
     }
 }

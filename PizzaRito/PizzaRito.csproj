@@ -89,13 +89,17 @@
 	  <None Remove="Resources\Raw\apple_sim.gif" />
 	  <None Remove="Resources\Raw\class_diagram.png" />
 	  <None Remove="Resources\Raw\include.png" />
+	  <None Remove="Resources\Images\pizza_front.jpg" />
+	  <None Remove="Services\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Utilities\" />
 	  <Folder Include="ViewModels\" />
+	  <Folder Include="Services\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\PizzaRito.Entity\PizzaRito.Entity.csproj" />
+	  <ProjectReference Include="..\PizzaRito.Shared\PizzaRito.Shared.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\Images\duck.png" />
@@ -129,5 +133,7 @@
 	    <LogicalName>class_diagram.png</LogicalName>
 	  </BundleResource>
 	  <BundleResource Include="Resources\Raw\include.png" />
+	  <BundleResource Include="Resources\Images\pizza_front.jpg" />
+	  <BundleResource Include="Resources\Images\pizza_front.jpg" />
 	</ItemGroup>
 </Project>

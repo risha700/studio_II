@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using PizzaRito.Entity.Models;
+using PizzaRito.Shared;
 
 namespace PizzaRito.Entity;
 
@@ -16,24 +18,28 @@ public class AppDbContext:DbContext
 
 	public AppDbContext(DbContextOptions<AppDbContext> options):base(options)
 	{
-        
+        DbPath = ProjectConfig.DatabasePath;
     }
 
     public AppDbContext() : base()
     {
+        DbPath = ProjectConfig.DatabasePath;
 
     }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        var folder = Environment.SpecialFolder.LocalApplicationData;
-        var path = Environment.GetFolderPath(folder);
-        string dbPath = System.IO.Path.Join(path, "MauiPizza.db");
-        DbPath = dbPath;
-        optionsBuilder.UseSqlite($"Data Source={dbPath}");
-
+        optionsBuilder.UseSqlite(ProjectConfig.DatabasePath);
         base.OnConfiguring(optionsBuilder);
+    }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        //modelBuilder.Entity<Pizza>()
+        //    .HasOne(p => p.Size)
+        //    .WithMany("Toppings");
+            
+        base.OnModelCreating(modelBuilder);
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using PizzaRito.Entity.Models;
 
 namespace PizzaRito.Entity.DatabaseSeeders;
@@ -25,9 +26,13 @@ public static class StoreDatabaseSeeder
         new CrustSize {Name="Large", Price=9.99},
 
     };
+    
     public static List<Pizza> PizzaToSeed = new List<Pizza>
     {
-        new Pizza {Name="Margreta", Price=5.99},
+        
+        new Pizza {Name="Margreta", Price=5.99, Size=CrustSizeToSeed[0],
+            Toppings=new ObservableCollection<Topping>(ToppingToSeed.GetRange(1,3))  },
+
         new Pizza {Name="Pepperoni", Price=7.99},
         new Pizza {Name="Salami", Price=9.99},
         new Pizza {Name="Hawaian", Price=9.99},

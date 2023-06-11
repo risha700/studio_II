@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Layouts;
 using PizzaRito.Entity.Models;
+using PizzaRito.Utilities;
 using PizzaRito.ViewModels;
 
 
@@ -22,7 +23,7 @@ public partial class MainPage : ContentPage
         ColumnDefinitions =
         {
             new ColumnDefinition { Width = GridLength.Star },
-            new ColumnDefinition { Width = GridLength.Star }
+            
         },
         VerticalOptions = LayoutOptions.Start,
         HorizontalOptions = LayoutOptions.Fill
@@ -39,51 +40,29 @@ public partial class MainPage : ContentPage
         HorizontalOptions = LayoutOptions.Fill,
         Padding = 0,
         BorderColor = Colors.Transparent,
-        //Background = Helpers.CreateGradient(),
+        Background = Helpers.CreateGradient(),
         Content = new Image
         {
-            Source = ImageSource.FromFile("store_front.jpeg"),
+            Source = ImageSource.FromFile("pizza_front.jpg"),
             Opacity = 0.4,
             HorizontalOptions = LayoutOptions.Fill,
             VerticalOptions = LayoutOptions.Fill,
             Aspect = Aspect.Fill,
-
         }
 
     };
 
 
 
-    Button loginBtn = new Button
-    {
-        Text = "Login",
-        VerticalOptions = LayoutOptions.Center,
-        HorizontalOptions = LayoutOptions.Center,
-        BackgroundColor = Colors.Transparent,
-        CornerRadius = 10,
-        BorderColor = Colors.Orange,
-        BorderWidth = 3,
-        TextColor = Colors.White,
-        FontSize = 30,
-        MinimumHeightRequest = 80,
 
-        Shadow = new Shadow
-        {
-            Brush = Colors.Black,
-            Offset = new(20, 20),
-            Radius = 25,
-            Opacity = (float)0.8
-
-        }
-    };
     Button guestOrderBtn = new Button
     {
-        Text = "Guest Order",
+        Text = "Start Order",
         VerticalOptions = LayoutOptions.Center,
         HorizontalOptions = LayoutOptions.Center,
         CornerRadius = 10,
-        FontSize = 30,
-        MinimumHeightRequest = 80,
+        FontSize = 35,
+        MinimumHeightRequest = 180,
         Shadow = new Shadow
         {
             Brush = Colors.Black,
@@ -105,7 +84,7 @@ public partial class MainPage : ContentPage
         JustifyContent = Microsoft.Maui.Layouts.FlexJustify.SpaceAround,
         AlignItems = Microsoft.Maui.Layouts.FlexAlignItems.Center,
         AlignContent = Microsoft.Maui.Layouts.FlexAlignContent.Center,
-        WidthRequest = 400,
+        //WidthRequest = 400,
         Padding = 10
 
     };
@@ -118,7 +97,6 @@ public partial class MainPage : ContentPage
         mainLayout.SetColumnSpan(heroFrame, 2);
         mainLayout.SetColumnSpan(mainOptions, 2);
         
-        mainOptions.Children.Add(loginBtn);
         mainOptions.Children.Add(guestOrderBtn);
         mainLayout.Add(heroFrame);
         mainLayout.Add(mainOptions, 0,1);

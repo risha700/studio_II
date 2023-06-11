@@ -15,7 +15,8 @@ namespace PizzaRito.Entity.Migrations
                 name: "crusts",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Price = table.Column<double>(type: "REAL", nullable: false)
                 },
@@ -25,10 +26,26 @@ namespace PizzaRito.Entity.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "toppings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Price = table.Column<double>(type: "REAL", nullable: false),
+                    InStock = table.Column<bool>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_toppings", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "users",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Username = table.Column<string>(type: "TEXT", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false)
                 },
@@ -43,7 +60,7 @@ namespace PizzaRito.Entity.Migrations
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Total = table.Column<double>(type: "REAL", nullable: false),
-                    CustomerId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    CustomerId = table.Column<int>(type: "INTEGER", nullable: true),
                     OrderDate = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
@@ -53,18 +70,18 @@ namespace PizzaRito.Entity.Migrations
                         name: "FK_orders_users_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "pizzas",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Details = table.Column<string>(type: "TEXT", nullable: true),
-                    SizeId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    SizeId = table.Column<int>(type: "INTEGER", nullable: true),
                     Price = table.Column<double>(type: "REAL", nullable: false),
                     Img = table.Column<string>(type: "TEXT", nullable: true),
                     OrderId = table.Column<Guid>(type: "TEXT", nullable: true)
@@ -85,23 +102,27 @@ namespace PizzaRito.Entity.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "toppings",
+                name: "PizzaTopping",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Price = table.Column<double>(type: "REAL", nullable: false),
-                    InStock = table.Column<bool>(type: "INTEGER", nullable: false),
-                    PizzaId = table.Column<Guid>(type: "TEXT", nullable: true)
+                    PizzasId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ToppingsId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_toppings", x => x.Id);
+                    table.PrimaryKey("PK_PizzaTopping", x => new { x.PizzasId, x.ToppingsId });
                     table.ForeignKey(
-                        name: "FK_toppings_pizzas_PizzaId",
-                        column: x => x.PizzaId,
+                        name: "FK_PizzaTopping_pizzas_PizzasId",
+                        column: x => x.PizzasId,
                         principalTable: "pizzas",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PizzaTopping_toppings_ToppingsId",
+                        column: x => x.ToppingsId,
+                        principalTable: "toppings",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -132,25 +153,28 @@ namespace PizzaRito.Entity.Migrations
                 column: "SizeId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_PizzaTopping_ToppingsId",
+                table: "PizzaTopping",
+                column: "ToppingsId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_toppings_Name",
                 table: "toppings",
                 column: "Name",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_toppings_PizzaId",
-                table: "toppings",
-                column: "PizzaId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "toppings");
+                name: "PizzaTopping");
 
             migrationBuilder.DropTable(
                 name: "pizzas");
+
+            migrationBuilder.DropTable(
+                name: "toppings");
 
             migrationBuilder.DropTable(
                 name: "crusts");

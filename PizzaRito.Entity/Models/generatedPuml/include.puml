@@ -1,7 +1,0 @@
-@startuml
-!include ./Pizza.puml
-!include ./Order.puml
-!include ./CrustSize.puml
-!include ./Topping.puml
-!include ./User.puml
-@enduml

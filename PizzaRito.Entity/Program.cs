@@ -2,7 +2,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-
+using PizzaRito.Shared;
 
 namespace PizzaRito.Entity;
 
@@ -22,12 +22,8 @@ public class DbContextMigrationFactory : IDesignTimeDbContextFactory<AppDbContex
 {
     public AppDbContext CreateDbContext(string[] args)
     {
-        var folder = Environment.SpecialFolder.LocalApplicationData;
-        var path = Environment.GetFolderPath(folder);
-        string dbPath = System.IO.Path.Join(path, "MauiPizza.db");
         var builder = new DbContextOptionsBuilder<AppDbContext>();
-        Console.WriteLine("From context migration:pathg ", dbPath);
-        builder.UseSqlite($"Data Source={dbPath}");
+        builder.UseSqlite(ProjectConfig.DatabasePath);
         return new AppDbContext(builder.Options);
     }
 }

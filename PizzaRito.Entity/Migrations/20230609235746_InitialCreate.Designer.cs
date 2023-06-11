@@ -11,7 +11,7 @@ using PizzaRito.Entity;
 namespace PizzaRito.Entity.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230607230021_InitialCreate")]
+    [Migration("20230609235746_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -22,9 +22,9 @@ namespace PizzaRito.Entity.Migrations
 
             modelBuilder.Entity("PizzaRito.Entity.Models.CrustSize", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -47,8 +47,8 @@ namespace PizzaRito.Entity.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("CustomerId")
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("CustomerId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("TEXT");
@@ -65,9 +65,9 @@ namespace PizzaRito.Entity.Migrations
 
             modelBuilder.Entity("PizzaRito.Entity.Models.Pizza", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Details")
                         .HasColumnType("TEXT");
@@ -85,8 +85,8 @@ namespace PizzaRito.Entity.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("REAL");
 
-                    b.Property<Guid?>("SizeId")
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("SizeId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -102,18 +102,15 @@ namespace PizzaRito.Entity.Migrations
 
             modelBuilder.Entity("PizzaRito.Entity.Models.Topping", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("InStock")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid?>("PizzaId")
                         .HasColumnType("TEXT");
 
                     b.Property<double>("Price")
@@ -124,16 +121,14 @@ namespace PizzaRito.Entity.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.HasIndex("PizzaId");
-
                     b.ToTable("toppings");
                 });
 
             modelBuilder.Entity("PizzaRito.Entity.Models.User", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -148,13 +143,26 @@ namespace PizzaRito.Entity.Migrations
                     b.ToTable("users");
                 });
 
+            modelBuilder.Entity("PizzaTopping", b =>
+                {
+                    b.Property<int>("PizzasId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ToppingsId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("PizzasId", "ToppingsId");
+
+                    b.HasIndex("ToppingsId");
+
+                    b.ToTable("PizzaTopping");
+                });
+
             modelBuilder.Entity("PizzaRito.Entity.Models.Order", b =>
                 {
                     b.HasOne("PizzaRito.Entity.Models.User", "Customer")
                         .WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerId");
 
                     b.Navigation("Customer");
                 });
@@ -172,21 +180,24 @@ namespace PizzaRito.Entity.Migrations
                     b.Navigation("Size");
                 });
 
-            modelBuilder.Entity("PizzaRito.Entity.Models.Topping", b =>
+            modelBuilder.Entity("PizzaTopping", b =>
                 {
                     b.HasOne("PizzaRito.Entity.Models.Pizza", null)
-                        .WithMany("Toppings")
-                        .HasForeignKey("PizzaId");
+                        .WithMany()
+                        .HasForeignKey("PizzasId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PizzaRito.Entity.Models.Topping", null)
+                        .WithMany()
+                        .HasForeignKey("ToppingsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("PizzaRito.Entity.Models.Order", b =>
                 {
                     b.Navigation("Items");
-                });
-
-            modelBuilder.Entity("PizzaRito.Entity.Models.Pizza", b =>
-                {
-                    b.Navigation("Toppings");
                 });
 #pragma warning restore 612, 618
         }
