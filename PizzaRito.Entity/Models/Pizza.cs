@@ -10,7 +10,7 @@ namespace PizzaRito.Entity.Models;
 public class Pizza
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; set; }
+    public Guid Id { get; set; } = new();
 
     public string Name { get; set; }
     public string? Details { get; set; }

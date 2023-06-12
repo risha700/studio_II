@@ -1,0 +1,10 @@
+@startuml
+class Topping {
+    + Id : int <<get>> <<set>>
+    + Name : string <<get>> <<set>>
+    + Price : double <<get>> <<set>>
+    + InStock : bool <<get>> <<set>>
+    + <<virtual>> Pizzas : ObservableCollection<Pizza>? <<get>> <<set>>
+    + <<override>> ToString() : string
+}
+@enduml

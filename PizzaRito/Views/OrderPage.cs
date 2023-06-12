@@ -24,6 +24,9 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
     Label selectedPizzaLabel = new Label { FontSize = 24, VerticalOptions = LayoutOptions.Center, Text = $"Loading..." };
     Image selectedPizzaImage = new Image { Source = "logo.png",  Aspect=Aspect.Fill};
     StackLayout selectedPizzaView = new StackLayout { Spacing=10};
+
+    Button cancelOrderBtn = new Button { Text = "Cancel", BackgroundColor = Colors.Transparent };
+    Button addToCartBtn = new Button { Text = "Add To Cart" };
     Grid contentGrid = new Grid
     {
         VerticalOptions = LayoutOptions.Start,
@@ -75,7 +78,15 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
         contentGrid.Add(selectedPizzaImage, 1, 0);
         
         contentGrid.Add(orderBox, 1, 1);
-        //contentGrid.SetRowSpan(orderBox, 1);
+        contentGrid.Add(new FlexLayout
+        {
+            Direction = Microsoft.Maui.Layouts.FlexDirection.Row,
+            JustifyContent = Microsoft.Maui.Layouts.FlexJustify.SpaceAround,
+            AlignContent = Microsoft.Maui.Layouts.FlexAlignContent.Center,
+            AlignItems = Microsoft.Maui.Layouts.FlexAlignItems.Start,
+            Children = {addToCartBtn, cancelOrderBtn}
+        }, 0, 2);
+        
 
         Content = contentGrid;
 
@@ -87,12 +98,61 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
             RenderSizesView();
             RenderSelectedPizza();
             RenderToppingsView();
+            cancelOrderBtn.Command = CancelOrderCommand;
+            addToCartBtn.Command = AddToCartCommand;
         };
 
 
 
     }
+    [RelayCommand]
+    async private void CancelOrder()
+    {
+        var result = await Shell.Current.DisplayAlert("Are you sure?", "Cancel Order1", "Yes", "Continue Order");
+        if (result)
+        {
+            await NavigateTo(nameof(MenuPage));
+        }
 
+
+    }
+
+    [RelayCommand]
+    async private void AddToCart()
+    {
+        if(OrderVm.CurrentPizza.Size is null)
+        {
+            await Shell.Current.DisplayAlert("Choose size", "To continue!", "Ok");
+            return ;
+        }
+        OrderVm.CurrentOrder.Items.Add(OrderVm.CurrentPizza);
+
+        var result = await Shell.Current.DisplayAlert("Added", "to your order",  "Continue Ordering", "Check Out");
+        if (result)
+        {
+            await NavigateTo(nameof(MenuPage));
+        }
+        else
+        {
+            await Shell.Current.GoToAsync(nameof(CheckoutPage), true,
+               new Dictionary<string, object>{
+                        { "Order", OrderVm.CurrentOrder }
+               });
+        }
+
+
+    }
+    async Task NavigateTo(dynamic NewPage, dynamic dict = null)
+    {
+        // Get current page
+        var page = Navigation.NavigationStack.LastOrDefault();
+        // Remove old page
+        Navigation.RemovePage(page);
+        // Load new page
+        await Shell.Current.GoToAsync(nameof(NewPage), true, dict);
+
+
+    }
     private void RenderSelectedPizza()
     {
         Label pizzaPrice = new Label { FontSize = 24 };
@@ -277,6 +337,13 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
         });
     }
 
+    protected override void OnDisappearing()
+    {
+        
+        //OrderVm.CurrentPizza = new Pizza { Size = new(), Toppings = new() };
+        base.OnDisappearing();
+        
+    }
     
 }
 

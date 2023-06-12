@@ -31,6 +31,7 @@ public partial class OrderViewModel : BaseViewModel, IQueryAttributable, INotify
     void IQueryAttributable.ApplyQueryAttributes(IDictionary<string, object> query)
     {
         CurrentPizza = query["CurrentPizza"] as Pizza;
+
         
     }
 
