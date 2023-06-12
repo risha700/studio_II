@@ -5,7 +5,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 using PizzaRito.Entity;
 using PizzaRito.Entity.Models;
-
+using PizzaRito.Views;
 
 namespace PizzaRito.ViewModels;
 
@@ -22,17 +22,16 @@ public partial class OrderViewModel : BaseViewModel, IQueryAttributable, INotify
     [ObservableProperty]
     public List<Pizza> allPizzas;
 
-    private Pizza pizzaDetail;
-    public Pizza PizzaDetail {
-        get => pizzaDetail;
-        set { SetProperty(ref pizzaDetail, value); }
-        }
+    [ObservableProperty]
+    public Pizza currentPizza = new Pizza { Size = new(), Toppings = new() };
+
+
+    
 
     void IQueryAttributable.ApplyQueryAttributes(IDictionary<string, object> query)
     {
-        PizzaDetail = query["PizzaDetail"] as Pizza;
-        OnPropertyChanged(nameof(PizzaDetail));
-        //Console.WriteLine($"ApplyQueryAttributes=> {PizzaDetail} ");
+        CurrentPizza = query["CurrentPizza"] as Pizza;
+        
     }
 
     public OrderViewModel(AppDbContext dbCtx)

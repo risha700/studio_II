@@ -6,20 +6,24 @@ using CommunityToolkit.Mvvm.Input;
 using PizzaRito.Entity.Models;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Shapes;
-
-
+using System.ComponentModel;
+using CommunityToolkit.Maui.Markup;
+using PizzaRito.Utilities;
+using System.Linq;
+using CommunityToolkit.Maui.Converters;
 
 namespace PizzaRito.Views;
 
-public partial class OrderPage : ContentPage
+public partial class OrderPage : ContentPage, INotifyPropertyChanged
 {
 	AppDbContext databaseContext;
 
     CollectionView availableToppingsView = new CollectionView { Header = "", EmptyView = new Label { Text = "Loading Toppings..." } };
     CollectionView currentPizzaToppingsView = new CollectionView { };
-    CollectionView availableSizesView = new CollectionView {Header="" };
+    CollectionView availableSizesView = new CollectionView {Header="Loading Sizes..." };
     Label selectedPizzaLabel = new Label { FontSize = 24, VerticalOptions = LayoutOptions.Center, Text = $"Loading..." };
-    StackLayout selectedPizzaView = new StackLayout { };
+    Image selectedPizzaImage = new Image { Source = "logo.png",  Aspect=Aspect.Fill};
+    StackLayout selectedPizzaView = new StackLayout { Spacing=10};
     Grid contentGrid = new Grid
     {
         VerticalOptions = LayoutOptions.Start,
@@ -29,9 +33,10 @@ public partial class OrderPage : ContentPage
         RowSpacing = 0,
         Padding=10,
         RowDefinitions = {
-                new RowDefinition {Height=new GridLength(.5, GridUnitType.Star) },
-                new RowDefinition {Height=new GridLength(.5, GridUnitType.Star)},
-                
+                new RowDefinition {Height=new GridLength(.30, GridUnitType.Star) },
+                new RowDefinition {Height=new GridLength(.40, GridUnitType.Star)},
+                new RowDefinition {Height=new GridLength(.30, GridUnitType.Star)},
+
             },
         ColumnDefinitions = {
                 new ColumnDefinition {  Width = new GridLength(.6, GridUnitType.Star) } ,
@@ -40,18 +45,18 @@ public partial class OrderPage : ContentPage
 
     };
     Frame orderBox = new Frame { BackgroundColor=Colors.Transparent };
-    ObservableCollection<Topping> availableToppings=new();
+    Label selectedPizzaSizeLabel = new Label { FontSize = 16 };
+
 
 
     public OrderViewModel OrderVm { get; set; }
 
-
-	public OrderPage(OrderViewModel viewModel, AppDbContext dbCtx)
+    public OrderPage(OrderViewModel viewModel, AppDbContext dbCtx)
 	{
 
-		BindingContext = viewModel;
         OrderVm = viewModel;
-		Title = "New Order";
+        BindingContext = viewModel;
+        Title = "New Order";
 		databaseContext = dbCtx;
 
         selectedPizzaView.Add(selectedPizzaLabel); // loading ...
@@ -67,33 +72,39 @@ public partial class OrderPage : ContentPage
                 currentPizzaToppingsView
             }
         };
-        contentGrid.Add(orderBox, 1, 0);
+        contentGrid.Add(selectedPizzaImage, 1, 0);
+        
+        contentGrid.Add(orderBox, 1, 1);
+        //contentGrid.SetRowSpan(orderBox, 1);
 
         Content = contentGrid;
 
         Shell.Current.Navigated += (s,o) =>
         {
             //Console.WriteLine($"==>test Pizza in model: {viewModel.PizzaDetail}");
+            
+
             RenderSizesView();
             RenderSelectedPizza();
             RenderToppingsView();
-
-            //availableToppings = (ObservableCollection<Topping>)OrderVm.AllToppings.Where(t => t.InStock).AsEnumerable();
-            //SetupCurrentPizzaToppings();
         };
+
 
 
     }
 
     private void RenderSelectedPizza()
     {
-        Label pizzaPrice = new Label { FontSize = 24};
-        Label pizzaSize = new Label { FontSize = 16};
-
-        selectedPizzaLabel.SetBinding(Label.TextProperty, new Binding("Name", source: OrderVm.PizzaDetail));
-        //pizzaPrice.SetBinding(Label.TextProperty, new Binding("Price", source: OrderVm.PizzaDetail, stringFormat:"Price: {0:C2}"));
-        pizzaSize.SetBinding(Label.TextProperty, new Binding("Size", source: OrderVm.PizzaDetail));
-        selectedPizzaView.Children.Add(pizzaSize);
+        Label pizzaPrice = new Label { FontSize = 24 };
+        selectedPizzaView.BindingContext = OrderVm.CurrentPizza;
+        selectedPizzaLabel.SetBinding(Label.TextProperty, new Binding("Name"));
+        selectedPizzaSizeLabel.SetBinding(Label.TextProperty, new Binding("Size"));
+        
+        selectedPizzaView.Children.Add(selectedPizzaSizeLabel);
+        if (!String.IsNullOrEmpty(OrderVm.CurrentPizza.Img))
+        {
+            selectedPizzaImage.SetBinding(Image.SourceProperty, new Binding(".", source:OrderVm.CurrentPizza.Img, mode:BindingMode.TwoWay));
+        }
         SetupCurrentPizzaToppings();
         selectedPizzaView.Children.Add(currentPizzaToppingsView);
 
@@ -101,13 +112,14 @@ public partial class OrderPage : ContentPage
 
     private void SetupCurrentPizzaToppings()
     {
-        currentPizzaToppingsView.ItemsSource = OrderVm.PizzaDetail.Toppings;
+        currentPizzaToppingsView.ItemsSource = OrderVm.CurrentPizza.Toppings;
+        
         currentPizzaToppingsView.ItemTemplate = new DataTemplate(() =>
         {
             var toppingNameLabel = new Label();
             var toppingPriceLabel = new Label();
             toppingNameLabel.SetBinding(Label.TextProperty, "Name");
-            toppingPriceLabel.SetBinding(Label.TextProperty, "Price", stringFormat: "Price: {0:C2}");
+            toppingPriceLabel.SetBinding(Label.TextProperty, "Price", stringFormat: ".................... {0:C2}");
 
             return new HorizontalStackLayout { Spacing=10, Children = { toppingNameLabel, toppingPriceLabel } };
         });
@@ -118,8 +130,6 @@ public partial class OrderPage : ContentPage
     {
         availableSizesView.ItemsSource = OrderVm.AllSizes;
         
-
-
         availableSizesView.ItemsLayout = new GridItemsLayout(3, ItemsLayoutOrientation.Vertical)
         {
             HorizontalItemSpacing=20,
@@ -128,6 +138,7 @@ public partial class OrderPage : ContentPage
         availableSizesView.ItemSizingStrategy = ItemSizingStrategy.MeasureAllItems;
         availableSizesView.SelectionMode = SelectionMode.Single;
         availableSizesView.SelectionChanged += SizesViewSelectionChanged;
+
         availableSizesView.HeaderTemplate = new DataTemplate(() => {
 
             return new StackLayout
@@ -176,23 +187,49 @@ public partial class OrderPage : ContentPage
 
             return layout;
         });
+        if (OrderVm.CurrentPizza.Size is not null)
+        {
+            availableSizesView.SelectedItem = OrderVm.AllSizes.Single(s => s.Name == OrderVm.CurrentPizza.Size.Name);
+
+        }
+
     }
 
     private void SizesViewSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        Console.WriteLine($"SizesViewSelectionChanged {sender} {e.CurrentSelection.FirstOrDefault()}");
-        //throw new NotImplementedException();
-    }
+        var crust = e.CurrentSelection.FirstOrDefault() as CrustSize;
 
-    private void SizeSelectionChanged(object sender, CheckedChangedEventArgs e)
-    {
-        Console.WriteLine($"SizeSelectionChanged {sender} {e.Value}");
-        //throw new NotImplementedException();
+        OrderVm.CurrentPizza.Size = crust;
+
+        selectedPizzaSizeLabel.SetBinding(Label.TextProperty, new Binding("Size", source: OrderVm.CurrentPizza));
+
+        //Console.WriteLine($"SizesViewSelectionChanged {sender} {e.CurrentSelection.FirstOrDefault()}");
+        //Console.WriteLine($"OrderVm.CurrentPizza.Size {OrderVm.CurrentPizza.Size}");
+        
+
     }
 
     private void ToppingSelectionChanged(object sender, CheckedChangedEventArgs e)
     {
-        //throw new NotImplementedException();
+        var btn = (CheckBox)sender;
+        var topping = btn.BindingContext as Topping;
+        //Console.WriteLine($"ToppingSelectionChanged {topping} {e.Value}");
+        if (e.Value)
+        {
+            if(OrderVm.CurrentPizza.Toppings.Any(i => i.ToString().Equals(topping.ToString())))
+            {
+                OrderVm.CurrentPizza.Toppings.Remove(
+                    OrderVm.CurrentPizza.Toppings.Single(t => t.ToString().Equals(topping.ToString())));
+            }
+            OrderVm.CurrentPizza.Toppings.Add(topping);
+
+          
+        }
+        else
+        {
+            while(OrderVm.CurrentPizza.Toppings.Contains(topping)) OrderVm.CurrentPizza.Toppings.Remove(topping);
+        }
+
     }
 
     private void RenderToppingsView()
@@ -211,14 +248,24 @@ public partial class OrderPage : ContentPage
                 Children = { new Label { Text = "Available Toppings", FontAttributes=FontAttributes.Bold, FontSize=30 } }
             };
         });
-        
+      
         availableToppingsView.ItemTemplate = new DataTemplate(() => {
             var toppingNameLabel = new Label();
             toppingNameLabel.SetBinding(Label.TextProperty, "Name");
-            var toppingCheckBox = new CheckBox { IsChecked = false, };
-            //toppingCheckBox.SetBinding(CheckBox.IsCheckedProperty, "Name");
+            var toppingCheckBox = new CheckBox { IsChecked=true };
+            var currentItem = toppingNameLabel.BindingContext as Topping;
+
+            var binding = new MultiBinding
+            {
+                Converter = new LambdaConverter()
+            };
+
+            binding.Bindings.Add(new Binding(nameof(OrderVm.CurrentPizza.Toppings), source: this.OrderVm.CurrentPizza));
+            binding.Bindings.Add(new Binding(".", source: toppingCheckBox.BindingContext));
+            toppingCheckBox.SetBinding(CheckBox.IsCheckedProperty, binding);
 
             toppingCheckBox.CheckedChanged += ToppingSelectionChanged;
+
             var layout = new FlexLayout
             {
                 JustifyContent = Microsoft.Maui.Layouts.FlexJustify.Start,

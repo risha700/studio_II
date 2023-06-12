@@ -43,7 +43,7 @@ public partial class MainPage : ContentPage
         Background = Helpers.CreateGradient(),
         Content = new Image
         {
-            Source = ImageSource.FromFile("pizza_front.jpg"),
+            Source = ImageSource.FromFile("mainvector.png"),
             Opacity = 0.4,
             HorizontalOptions = LayoutOptions.Fill,
             VerticalOptions = LayoutOptions.Fill,
@@ -62,7 +62,7 @@ public partial class MainPage : ContentPage
         HorizontalOptions = LayoutOptions.Center,
         CornerRadius = 10,
         FontSize = 35,
-        MinimumHeightRequest = 180,
+        MinimumHeightRequest = 160,
         Shadow = new Shadow
         {
             Brush = Colors.Black,

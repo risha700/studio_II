@@ -12,37 +12,49 @@ public partial class MenuPage : ContentPage
 {
 
     AppDbContext databaseContext;
-
+    CollectionView menuCollectionView;
 
     public MenuPage(AppDbContext dbCtx)
-	{
+    {
         databaseContext = dbCtx;
 
         Title = "Menu";
-        
-        List<Pizza> availablePizza = dbCtx.Pizzas.OrderBy(e => e.Name).Include(p=>p.Size).Include(p=>p.Toppings).ToList();
 
-        CollectionView menuCollectionView = new CollectionView
+        List<Pizza> availablePizza = dbCtx.Pizzas.OrderBy(e => e.Name).Include(p => p.Size).Include(p => p.Toppings).ToList();
+
+        menuCollectionView = new CollectionView
         {
+            ItemSizingStrategy = ItemSizingStrategy.MeasureFirstItem,
+            SelectionMode = SelectionMode.Single,
+            Margin = new Thickness(20, 0),
             ItemsSource = availablePizza,
+            VerticalOptions = LayoutOptions.Fill,
+            HorizontalOptions = LayoutOptions.Fill,
+            HeaderTemplate = new DataTemplate(() => {
+
+                return new StackLayout
+                {
+                    Padding = new Thickness(0, 30),
+                    Children = { new Label { Text = "Available Pizzas", FontAttributes = FontAttributes.Bold, FontSize = 30 } }
+                };
+            }),
+            Header ="",
             EmptyView = new Label
             {
                 Text = "No pizzas available",
                 HorizontalOptions = LayoutOptions.Fill,
                 VerticalOptions = LayoutOptions.Fill
             },
-            Margin = new Thickness(0,20),
-            ItemsLayout = new GridItemsLayout((int)availablePizza.Count / 2, ItemsLayoutOrientation.Vertical) {
+
+            ItemsLayout = new GridItemsLayout((int)availablePizza.Count / 2, ItemsLayoutOrientation.Vertical)
+            {
                 VerticalItemSpacing = 20,
                 HorizontalItemSpacing = 20,
             },
-            Header = "",
-            ItemSizingStrategy = ItemSizingStrategy.MeasureAllItems,
-            SelectionMode = SelectionMode.Single,
-            
+
             ItemTemplate = new DataTemplate(() =>
             {
-                
+
                 var nameLabel = new Label();
                 nameLabel.SetBinding(Label.TextProperty, "Name");
 
@@ -52,11 +64,11 @@ public partial class MenuPage : ContentPage
                 var priceLabel = new Label();
                 priceLabel.SetBinding(Label.TextProperty, "Price");
 
-                var image = new Image { Source = "placeholder.png", WidthRequest = 150, HeightRequest=100};
+                var image = new Image { Source = "logo.png", WidthRequest = 150, HeightRequest = 100 };
                 //image.SetBinding(Image.SourceProperty, "Img");
                 var layout = new Border
                 {
-                    Margin = new Thickness(0, 0, 0, 50),
+                    //Margin = new Thickness(0, 0, 0, 50),
                     StrokeThickness = 2,
                     Padding = new Thickness(10, 10),
                     HorizontalOptions = LayoutOptions.Fill,
@@ -99,12 +111,15 @@ public partial class MenuPage : ContentPage
     
     async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        var pizzaDetails = (e.CurrentSelection.FirstOrDefault() as Pizza);
-        await Shell.Current.GoToAsync(nameof(OrderPage), true,
-              new Dictionary<string, object>{
-                    { "PizzaDetail", pizzaDetails }    
-              });
-        
+        var currentPizza = (e.CurrentSelection.FirstOrDefault() as Pizza);
+        if (currentPizza != null)
+        {
+            await Shell.Current.GoToAsync(nameof(OrderPage), true,
+               new Dictionary<string, object>{
+                        { "CurrentPizza", currentPizza }
+               });
+        }
+        menuCollectionView.SelectedItem = null; // reset
 
     }
 }

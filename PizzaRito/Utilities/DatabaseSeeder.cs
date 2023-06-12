@@ -42,7 +42,7 @@ public static class DatabaseSeeder
             
 
 
-            Console.WriteLine($"dbpath seeder:{context.DbPath}");
+            Console.WriteLine($"Debug==> seeded successfully to: {context.DbPath}");
 
         }
         catch (Exception e)

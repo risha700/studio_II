@@ -27,12 +27,6 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
-        // todo: as shared lib constant
-        //var folder = Environment.SpecialFolder.LocalApplicationData;
-        //var path = Environment.GetFolderPath(folder);
-        ////var path = FileSystem.Current.AppDataDirectory;
-        //string dbPath = System.IO.Path.Join(path, "MauiPizza.db");
-        //builder.Services.AddDbContext<AppDbContext>(opts=>opts.UseSqlite($"Data Source={dbPath}"));
         builder.Services.AddDbContext<AppDbContext>(opts=>opts.UseSqlite(ProjectConfig.DatabasePath));
 
         builder.Services.AddSingleton<MainPage>();
@@ -46,7 +40,7 @@ public static class MauiProgram
         app.SeedDatabase();
 
         return app;
-        //return builder.Build();
+        
     }
 }
 

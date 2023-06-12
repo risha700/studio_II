@@ -15,7 +15,7 @@ public class CrustSize
 
     public override string ToString()
     {
-        return $"{nameof(CrustSize)} {Name} - {Price}";
+        return $"{Name} .................... {Price:C2}";
     }
 }
 
