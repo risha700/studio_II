@@ -20,7 +20,8 @@
                         <DataTemplate>
                             <ViewCell>
                                 <Grid RowDefinitions="Auto,Auto"  ColumnDefinitions=".5*,.2*,*"  Padding="10">
-                                    <Label Text="{Binding Path=Size.Name}" Grid.Column="0" Grid.Row="0"/>
+                                    <Label Text="{Binding Path=Size.Name}" Grid.Column="1" Grid.Row="0"/>
+                                    <Label Text="{Binding Path=Id}" Grid.Column="0" Grid.Row="0"/>
                                     <Label Text="{Binding Path=Name}" Grid.Column="0" Grid.Row="0" Margin="100,0,0,0"/>
                                     <Label Text="{Binding Path=Price, StringFormat='{0:C2}'}" Grid.Column="1" Grid.Row="0"/>
                                     <Image VerticalOptions="End" Source="{Binding Img}" Grid.Column="0" Grid.Row="0" HeightRequest="50"/>

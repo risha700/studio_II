@@ -11,7 +11,7 @@ using PizzaRito.Entity;
 namespace PizzaRito.Entity.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230611030546_InitialCreate")]
+    [Migration("20230612135907_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -22,8 +22,8 @@ namespace PizzaRito.Entity.Migrations
 
             modelBuilder.Entity("OrderPizza", b =>
                 {
-                    b.Property<int>("ItemsId")
-                        .HasColumnType("INTEGER");
+                    b.Property<Guid>("ItemsId")
+                        .HasColumnType("TEXT");
 
                     b.Property<Guid>("OrdersId")
                         .HasColumnType("TEXT");
@@ -80,9 +80,9 @@ namespace PizzaRito.Entity.Migrations
 
             modelBuilder.Entity("PizzaRito.Entity.Models.Pizza", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Details")
                         .HasColumnType("TEXT");
@@ -155,8 +155,8 @@ namespace PizzaRito.Entity.Migrations
 
             modelBuilder.Entity("PizzaTopping", b =>
                 {
-                    b.Property<int>("PizzasId")
-                        .HasColumnType("INTEGER");
+                    b.Property<Guid>("PizzasId")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("ToppingsId")
                         .HasColumnType("INTEGER");

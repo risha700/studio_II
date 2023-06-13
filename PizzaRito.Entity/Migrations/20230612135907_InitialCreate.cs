@@ -58,8 +58,7 @@ namespace PizzaRito.Entity.Migrations
                 name: "pizzas",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Details = table.Column<string>(type: "TEXT", nullable: true),
                     SizeId = table.Column<int>(type: "INTEGER", nullable: true),
@@ -99,7 +98,7 @@ namespace PizzaRito.Entity.Migrations
                 name: "PizzaTopping",
                 columns: table => new
                 {
-                    PizzasId = table.Column<int>(type: "INTEGER", nullable: false),
+                    PizzasId = table.Column<Guid>(type: "TEXT", nullable: false),
                     ToppingsId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -123,7 +122,7 @@ namespace PizzaRito.Entity.Migrations
                 name: "OrderPizza",
                 columns: table => new
                 {
-                    ItemsId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ItemsId = table.Column<Guid>(type: "TEXT", nullable: false),
                     OrdersId = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>

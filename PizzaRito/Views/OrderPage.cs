@@ -16,7 +16,7 @@ namespace PizzaRito.Views;
 
 public partial class OrderPage : ContentPage, INotifyPropertyChanged
 {
-	AppDbContext databaseContext;
+
 
     CollectionView availableToppingsView = new CollectionView { Header = "", EmptyView = new Label { Text = "Loading Toppings..." } };
     CollectionView currentPizzaToppingsView = new CollectionView { };
@@ -25,7 +25,7 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
     Image selectedPizzaImage = new Image { Source = "logo.png",  Aspect=Aspect.Fill};
     StackLayout selectedPizzaView = new StackLayout { Spacing=10};
 
-    Button cancelOrderBtn = new Button { Text = "Cancel", BackgroundColor = Colors.Transparent };
+    Button cancelOrderBtn = new Button { Text = "Cancel", BackgroundColor = Colors.Transparent, TextColor = Colors.OrangeRed };
     Button addToCartBtn = new Button { Text = "Add To Cart" };
     Grid contentGrid = new Grid
     {
@@ -50,17 +50,17 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
     Frame orderBox = new Frame { BackgroundColor=Colors.Transparent };
     Label selectedPizzaSizeLabel = new Label { FontSize = 16 };
 
-
+    AppDbContext databaseContext;
 
     public OrderViewModel OrderVm { get; set; }
 
-    public OrderPage(OrderViewModel viewModel, AppDbContext dbCtx)
+    public OrderPage(OrderViewModel ordervm)
 	{
 
-        OrderVm = viewModel;
-        BindingContext = viewModel;
+        OrderVm = ordervm;
+        BindingContext = OrderVm;
+
         Title = "New Order";
-		databaseContext = dbCtx;
 
         selectedPizzaView.Add(selectedPizzaLabel); // loading ...
         contentGrid.Add(availableSizesView, 0, 0);
@@ -82,7 +82,7 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
         {
             Direction = Microsoft.Maui.Layouts.FlexDirection.Row,
             JustifyContent = Microsoft.Maui.Layouts.FlexJustify.SpaceAround,
-            AlignContent = Microsoft.Maui.Layouts.FlexAlignContent.Center,
+            AlignContent = Microsoft.Maui.Layouts.FlexAlignContent.Start,
             AlignItems = Microsoft.Maui.Layouts.FlexAlignItems.Start,
             Children = {addToCartBtn, cancelOrderBtn}
         }, 0, 2);
@@ -111,6 +111,7 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
         var result = await Shell.Current.DisplayAlert("Are you sure?", "Cancel Order1", "Yes", "Continue Order");
         if (result)
         {
+
             await NavigateTo(nameof(MenuPage));
         }
 
@@ -142,24 +143,30 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
 
 
     }
-    async Task NavigateTo(dynamic NewPage, dynamic dict = null)
+    async Task NavigateTo(dynamic ToPage, dynamic dict = null)
     {
         // Get current page
         var page = Navigation.NavigationStack.LastOrDefault();
         // Remove old page
         Navigation.RemovePage(page);
+        
         // Load new page
-        await Shell.Current.GoToAsync(nameof(NewPage), true, dict);
+        await Shell.Current.GoToAsync(nameof(ToPage), true, dict);
 
 
     }
     private void RenderSelectedPizza()
     {
+        Label pizzaId = new Label { FontSize = 24 };
+        pizzaId.SetBinding(Label.TextProperty, new Binding("Id", source:OrderVm.CurrentPizza));
+        selectedPizzaView.Add(pizzaId);
+
+
         Label pizzaPrice = new Label { FontSize = 24 };
         selectedPizzaView.BindingContext = OrderVm.CurrentPizza;
         selectedPizzaLabel.SetBinding(Label.TextProperty, new Binding("Name"));
         selectedPizzaSizeLabel.SetBinding(Label.TextProperty, new Binding("Size"));
-        
+
         selectedPizzaView.Children.Add(selectedPizzaSizeLabel);
         if (!String.IsNullOrEmpty(OrderVm.CurrentPizza.Img))
         {
@@ -320,7 +327,7 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
                 Converter = new LambdaConverter()
             };
 
-            binding.Bindings.Add(new Binding(nameof(OrderVm.CurrentPizza.Toppings), source: this.OrderVm.CurrentPizza));
+            binding.Bindings.Add(new Binding(nameof(OrderVm.CurrentPizza.Toppings), source: OrderVm.CurrentPizza));
             binding.Bindings.Add(new Binding(".", source: toppingCheckBox.BindingContext));
             toppingCheckBox.SetBinding(CheckBox.IsCheckedProperty, binding);
 
@@ -339,11 +346,15 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
 
     protected override void OnDisappearing()
     {
-        
-        //OrderVm.CurrentPizza = new Pizza { Size = new(), Toppings = new() };
+        Console.WriteLine($"DEBUG===> OnDissapear finalizer ");
         base.OnDisappearing();
         
     }
-    
+
+    ~OrderPage()
+    {
+        Console.WriteLine($"DEBUG===> OrderPage finalizer dipose");
+
+    }
 }
 

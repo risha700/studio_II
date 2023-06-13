@@ -9,7 +9,7 @@ using PizzaRito.Views;
 
 namespace PizzaRito.ViewModels;
 
-public partial class OrderViewModel : BaseViewModel, IQueryAttributable, INotifyPropertyChanged
+public partial class OrderViewModel : BaseViewModel, IQueryAttributable
 {
 
     [ObservableProperty]
@@ -23,17 +23,26 @@ public partial class OrderViewModel : BaseViewModel, IQueryAttributable, INotify
     public List<Pizza> allPizzas;
 
     [ObservableProperty]
-    public Pizza currentPizza = new Pizza { Size = new(), Toppings = new() };
+    public Pizza currentPizza;
 
 
-    
+    [ObservableProperty]
+    public static Order currentOrder = new Order
+    {
+        Id = Guid.NewGuid(),
+        Items = new(),
+    };
+
+
 
     void IQueryAttributable.ApplyQueryAttributes(IDictionary<string, object> query)
     {
         CurrentPizza = query["CurrentPizza"] as Pizza;
-
+        //OnPropertyChanged(nameof(CurrentPizza));
         
     }
+
+
 
     public OrderViewModel(AppDbContext dbCtx)
 
@@ -45,40 +54,22 @@ public partial class OrderViewModel : BaseViewModel, IQueryAttributable, INotify
         AllPizzas = dbCtx.Pizzas.OrderBy(p => p.Name).Include(p => p.Size).Include(p => p.Toppings).ToList();
         //dbCtx.Pizzas.OrderBy(p => p.Name).Include(p => p.Toppings).Include(p => p.Size).Load();
         //AllPizzas = dbCtx.Pizzas.ToList();
+        CurrentPizza = new Pizza { Size = new(), Toppings = new() };
     }
 
 
-    [ObservableProperty]
-    public static Order currentOrder = new Order
-    {
-        Id = Guid.NewGuid(),
-        Items = new(),
-    };
 
-    
+
+    ~OrderViewModel()
+    {
+        Console.WriteLine($"DEBUG===> OrderViewModel finalizer dipose");
+    }
+
 
     //[ObservableProperty]
     //[NotifyPropertyChangedFor(nameof(PizzaViewModel.NewPizza))]
     //public ObservableCollection<Topping> allToppings = Topping.GetAvailableToppings();
 
-    //[ObservableProperty]
-    //public static Pizza newPizza = new() { Img = "placeholder.png", Toppings = new(), Size = new() };
-
-
-
-
-
-
-    //[ObservableProperty]
-    //public static Pizza newPizza = CurrentPizza??new();
-
-
-
-
-
-    //[ObservableProperty]
-    //[NotifyPropertyChangedFor(nameof(PizzaViewModel.NewPizza))]
-    //public ObservableCollection<CrustSize> allSizes = CrustSize.GetAvailableSizes();
 
 }
 

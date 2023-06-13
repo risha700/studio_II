@@ -112,9 +112,9 @@ public partial class MenuPage : ContentPage
     async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         var currentPizza = (e.CurrentSelection.FirstOrDefault() as Pizza);
-        Random r = new();
-        
-        //currentPizza.Id = new Guid();
+
+        currentPizza.Id = Guid.NewGuid(); // way to uniquely identify every new pizza
+
         if (currentPizza != null)
         {
             await Shell.Current.GoToAsync(nameof(OrderPage), true,

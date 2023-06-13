@@ -31,7 +31,7 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<MenuPage>();
-        builder.Services.AddTransient<OrderViewModel>();
+        builder.Services.AddSingleton<OrderViewModel>();
         builder.Services.AddTransient<OrderPage>();
         builder.Services.AddTransient<CheckoutViewModel>();
         builder.Services.AddTransient<CheckoutPage>();
