@@ -11,6 +11,7 @@ using CommunityToolkit.Maui.Markup;
 using PizzaRito.Utilities;
 using System.Linq;
 using CommunityToolkit.Maui.Converters;
+using Newtonsoft.Json;
 
 namespace PizzaRito.Views;
 
@@ -50,13 +51,19 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
     Frame orderBox = new Frame { BackgroundColor=Colors.Transparent };
     Label selectedPizzaSizeLabel = new Label { FontSize = 16 };
 
-    AppDbContext databaseContext;
+    
+    JsonSerializerSettings serializerSettings = new JsonSerializerSettings
+    {
+        PreserveReferencesHandling = PreserveReferencesHandling.Objects
+    };
 
     public OrderViewModel OrderVm { get; set; }
 
-    public OrderPage(OrderViewModel ordervm)
+    public OrderPage(OrderViewModel ordervm):base()
 	{
 
+        
+        
         OrderVm = ordervm;
         BindingContext = OrderVm;
 
@@ -92,9 +99,6 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
 
         Shell.Current.Navigated += (s,o) =>
         {
-            //Console.WriteLine($"==>test Pizza in model: {viewModel.PizzaDetail}");
-            
-
             RenderSizesView();
             RenderSelectedPizza();
             RenderToppingsView();
@@ -102,7 +106,7 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
             addToCartBtn.Command = AddToCartCommand;
         };
 
-
+    
 
     }
     [RelayCommand]
@@ -111,7 +115,6 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
         var result = await Shell.Current.DisplayAlert("Are you sure?", "Cancel Order1", "Yes", "Continue Order");
         if (result)
         {
-
             await NavigateTo(nameof(MenuPage));
         }
 
@@ -126,7 +129,12 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
             await Shell.Current.DisplayAlert("Choose size", "To continue!", "Ok");
             return ;
         }
-        OrderVm.CurrentOrder.Items.Add(OrderVm.CurrentPizza);
+        var newPizza = OrderVm.CurrentPizza;
+
+        var shallowCopy = JsonConvert.DeserializeObject<Pizza>(JsonConvert.SerializeObject(newPizza, serializerSettings), serializerSettings);
+        OrderVm.CurrentOrder.Items.Add(shallowCopy);
+
+        //Console.WriteLine($"DEBUG===> OrderPage Added to cart {newPizza}-{newPizza.Id}" );
 
         var result = await Shell.Current.DisplayAlert("Added", "to your order",  "Continue Ordering", "Check Out");
         if (result)
@@ -147,6 +155,7 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
     {
         // Get current page
         var page = Navigation.NavigationStack.LastOrDefault();
+        
         // Remove old page
         Navigation.RemovePage(page);
         
@@ -185,8 +194,19 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
         {
             var toppingNameLabel = new Label();
             var toppingPriceLabel = new Label();
-            toppingNameLabel.SetBinding(Label.TextProperty, "Name");
-            toppingPriceLabel.SetBinding(Label.TextProperty, "Price", stringFormat: ".................... {0:C2}");
+            
+            
+            toppingNameLabel.SetBinding(Label.TextProperty, new Binding("Name", mode:BindingMode.Default));
+     
+            var binding = new MultiBinding
+            {
+                Converter = new PaddingConverter(),
+                Mode = BindingMode.Default
+            };
+
+            binding.Bindings.Add(new Binding(nameof(OrderVm.CurrentPizza.Toppings), source: OrderVm.CurrentPizza));
+            binding.Bindings.Add(new Binding(".", source: toppingNameLabel.BindingContext));
+            toppingPriceLabel.SetBinding(Label.TextProperty, binding);
 
             return new HorizontalStackLayout { Spacing=10, Children = { toppingNameLabel, toppingPriceLabel } };
         });
@@ -307,7 +327,9 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
         {
             VerticalItemSpacing = 20,
             HorizontalItemSpacing = 20,
+            
         };
+        
         availableToppingsView.HeaderTemplate = new DataTemplate(() => {
             
             return new StackLayout {
@@ -319,17 +341,19 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
         availableToppingsView.ItemTemplate = new DataTemplate(() => {
             var toppingNameLabel = new Label();
             toppingNameLabel.SetBinding(Label.TextProperty, "Name");
-            var toppingCheckBox = new CheckBox { IsChecked=true };
+            var toppingCheckBox = new CheckBox { IsChecked=false };
             var currentItem = toppingNameLabel.BindingContext as Topping;
 
             var binding = new MultiBinding
             {
-                Converter = new LambdaConverter()
+                Converter = new LambdaConverter(),
+                Mode = BindingMode.OneWay
             };
 
             binding.Bindings.Add(new Binding(nameof(OrderVm.CurrentPizza.Toppings), source: OrderVm.CurrentPizza));
             binding.Bindings.Add(new Binding(".", source: toppingCheckBox.BindingContext));
             toppingCheckBox.SetBinding(CheckBox.IsCheckedProperty, binding);
+
 
             toppingCheckBox.CheckedChanged += ToppingSelectionChanged;
 
@@ -346,14 +370,19 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
 
     protected override void OnDisappearing()
     {
-        Console.WriteLine($"DEBUG===> OnDissapear finalizer ");
+        //Console.WriteLine($"DEBUG===> OnDissapear finalizer ");
+        //availableToppingsView.RemoveBinding(CollectionView.ItemsSourceProperty);
+        //availableSizesView.RemoveBinding(CollectionView.ItemsSourceProperty);
+        //currentPizzaToppingsView.RemoveBinding(CollectionView.ItemsSourceProperty);
+        //OrderVm.CurrentPizza.Toppings = new();
+        //OrderVm.reset();
         base.OnDisappearing();
         
     }
 
     ~OrderPage()
     {
-        Console.WriteLine($"DEBUG===> OrderPage finalizer dipose");
+        //Console.WriteLine($"DEBUG===> OrderPage finalizer dipose");
 
     }
 }

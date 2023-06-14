@@ -16,6 +16,7 @@ public partial class MenuPage : ContentPage
 
     public MenuPage(AppDbContext dbCtx)
     {
+
         databaseContext = dbCtx;
 
         Title = "Menu";
@@ -114,6 +115,7 @@ public partial class MenuPage : ContentPage
         var currentPizza = (e.CurrentSelection.FirstOrDefault() as Pizza);
 
         currentPizza.Id = Guid.NewGuid(); // way to uniquely identify every new pizza
+        
 
         if (currentPizza != null)
         {
