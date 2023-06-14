@@ -115,8 +115,8 @@ public partial class MenuPage : ContentPage
         var currentPizza = (e.CurrentSelection.FirstOrDefault() as Pizza);
 
         currentPizza.Id = Guid.NewGuid(); // way to uniquely identify every new pizza
-        
 
+        
         if (currentPizza != null)
         {
             await Shell.Current.GoToAsync(nameof(OrderPage), true,

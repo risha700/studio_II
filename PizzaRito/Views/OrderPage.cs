@@ -368,22 +368,6 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
         });
     }
 
-    protected override void OnDisappearing()
-    {
-        //Console.WriteLine($"DEBUG===> OnDissapear finalizer ");
-        //availableToppingsView.RemoveBinding(CollectionView.ItemsSourceProperty);
-        //availableSizesView.RemoveBinding(CollectionView.ItemsSourceProperty);
-        //currentPizzaToppingsView.RemoveBinding(CollectionView.ItemsSourceProperty);
-        //OrderVm.CurrentPizza.Toppings = new();
-        //OrderVm.reset();
-        base.OnDisappearing();
-        
-    }
-
-    ~OrderPage()
-    {
-        //Console.WriteLine($"DEBUG===> OrderPage finalizer dipose");
-
-    }
+ 
 }
 
