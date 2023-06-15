@@ -72,7 +72,7 @@ public partial class OrderViewModel : BaseViewModel, IQueryAttributable
         OnPropertyChanged(nameof(CurrentPizza));
 
     }
-
+    
 
     ~OrderViewModel()
     {

@@ -92,6 +92,8 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         Shell.SetNavBarIsVisible(this, false);
+        
+
         Title = "Pizza Rito";
 
         mainLayout.SetColumnSpan(heroFrame, 2);
@@ -108,6 +110,7 @@ public partial class MainPage : ContentPage
 
         guestOrderBtn.Clicked += async (sender, args) => {
             guestOrderBtn.IsEnabled = false;
+
             await Shell.Current.GoToAsync(nameof(MenuPage), false);
             guestOrderBtn.IsEnabled = true;
         };

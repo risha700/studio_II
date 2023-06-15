@@ -35,6 +35,7 @@ public static class MauiProgram
         builder.Services.AddTransient<OrderPage>();
         builder.Services.AddTransient<CheckoutViewModel>();
         builder.Services.AddTransient<CheckoutPage>();
+        builder.Services.AddTransient<OrderReviewPage>();
         var app = builder.Build();
 
         app.SeedDatabase();

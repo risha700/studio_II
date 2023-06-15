@@ -3,8 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Maui.Controls;
 using PizzaRito.Entity;
 using PizzaRito.Entity.Models;
-
-
+using PizzaRito.ViewModels;
 
 namespace PizzaRito.Views;
 
@@ -13,10 +12,11 @@ public partial class MenuPage : ContentPage
 
     AppDbContext databaseContext;
     CollectionView menuCollectionView;
+    Button gotoCartBtn = new Button { Text = "Your Cart", WidthRequest=100 };
 
-    public MenuPage(AppDbContext dbCtx)
+    public MenuPage(AppDbContext dbCtx, OrderViewModel orderViewModel)
     {
-
+        //Console.WriteLine($"DEBUG===>menu page orderbm is: {orderViewModel.CurrentOrder}");
         databaseContext = dbCtx;
 
         Title = "Menu";
@@ -35,11 +35,12 @@ public partial class MenuPage : ContentPage
 
                 return new StackLayout
                 {
+                    Spacing=30,
                     Padding = new Thickness(0, 30),
-                    Children = { new Label { Text = "Available Pizzas", FontAttributes = FontAttributes.Bold, FontSize = 30 } }
+                    Children = { new Label { Text = "Available Pizzas", FontAttributes = FontAttributes.Bold, FontSize = 30 }, gotoCartBtn }
                 };
             }),
-            Header ="",
+            Header = "",
             EmptyView = new Label
             {
                 Text = "No pizzas available",
@@ -105,18 +106,33 @@ public partial class MenuPage : ContentPage
         };
 
         menuCollectionView.SelectionChanged += OnCollectionViewSelectionChanged;
+
+        gotoCartBtn.Clicked += async (s, o) =>
+        {
+            await Shell.Current.GoToAsync(nameof(OrderReviewPage), true,
+                new Dictionary<string, object>{
+                        { "CurrentOrder", orderViewModel.CurrentOrder }
+            });
+            //await Shell.Current.Navigation.PushModalAsync(new OrderReviewPage());
+            //await Application.Current.MainPage.Navigation.PushModalAsync(new OrderReviewPage());
+        };
+
+  
         Content = menuCollectionView;
 
 
+
     }
-    
+
     async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         var currentPizza = (e.CurrentSelection.FirstOrDefault() as Pizza);
 
         currentPizza.Id = Guid.NewGuid(); // way to uniquely identify every new pizza
 
-        
+        //if (currentPizza.Toppings is null) currentPizza.Toppings = new();
+        //if (currentPizza.Size is null) currentPizza.Size = new();
+
         if (currentPizza != null)
         {
             await Shell.Current.GoToAsync(nameof(OrderPage), true,
@@ -127,4 +143,15 @@ public partial class MenuPage : ContentPage
         menuCollectionView.SelectedItem = null; // reset
 
     }
+
+
+    async void AddToCart()
+    {
+        await Shell.Current.GoToAsync(nameof(OrderReviewPage), true,
+            new Dictionary<string, object>{
+                        { "CurrentOrder", null }
+            });
+    }
+
+
 }

@@ -25,6 +25,7 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
     Label selectedPizzaLabel = new Label { FontSize = 24, VerticalOptions = LayoutOptions.Center, Text = $"Loading..." };
     Image selectedPizzaImage = new Image { Source = "logo.png",  Aspect=Aspect.Fill};
     StackLayout selectedPizzaView = new StackLayout { Spacing=10};
+    Button gotoCartBtn = new Button { Text = "Go to Cart", WidthRequest = 200, HeightRequest = 100 };
 
     Button cancelOrderBtn = new Button { Text = "Cancel", BackgroundColor = Colors.Transparent, TextColor = Colors.OrangeRed };
     Button addToCartBtn = new Button { Text = "Add To Cart" };
@@ -97,6 +98,16 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
 
         Content = contentGrid;
 
+        //var cartBtnTemplate = new HorizontalStackLayout { Children = { gotoCartBtn } };
+        //gotoCartBtn.Clicked += async (s, o) => {
+        //await Shell.Current.GoToAsync(nameof(OrderReviewPage), true,
+        //    new Dictionary<string, object>{
+        //                { "CurrentOrder", OrderVm.CurrentOrder }
+        //});
+        //    //await Shell.Current.Navigation.PushModalAsync(new OrderReviewPage());
+        //    //await Application.Current.MainPage.Navigation.PushModalAsync(new OrderReviewPage());
+        //};
+
         Shell.Current.Navigated += (s,o) =>
         {
             RenderSizesView();
@@ -143,10 +154,10 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
         }
         else
         {
-            await Shell.Current.GoToAsync(nameof(CheckoutPage), true,
-               new Dictionary<string, object>{
-                        { "Order", OrderVm.CurrentOrder }
-               });
+            await Shell.Current.GoToAsync(nameof(OrderReviewPage), true,
+                new Dictionary<string, object>{
+                        { "CurrentOrder", OrderVm.CurrentOrder }
+            });
         }
 
 
@@ -368,6 +379,5 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
         });
     }
 
- 
 }
 

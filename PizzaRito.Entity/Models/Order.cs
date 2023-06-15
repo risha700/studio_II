@@ -15,6 +15,8 @@ public class Order
 	public User? Customer { get; set; }
     // todo: auto fill
     public DateTime OrderDate { get; set; }
+
+
 }
 
 // todo: calcualte order total method
