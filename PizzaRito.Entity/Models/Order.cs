@@ -17,7 +17,13 @@ public class Order
     public DateTime OrderDate { get; set; }
 
 
+
+    public void CalculateTotal()
+    {
+        
+        this.Total = this.Items.Sum((p) => p.Price);
+    }
 }
 
-// todo: calcualte order total method
+
 

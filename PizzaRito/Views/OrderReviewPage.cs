@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
+using PizzaApp.Views;
 using PizzaRito.Entity.Models;
+using PizzaRito.Utilities;
 
 namespace PizzaRito.Views;
 
@@ -8,17 +10,21 @@ namespace PizzaRito.Views;
 [QueryProperty(nameof(CurrentOrder), "CurrentOrder")]
 public partial class OrderReviewPage : ContentPage, INotifyPropertyChanged
 {
-	CollectionView orderItemsCollectionView = new CollectionView { };
-    Button finalizeOrder = new Button { Text = "Check Out" };
+	CollectionView orderItemsCollectionView = new CollectionView { Margin=new Thickness(0,20,0,0) };
+    Button checkoutBtn = new Button { Text = "Check Out" , HorizontalOptions = LayoutOptions.Center};
+    Button backToMenuBtn = new Button { Text = "Add More Items", HorizontalOptions = LayoutOptions.Center, BackgroundColor=Colors.Teal };
+
     Grid mainLayout = new Grid {
         VerticalOptions = LayoutOptions.Start,
         HeightRequest = Shell.Current.Window.Height,
         WidthRequest = Shell.Current.Window.Width,
-        ColumnSpacing = 20,
+        ColumnSpacing = 0,
         RowSpacing = 0,
-        Padding = 10,
+        Padding = 20,
         RowDefinitions = {
-                new RowDefinition {Height=new GridLength(1, GridUnitType.Star) },
+                new RowDefinition {Height=new GridLength(.2, GridUnitType.Star) },
+                new RowDefinition {Height=new GridLength(.40, GridUnitType.Star) },
+                new RowDefinition {Height=new GridLength(.40, GridUnitType.Star) },
 
             },
         ColumnDefinitions = {
@@ -26,13 +32,10 @@ public partial class OrderReviewPage : ContentPage, INotifyPropertyChanged
                 new ColumnDefinition { Width = new GridLength(.3, GridUnitType.Star) },
             },
     };
-    StackLayout pizzaCard = new StackLayout { };
+    VerticalStackLayout pizzaCard = new VerticalStackLayout {Spacing=10, Padding=20 };
 
-    Button cancelOrderBtn = new Button
-    {
-        Text = "CancelOrder",
-
-    };
+    Button cancelOrderBtn = new Button { Text = "Cancel Order", BackgroundColor=Colors.Transparent, TextColor=Colors.OrangeRed };
+    Label OrderIdLabel = new Label { FontSize = 15 };
     Order currentOrder;
 
 	public Order CurrentOrder {
@@ -43,56 +46,98 @@ public partial class OrderReviewPage : ContentPage, INotifyPropertyChanged
 			OnPropertyChanged(nameof(CurrentOrder));
 		}
 	}
-	
+
+
 	public OrderReviewPage()
     {
-        orderItemsCollectionView.EmptyView = new Label { Text = "Loading..." };
-        orderItemsCollectionView.Header = "Review Your Order";
 
+        orderItemsCollectionView.EmptyView = new Label { Text = "Your cart is empty...Add some items!", Margin = new Thickness(0, 20) };
+        orderItemsCollectionView.Header = "Review Your Order";
+        var activityIndicator = new ActivityIndicator { IsRunning = true, Color = Colors.Orange };
+
+        SetupEvents();
+
+        orderItemsCollectionView.HeaderTemplate = new DataTemplate(() =>
+        {
+
+            return new VerticalStackLayout
+            {
+                Spacing = 20,
+                Padding = new Thickness(0, 50),
+                Children = { new Label { Text = "Review Your Order", FontAttributes = FontAttributes.Bold }, OrderIdLabel }
+            };
+        });
+
+        mainLayout.Add(orderItemsCollectionView, 0, 0);
+
+        mainLayout.Add(new Border { Content = pizzaCard }, 1, 0);
+
+        mainLayout.SetRowSpan(pizzaCard, 1);
+        mainLayout.SetRowSpan(orderItemsCollectionView, 3);
+        mainLayout.Add(activityIndicator, 0, 0);
+        Content = mainLayout;
+
+        Shell.Current.Navigated += (s, o) =>
+        {
+            SetupOrderCollectionView();
+            SetupPizzaCard();
+            activityIndicator.IsRunning = false;
+        };
+
+    }
+
+    private void SetupEvents()
+    {
         cancelOrderBtn.Clicked += async (s, o) =>
         {
             var result = await Shell.Current.DisplayAlert("Are you sure?", "Cancel Order", "Yes, Cancel", "Continue Order");
             if (result)
             {
-                currentOrder = new Order { Items=new() };
+                currentOrder.Items.Clear(); // might need to reset id
 
-       
                 await Navigation.PopToRootAsync();
-                //var page = Navigation.NavigationStack.LastOrDefault();
-                //Navigation.RemovePage(page);
-                //await Shell.Current.GoToAsync(nameof(MainPage), true);
             };
         };
 
-        orderItemsCollectionView.HeaderTemplate = new DataTemplate(() =>
+        checkoutBtn.Clicked += async (s, o) =>
         {
-
-            return new FlexLayout
-            {
-                Direction = Microsoft.Maui.Layouts.FlexDirection.Row,
-                WidthRequest = Shell.Current.Window.Width,
-                JustifyContent = Microsoft.Maui.Layouts.FlexJustify.SpaceEvenly,
-                AlignContent = Microsoft.Maui.Layouts.FlexAlignContent.Center,
-                AlignItems = Microsoft.Maui.Layouts.FlexAlignItems.Center,
-                Children = { new Label { Text = "Review Your Order" } }
-            };
-        });
-
-        mainLayout.Add(orderItemsCollectionView, 0,0);
-
-        mainLayout.Add(new Border { Content = new VerticalStackLayout { Children = {pizzaCard, finalizeOrder, cancelOrderBtn } } }, 1, 0);
-
-
-        Content = mainLayout;
-
-        Shell.Current.Navigated += (s, o) =>
-        {
-            //Console.WriteLine($"DEBUG==> OrderReview current orderis: {CurrentOrder.Items.FirstOrDefault()}");
-            SetupOrderCollectionView();
-            var totalPrice = new Label { };
-            totalPrice.Text = "10$";
-            pizzaCard.Add(totalPrice);
+            await Shell.Current.GoToAsync(nameof(CheckoutPage), true,
+                new Dictionary<string, object>{
+                        { "Order", CurrentOrder }
+            });
         };
+
+        backToMenuBtn.Clicked += async (s, o) =>
+        {
+            // maui bug on catalyst.
+            // Get current page
+            var page = Navigation.NavigationStack.LastOrDefault();
+
+            // Remove old page very baaaad perfemance
+            Navigation.RemovePage(page);
+            await Shell.Current.GoToAsync(nameof(MenuPage), true);
+            //    //await Shell.Current.GoToAsync(nameof(ToPage), true, dict);
+            //await Helpers.NavigateTo(nameof(MenuPage), Navigation, popLevel:2);
+            //await Shell.Current.GoToAsync(nameof(MenuPage), false, null);
+            //async Task NavigateTo(dynamic ToPage, dynamic dict = null)
+            //{
+
+            //}
+
+        };
+    }
+
+    private void SetupPizzaCard()
+    {
+        var totalCardPrice = new Label { };
+        
+        totalCardPrice.SetBinding(Label.TextProperty, new Binding("Total", source: CurrentOrder, stringFormat:"Total {0:C2}"));
+        OrderIdLabel.SetBinding(Label.TextProperty, new Binding("Id", source: CurrentOrder, stringFormat: "Order# {0}"));
+        //pizzaCard.Add(OrderIdLabel);
+        pizzaCard.Add(totalCardPrice);
+        pizzaCard.Add(backToMenuBtn);
+        pizzaCard.Add(checkoutBtn);
+        pizzaCard.Add(cancelOrderBtn);
 
     }
 
@@ -104,7 +149,19 @@ public partial class OrderReviewPage : ContentPage, INotifyPropertyChanged
         {
             var itemName = new Label { };
             var itemPrice = new Label { };
-            var itemImg = new Image { HeightRequest = 100, WidthRequest=100 };
+            var itemImg = new Image { HeightRequest=100,WidthRequest=100, Aspect = Aspect.AspectFill };
+            var itemImgPlate = new Frame
+            { 
+                HeightRequest = 70,
+                WidthRequest = 70,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center,
+                Margin = new Thickness(0, 20, 0, 0),
+                Content = itemImg,
+                CornerRadius = 25,
+                BackgroundColor = Colors.Transparent,
+                IsClippedToBounds = true
+            };
             var itemSize = new Label { };
             var editBtn = new Button { Text = "Edit", BackgroundColor=Colors.Transparent, TextColor = Colors.SlateBlue };
             var removeBtn = new Button { Text = "Remove", BackgroundColor = Colors.Transparent, TextColor = Colors.OrangeRed };
@@ -128,17 +185,21 @@ public partial class OrderReviewPage : ContentPage, INotifyPropertyChanged
                         Direction=Microsoft.Maui.Layouts.FlexDirection.Row,
                         JustifyContent = Microsoft.Maui.Layouts.FlexJustify.SpaceBetween,
                         AlignContent=Microsoft.Maui.Layouts.FlexAlignContent.Start,
-                        AlignItems = Microsoft.Maui.Layouts.FlexAlignItems.Start,
-                        Children = { itemName, itemPrice, itemImg, itemSize, actionButtons }
+                        AlignItems = Microsoft.Maui.Layouts.FlexAlignItems.Center,
+                        Children = {
+                            itemSize, itemName, itemImgPlate , itemPrice, actionButtons
+                        }
                     },
                         new Border { StrokeThickness=0, Content =  itemToppings }  }
                 }
             };
             itemName.SetBinding(Label.TextProperty, "Name");
-            itemPrice.SetBinding(Label.TextProperty, "Price");
-            itemSize.SetBinding(Label.TextProperty, "Size");
+            itemPrice.SetBinding(Label.TextProperty, new Binding("Price", stringFormat:"{0:C2}"));
+            itemSize.SetBinding(Label.TextProperty, "Size.Name");
             itemImg.SetBinding(Image.SourceProperty, "Img");
             itemToppings.SetBinding(CollectionView.ItemsSourceProperty, new Binding("Toppings"));
+
+            
 
             return layoutContainer;
         });

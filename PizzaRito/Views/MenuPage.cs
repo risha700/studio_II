@@ -16,9 +16,8 @@ public partial class MenuPage : ContentPage
 
     public MenuPage(AppDbContext dbCtx, OrderViewModel orderViewModel)
     {
-        //Console.WriteLine($"DEBUG===>menu page orderbm is: {orderViewModel.CurrentOrder}");
         databaseContext = dbCtx;
-
+        BindingContext = this;
         Title = "Menu";
 
         List<Pizza> availablePizza = dbCtx.Pizzas.OrderBy(e => e.Name).Include(p => p.Size).Include(p => p.Toppings).ToList();
@@ -144,14 +143,6 @@ public partial class MenuPage : ContentPage
 
     }
 
-
-    async void AddToCart()
-    {
-        await Shell.Current.GoToAsync(nameof(OrderReviewPage), true,
-            new Dictionary<string, object>{
-                        { "CurrentOrder", null }
-            });
-    }
 
 
 }

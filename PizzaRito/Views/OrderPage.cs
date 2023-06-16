@@ -51,24 +51,27 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
     };
     Frame orderBox = new Frame { BackgroundColor=Colors.Transparent };
     Label selectedPizzaSizeLabel = new Label { FontSize = 16 };
+    ActivityIndicator activityIndicator = new ActivityIndicator { IsRunning = true, Color = Colors.Orange };
 
-    
-    JsonSerializerSettings serializerSettings = new JsonSerializerSettings
-    {
-        PreserveReferencesHandling = PreserveReferencesHandling.Objects
-    };
+
+    // todo refactor
+
+    //JsonSerializerSettings serializerSettings = new JsonSerializerSettings
+    //{
+    //    PreserveReferencesHandling = PreserveReferencesHandling.Objects
+    //};
 
     public OrderViewModel OrderVm { get; set; }
 
     public OrderPage(OrderViewModel ordervm):base()
 	{
 
-        
-        
+
         OrderVm = ordervm;
         BindingContext = OrderVm;
 
         Title = "New Order";
+        
 
         selectedPizzaView.Add(selectedPizzaLabel); // loading ...
         contentGrid.Add(availableSizesView, 0, 0);
@@ -94,19 +97,11 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
             AlignItems = Microsoft.Maui.Layouts.FlexAlignItems.Start,
             Children = {addToCartBtn, cancelOrderBtn}
         }, 0, 2);
-        
 
+        contentGrid.Add(activityIndicator, 0, 0);
         Content = contentGrid;
 
-        //var cartBtnTemplate = new HorizontalStackLayout { Children = { gotoCartBtn } };
-        //gotoCartBtn.Clicked += async (s, o) => {
-        //await Shell.Current.GoToAsync(nameof(OrderReviewPage), true,
-        //    new Dictionary<string, object>{
-        //                { "CurrentOrder", OrderVm.CurrentOrder }
-        //});
-        //    //await Shell.Current.Navigation.PushModalAsync(new OrderReviewPage());
-        //    //await Application.Current.MainPage.Navigation.PushModalAsync(new OrderReviewPage());
-        //};
+       
 
         Shell.Current.Navigated += (s,o) =>
         {
@@ -115,6 +110,8 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
             RenderToppingsView();
             cancelOrderBtn.Command = CancelOrderCommand;
             addToCartBtn.Command = AddToCartCommand;
+            activityIndicator.IsRunning = false;
+
         };
 
     
@@ -123,7 +120,7 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
     [RelayCommand]
     async private void CancelOrder()
     {
-        var result = await Shell.Current.DisplayAlert("Are you sure?", "Cancel Order1", "Yes", "Continue Order");
+        var result = await Shell.Current.DisplayAlert("Are you sure?", "Cancel Order!", "Yes", "Continue Order");
         if (result)
         {
             await NavigateTo(nameof(MenuPage));
@@ -142,15 +139,19 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
         }
         var newPizza = OrderVm.CurrentPizza;
 
-        var shallowCopy = JsonConvert.DeserializeObject<Pizza>(JsonConvert.SerializeObject(newPizza, serializerSettings), serializerSettings);
+        newPizza.CalculatePizzaPrice(); // updates price on pizza
+        var shallowCopy = Helpers.DeepCopy(newPizza);
         OrderVm.CurrentOrder.Items.Add(shallowCopy);
+        OrderVm.CurrentOrder.CalculateTotal(); // updates total on order
 
         //Console.WriteLine($"DEBUG===> OrderPage Added to cart {newPizza}-{newPizza.Id}" );
 
         var result = await Shell.Current.DisplayAlert("Added", "to your order",  "Continue Ordering", "Check Out");
         if (result)
         {
+       
             await NavigateTo(nameof(MenuPage));
+         
         }
         else
         {
@@ -164,16 +165,14 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
     }
     async Task NavigateTo(dynamic ToPage, dynamic dict = null)
     {
+        // maui bug on catalyst.
         // Get current page
         var page = Navigation.NavigationStack.LastOrDefault();
-        
-        // Remove old page
+
+        // Remove old page very baaaad perfemance
         Navigation.RemovePage(page);
-        
-        // Load new page
-        await Shell.Current.GoToAsync(nameof(ToPage), true, dict);
-
-
+        await Shell.Current.GoToAsync(ToPage, true, dict);
+        //await Shell.Current.GoToAsync(nameof(ToPage), true, dict);
     }
     private void RenderSelectedPizza()
     {

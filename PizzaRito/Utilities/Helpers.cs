@@ -1,7 +1,10 @@
 ﻿using System;
+using Newtonsoft.Json;
+using PizzaRito.Entity.Models;
+
 namespace PizzaRito.Utilities;
 
-public class Helpers : ContentView
+public  class Helpers : ContentView
 {
 
     public static LinearGradientBrush CreateGradient()
@@ -17,6 +20,32 @@ public class Helpers : ContentView
         return gradientBrush;
     }
 
+    public static dynamic DeepCopy(dynamic targetObject)
+    {
+        var serializerSettings = new JsonSerializerSettings
+        {
+            PreserveReferencesHandling = PreserveReferencesHandling.Objects
+        };
+        return JsonConvert.DeserializeObject<Pizza>(JsonConvert.SerializeObject(targetObject, serializerSettings), serializerSettings);
+    }
+    public async static Task NavigateTo(dynamic ToPage,INavigation navigation, dynamic dict = null, int popLevel=1)
+    {
+        // maui bug on catalyst.
+        // Get current page
+        var navstack = navigation.NavigationStack.ToList();
+        //var page = navigation.NavigationStack.LastOrDefault();
+        //if (popLevel > navstack.Count() - 1) popLevel = 1;
 
+        Page page=null;
+        while (popLevel > 0)
+        {
+            page = navstack[^popLevel];
+            popLevel -= 1;
 
+        }
+        // Remove old page very baaaad perfemance
+        navigation.RemovePage(page);
+        await Shell.Current.GoToAsync(ToPage, true, dict);
+        //await Shell.Current.GoToAsync(nameof(ToPage), true, dict);
+    }
 }

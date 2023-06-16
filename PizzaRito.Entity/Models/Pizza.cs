@@ -26,6 +26,7 @@ public class Pizza
 
         double toppingCost = this.Toppings.Sum((t) => t.Price);
         this.Price = this.Size.Price + toppingCost;
+
         // might be any coupon discounts later
     }
 
