@@ -13,6 +13,7 @@ public partial class OrderReviewPage : ContentPage, INotifyPropertyChanged
 	CollectionView orderItemsCollectionView = new CollectionView { Margin=new Thickness(0,20,0,0) };
     Button checkoutBtn = new Button { Text = "Check Out" , HorizontalOptions = LayoutOptions.Center};
     Button backToMenuBtn = new Button { Text = "Add More Items", HorizontalOptions = LayoutOptions.Center, BackgroundColor=Colors.Teal };
+    Label totalCardPrice = new Label { };
 
     Grid mainLayout = new Grid {
         VerticalOptions = LayoutOptions.Start,
@@ -93,11 +94,11 @@ public partial class OrderReviewPage : ContentPage, INotifyPropertyChanged
             var result = await Shell.Current.DisplayAlert("Are you sure?", "Cancel Order", "Yes, Cancel", "Continue Order");
             if (result)
             {
-                CurrentOrder.Items.Clear(); // might need to reset id
+                CurrentOrder.Items.Clear(); 
                 CurrentOrder.Id = Guid.NewGuid();
 
                 await Navigation.PopToRootAsync();
-                //await Shell.Current.GoToAsync(nameof(MainPage), true);
+                //await Shell.Current.GoToAsync(nameof(MainPage), true); // todo??
             };
         };
 
@@ -115,9 +116,9 @@ public partial class OrderReviewPage : ContentPage, INotifyPropertyChanged
 
     private void SetupPizzaCard()
     {
-        var totalCardPrice = new Label { };
         
-        totalCardPrice.SetBinding(Label.TextProperty, new Binding("Total", source: CurrentOrder, stringFormat:"Total {0:C2}"));
+        
+        totalCardPrice.SetBinding(Label.TextProperty, new Binding("Total", source: CurrentOrder, stringFormat:"Total {0:C2}", mode:BindingMode.TwoWay));
         OrderIdLabel.SetBinding(Label.TextProperty, new Binding("Id", source: CurrentOrder, stringFormat: "Order# {0}"));
         //pizzaCard.Add(OrderIdLabel);
         pizzaCard.Add(totalCardPrice);
@@ -152,6 +153,9 @@ public partial class OrderReviewPage : ContentPage, INotifyPropertyChanged
             var editBtn = new Button { Text = "Edit", BackgroundColor=Colors.Transparent, TextColor = Colors.SlateBlue };
             var removeBtn = new Button { Text = "Remove", BackgroundColor = Colors.Transparent, TextColor = Colors.OrangeRed };
 
+            editBtn.Clicked += EditPizza;
+            removeBtn.Clicked += RemovePizza;
+    
             var itemToppings = new CollectionView { };
             itemToppings.ItemsLayout = new GridItemsLayout(1, ItemsLayoutOrientation.Vertical);
 
@@ -189,5 +193,33 @@ public partial class OrderReviewPage : ContentPage, INotifyPropertyChanged
 
             return layoutContainer;
         });
+    }
+
+    private async void RemovePizza(object sender, EventArgs e)
+    {
+        var pizza = ((Button)sender).Parent.BindingContext as Pizza;
+
+        var result = await Shell.Current.DisplayAlert("Are you sure?", $"remove {pizza?.Name} Pizza", "Yes, Remove", "Cancel");
+        if (result)
+        {
+            Console.WriteLine($"DEBUG===> remove pizza total before {CurrentOrder.Total}");
+            CurrentOrder.Items.Remove(pizza);
+            CurrentOrder.CalculateTotal();
+            Console.WriteLine($"DEBUG===> remove pizza total after {CurrentOrder.Total}");
+                
+            totalCardPrice.SetBinding(Label.TextProperty, new Binding(".", source: CurrentOrder.Total, stringFormat: "Total {0:C2}"));
+
+            //CurrentOrder.Items.Clear();
+            //CurrentOrder.Id = Guid.NewGuid();
+
+            //await Navigation.PopToRootAsync();
+            //await Shell.Current.GoToAsync(nameof(MainPage), true); // todo??
+        };
+
+    }
+
+    private void EditPizza(object sender, EventArgs e)
+    {
+        throw new NotImplementedException();
     }
 }
