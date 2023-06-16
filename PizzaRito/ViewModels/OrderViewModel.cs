@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using PizzaRito.Entity;
 using PizzaRito.Entity.Models;
+using PizzaRito.Utilities;
 using PizzaRito.Views;
 
 namespace PizzaRito.ViewModels;
@@ -39,16 +40,11 @@ public partial class OrderViewModel : BaseViewModel, IQueryAttributable
         Items = new(),
     };
 
-    JsonSerializerSettings serializerSettings = new JsonSerializerSettings
-    {
-        PreserveReferencesHandling = PreserveReferencesHandling.Objects,
-         
-    };
 
     void IQueryAttributable.ApplyQueryAttributes(IDictionary<string, object> query)
     {
         var PizzaParam = query["CurrentPizza"] as Pizza;
-        CurrentPizza = JsonConvert.DeserializeObject<Pizza>(JsonConvert.SerializeObject(PizzaParam, serializerSettings), serializerSettings);
+        CurrentPizza = Helpers.DeepCopy(PizzaParam);
         //OnPropertyChanged(nameof(CurrentPizza));
 
     }

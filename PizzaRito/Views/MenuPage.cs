@@ -10,24 +10,23 @@ namespace PizzaRito.Views;
 public partial class MenuPage : ContentPage
 {
 
-    AppDbContext databaseContext;
     CollectionView menuCollectionView;
     Button gotoCartBtn = new Button { Text = "Your Cart", WidthRequest=100 };
 
-    public MenuPage(AppDbContext dbCtx, OrderViewModel orderViewModel)
+    //public List<Pizza> availablePizza;
+
+    public MenuPage(MenuViewModel vm)
     {
-        databaseContext = dbCtx;
-        BindingContext = this;
+        
         Title = "Menu";
-
-        List<Pizza> availablePizza = dbCtx.Pizzas.OrderBy(e => e.Name).Include(p => p.Size).Include(p => p.Toppings).ToList();
-
+        BindingContext = vm;
+        
         menuCollectionView = new CollectionView
         {
             ItemSizingStrategy = ItemSizingStrategy.MeasureFirstItem,
             SelectionMode = SelectionMode.Single,
             Margin = new Thickness(20, 0),
-            ItemsSource = availablePizza,
+            ItemsSource = vm.availablePizza,
             VerticalOptions = LayoutOptions.Fill,
             HorizontalOptions = LayoutOptions.Fill,
             HeaderTemplate = new DataTemplate(() => {
@@ -47,7 +46,7 @@ public partial class MenuPage : ContentPage
                 VerticalOptions = LayoutOptions.Fill
             },
 
-            ItemsLayout = new GridItemsLayout((int)availablePizza.Count / 2, ItemsLayoutOrientation.Vertical)
+            ItemsLayout = new GridItemsLayout((int)vm.availablePizza.Count / 2, ItemsLayoutOrientation.Vertical)
             {
                 VerticalItemSpacing = 20,
                 HorizontalItemSpacing = 20,
@@ -110,7 +109,7 @@ public partial class MenuPage : ContentPage
         {
             await Shell.Current.GoToAsync(nameof(OrderReviewPage), true,
                 new Dictionary<string, object>{
-                        { "CurrentOrder", orderViewModel.CurrentOrder }
+                        { "CurrentOrder", vm.CurrentOrder }
             });
             //await Shell.Current.Navigation.PushModalAsync(new OrderReviewPage());
             //await Application.Current.MainPage.Navigation.PushModalAsync(new OrderReviewPage());

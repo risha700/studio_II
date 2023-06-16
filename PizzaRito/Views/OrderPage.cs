@@ -54,16 +54,9 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
     ActivityIndicator activityIndicator = new ActivityIndicator { IsRunning = true, Color = Colors.Orange };
 
 
-    // todo refactor
-
-    //JsonSerializerSettings serializerSettings = new JsonSerializerSettings
-    //{
-    //    PreserveReferencesHandling = PreserveReferencesHandling.Objects
-    //};
-
     public OrderViewModel OrderVm { get; set; }
 
-    public OrderPage(OrderViewModel ordervm):base()
+    public OrderPage(OrderViewModel ordervm)
 	{
 
 
@@ -123,7 +116,8 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
         var result = await Shell.Current.DisplayAlert("Are you sure?", "Cancel Order!", "Yes", "Continue Order");
         if (result)
         {
-            await NavigateTo(nameof(MenuPage));
+            
+            await Shell.Current.GoToAsync(nameof(MenuPage), true);
         }
 
 
@@ -150,8 +144,8 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
         if (result)
         {
        
-            await NavigateTo(nameof(MenuPage));
-         
+            //await NavigateTo(nameof(MenuPage));
+            await Shell.Current.GoToAsync(nameof(MenuPage), true);
         }
         else
         {
@@ -163,17 +157,7 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
 
 
     }
-    async Task NavigateTo(dynamic ToPage, dynamic dict = null)
-    {
-        // maui bug on catalyst.
-        // Get current page
-        var page = Navigation.NavigationStack.LastOrDefault();
 
-        // Remove old page very baaaad perfemance
-        Navigation.RemovePage(page);
-        await Shell.Current.GoToAsync(ToPage, true, dict);
-        //await Shell.Current.GoToAsync(nameof(ToPage), true, dict);
-    }
     private void RenderSelectedPizza()
     {
         Label pizzaId = new Label { FontSize = 24 };

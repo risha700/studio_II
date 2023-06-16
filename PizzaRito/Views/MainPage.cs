@@ -111,7 +111,7 @@ public partial class MainPage : ContentPage
         guestOrderBtn.Clicked += async (sender, args) => {
             guestOrderBtn.IsEnabled = false;
 
-            await Shell.Current.GoToAsync(nameof(MenuPage), false);
+            await Shell.Current.GoToAsync(nameof(MenuPage), true);
             guestOrderBtn.IsEnabled = true;
         };
 

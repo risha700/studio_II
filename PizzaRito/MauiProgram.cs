@@ -30,7 +30,8 @@ public static class MauiProgram
         builder.Services.AddDbContext<AppDbContext>(opts=>opts.UseSqlite(ProjectConfig.DatabasePath));
 
         builder.Services.AddSingleton<MainPage>();
-        builder.Services.AddSingleton<MenuPage>();
+        builder.Services.AddSingleton<MenuViewModel>();
+        builder.Services.AddTransient<MenuPage>();
         builder.Services.AddTransient<OrderViewModel>();
         builder.Services.AddTransient<OrderPage>();
         builder.Services.AddTransient<CheckoutViewModel>();

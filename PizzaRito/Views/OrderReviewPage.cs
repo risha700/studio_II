@@ -93,9 +93,11 @@ public partial class OrderReviewPage : ContentPage, INotifyPropertyChanged
             var result = await Shell.Current.DisplayAlert("Are you sure?", "Cancel Order", "Yes, Cancel", "Continue Order");
             if (result)
             {
-                currentOrder.Items.Clear(); // might need to reset id
+                CurrentOrder.Items.Clear(); // might need to reset id
+                CurrentOrder.Id = Guid.NewGuid();
 
                 await Navigation.PopToRootAsync();
+                //await Shell.Current.GoToAsync(nameof(MainPage), true);
             };
         };
 
@@ -107,24 +109,8 @@ public partial class OrderReviewPage : ContentPage, INotifyPropertyChanged
             });
         };
 
-        backToMenuBtn.Clicked += async (s, o) =>
-        {
-            // maui bug on catalyst.
-            // Get current page
-            var page = Navigation.NavigationStack.LastOrDefault();
+        backToMenuBtn.Clicked += async (s, o) => await Shell.Current.GoToAsync(nameof(MenuPage), true); 
 
-            // Remove old page very baaaad perfemance
-            Navigation.RemovePage(page);
-            await Shell.Current.GoToAsync(nameof(MenuPage), true);
-            //    //await Shell.Current.GoToAsync(nameof(ToPage), true, dict);
-            //await Helpers.NavigateTo(nameof(MenuPage), Navigation, popLevel:2);
-            //await Shell.Current.GoToAsync(nameof(MenuPage), false, null);
-            //async Task NavigateTo(dynamic ToPage, dynamic dict = null)
-            //{
-
-            //}
-
-        };
     }
 
     private void SetupPizzaCard()
