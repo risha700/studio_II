@@ -31,14 +31,47 @@ public class AppDbContext:DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlite(ProjectConfig.DatabasePath);
+        optionsBuilder.EnableSensitiveDataLogging();
         base.OnConfiguring(optionsBuilder);
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         //modelBuilder.Entity<Pizza>()
-        //    .HasOne(p => p.Size!)
-        //    .WithMany("Toppings");
+        //    .HasOne(p => p.Size!);
+        //modelBuilder.Entity<Pizza>()
+        //    .HasMany(oi => oi.Orders);
+        ////.WithMany("Toppings");
+        //modelBuilder.Entity<Order>()
+        //    .HasMany(o => o.Items).WithMany("Toppings");
 
+        //modelBuilder.Entity<CrustSize>()
+        //             .Property(c => c.Id)
+        //             .ValueGeneratedNever();
+        modelBuilder.Entity<Order>()
+           .HasMany(o => o.Items)
+           .WithMany(p => p.Orders)
+           .UsingEntity<Dictionary<string, object>>(
+               "OrderPizza",
+               j => j.HasOne<Pizza>().WithMany().HasForeignKey("ItemsId"),
+               j => j.HasOne<Order>().WithMany().HasForeignKey("OrdersId"),
+               j =>
+               {
+                   //j.Property<DateTime>("OrderDate").HasDefaultValueSql("CURRENT_TIMESTAMP");
+                   j.HasKey("ItemsId", "OrdersId");
+               });
+
+        //modelBuilder.Entity<Pizza>()
+        //    .HasOne(p => p.Size).WithMany().HasForeignKey("SizeId").OnDelete(DeleteBehavior.Cascade);
+        //    .HasMany(p => p.Toppings)
+        //    .WithMany()
+        //    .UsingEntity<Dictionary<string, object>>(
+        //        "PizzaTopping",
+        //        j => j.HasMany<Topping>().WithMany().has("ToppingId"),
+        //        j => j.HasOne<Pizza>().WithMany().HasForeignKey("PizzaId"),
+        //        j =>
+        //        {
+        //            j.HasKey("PizzaId", "ToppingId");
+        //        });
         base.OnModelCreating(modelBuilder);
     }
 }

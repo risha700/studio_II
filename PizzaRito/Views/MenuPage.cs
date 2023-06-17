@@ -13,14 +13,15 @@ public partial class MenuPage : ContentPage
     CollectionView menuCollectionView;
     Button gotoCartBtn = new Button { Text = "Your Cart", WidthRequest=100 };
 
-    //public List<Pizza> availablePizza;
+    
+    
 
     public MenuPage(MenuViewModel vm)
     {
         
+
         Title = "Menu";
         BindingContext = vm;
-        
         menuCollectionView = new CollectionView
         {
             ItemSizingStrategy = ItemSizingStrategy.MeasureFirstItem,
@@ -124,10 +125,9 @@ public partial class MenuPage : ContentPage
 
     async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
+        
         var currentPizza = (e.CurrentSelection.FirstOrDefault() as Pizza);
-
-        currentPizza.Id = Guid.NewGuid(); // way to uniquely identify every new pizza
-
+        //currentPizza.Id = Guid.NewGuid();
         //if (currentPizza.Toppings is null) currentPizza.Toppings = new();
         //if (currentPizza.Size is null) currentPizza.Size = new();
 

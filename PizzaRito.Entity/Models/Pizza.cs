@@ -18,7 +18,7 @@ public class Pizza
     public double Price { get; set; }
     public virtual ObservableCollection<Topping>? Toppings { get; set; }
     public string? Img { get; set; }
-    public virtual ObservableCollection<Order>? Orders { get; set; }
+    public virtual ObservableCollection<Order>? Orders { get; set; } // m2m
 
 
     public void CalculatePizzaPrice()

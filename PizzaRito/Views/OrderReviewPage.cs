@@ -10,7 +10,10 @@ namespace PizzaRito.Views;
 [QueryProperty(nameof(CurrentOrder), "CurrentOrder")]
 public partial class OrderReviewPage : ContentPage, INotifyPropertyChanged
 {
-	CollectionView orderItemsCollectionView = new CollectionView { Margin=new Thickness(0,20,0,0) };
+	CollectionView orderItemsCollectionView = new CollectionView {
+
+        Margin=new Thickness(0,20,0,0)
+    };
     Button checkoutBtn = new Button { Text = "Check Out" , HorizontalOptions = LayoutOptions.Center};
     Button backToMenuBtn = new Button { Text = "Add More Items", HorizontalOptions = LayoutOptions.Center, BackgroundColor=Colors.Teal };
     Label totalCardPrice = new Label { };
@@ -69,6 +72,8 @@ public partial class OrderReviewPage : ContentPage, INotifyPropertyChanged
             };
         });
 
+        orderItemsCollectionView.ItemSizingStrategy = ItemSizingStrategy.MeasureAllItems;
+
         mainLayout.Add(orderItemsCollectionView, 0, 0);
 
         mainLayout.Add(new Border { Content = pizzaCard }, 1, 0);
@@ -76,6 +81,7 @@ public partial class OrderReviewPage : ContentPage, INotifyPropertyChanged
         mainLayout.SetRowSpan(pizzaCard, 1);
         mainLayout.SetRowSpan(orderItemsCollectionView, 3);
         mainLayout.Add(activityIndicator, 0, 0);
+
         Content = mainLayout;
 
         Shell.Current.Navigated += (s, o) =>
@@ -106,7 +112,7 @@ public partial class OrderReviewPage : ContentPage, INotifyPropertyChanged
         {
             await Shell.Current.GoToAsync(nameof(CheckoutPage), true,
                 new Dictionary<string, object>{
-                        { "Order", CurrentOrder }
+                        { "CurrentOrder", CurrentOrder }
             });
         };
 
@@ -202,24 +208,26 @@ public partial class OrderReviewPage : ContentPage, INotifyPropertyChanged
         var result = await Shell.Current.DisplayAlert("Are you sure?", $"remove {pizza?.Name} Pizza", "Yes, Remove", "Cancel");
         if (result)
         {
-            Console.WriteLine($"DEBUG===> remove pizza total before {CurrentOrder.Total}");
+
             CurrentOrder.Items.Remove(pizza);
+            //currentOrder.Items.Remove(CurrentOrder.Items.FirstOrDefault(it => it.PizzaItem == pizza));
             CurrentOrder.CalculateTotal();
-            Console.WriteLine($"DEBUG===> remove pizza total after {CurrentOrder.Total}");
-                
+            
+            //reset bindings for the static property
             totalCardPrice.SetBinding(Label.TextProperty, new Binding(".", source: CurrentOrder.Total, stringFormat: "Total {0:C2}"));
 
-            //CurrentOrder.Items.Clear();
-            //CurrentOrder.Id = Guid.NewGuid();
-
-            //await Navigation.PopToRootAsync();
-            //await Shell.Current.GoToAsync(nameof(MainPage), true); // todo??
         };
 
     }
 
-    private void EditPizza(object sender, EventArgs e)
+    async private void EditPizza(object sender, EventArgs e)
     {
-        throw new NotImplementedException();
+        var pizza = ((Button)sender).Parent.BindingContext as Pizza;
+        CurrentOrder.Items.Remove(pizza);
+        //currentOrder.Items.Remove(CurrentOrder.Items.FirstOrDefault(it => it.PizzaItem == pizza));
+        await Shell.Current.GoToAsync(nameof(OrderPage), true,
+           new Dictionary<string, object>{
+                        { "CurrentPizza", pizza }
+           });
     }
 }

@@ -15,7 +15,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(OrderReviewPage), typeof(OrderReviewPage));
 
         Shell.SetNavBarIsVisible(this, false);
-
+        
     }
 
 

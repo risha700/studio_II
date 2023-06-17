@@ -11,7 +11,7 @@ using PizzaRito.Entity;
 namespace PizzaRito.Entity.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230612135907_InitialCreate")]
+    [Migration("20230617020402_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

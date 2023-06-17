@@ -75,9 +75,6 @@ public partial class MainPage : ContentPage
     };
 
 
-
-
-
     FlexLayout mainOptions = new FlexLayout
     {
         Direction = Microsoft.Maui.Layouts.FlexDirection.Row,

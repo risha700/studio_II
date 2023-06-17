@@ -9,7 +9,7 @@ public class Order
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; set; }
-    public virtual ObservableCollection<Pizza> Items {get;set;}
+    public virtual ObservableCollection<Pizza>? Items {get;set;}
 	public double Total { get; set; }
 
 	public User? Customer { get; set; }

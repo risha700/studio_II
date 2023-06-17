@@ -135,7 +135,11 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
 
         newPizza.CalculatePizzaPrice(); // updates price on pizza
         var shallowCopy = Helpers.DeepCopy(newPizza);
+       
         OrderVm.CurrentOrder.Items.Add(shallowCopy);
+
+        
+
         OrderVm.CurrentOrder.CalculateTotal(); // updates total on order
 
         //Console.WriteLine($"DEBUG===> OrderPage Added to cart {newPizza}-{newPizza.Id}" );
