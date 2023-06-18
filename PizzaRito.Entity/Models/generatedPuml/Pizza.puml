@@ -1,14 +1,15 @@
 @startuml
 class Pizza {
-    + Id : int <<get>> <<set>>
     + Name : string <<get>> <<set>>
-    + Details : string? <<get>> <<set>>
-    + <<virtual>> Size : CrustSize? <<get>> <<set>>
     + Price : double <<get>> <<set>>
-    + <<virtual>> Toppings : ObservableCollection<Topping>? <<get>> <<set>>
+    + Details : string? <<get>> <<set>>
     + Img : string? <<get>> <<set>>
+    + IsCatalouge : bool <<get>> <<set>> = false
+    + CrustSize : CrustSize? <<get>> <<set>>
+    + <<virtual>> Toppings : ObservableCollection<Topping>? <<get>> <<set>>
     + <<virtual>> Orders : ObservableCollection<Order>? <<get>> <<set>>
     + CalculatePizzaPrice() : void
     + <<override>> ToString() : string
 }
+Pizza o-> "Id" Guid
 @enduml

@@ -47,7 +47,7 @@ public partial class MenuPage : ContentPage
                 VerticalOptions = LayoutOptions.Fill
             },
 
-            ItemsLayout = new GridItemsLayout((int)vm.availablePizza.Count / 2, ItemsLayoutOrientation.Vertical)
+            ItemsLayout = new GridItemsLayout(3, ItemsLayoutOrientation.Vertical)
             {
                 VerticalItemSpacing = 20,
                 HorizontalItemSpacing = 20,
@@ -127,7 +127,7 @@ public partial class MenuPage : ContentPage
     {
         
         var currentPizza = (e.CurrentSelection.FirstOrDefault() as Pizza);
-        currentPizza.Id = Guid.NewGuid();
+        currentPizza.Id = Guid.NewGuid(); // TODO: fails on ios and android for illegal state
         //if (currentPizza.Toppings is null) currentPizza.Toppings = new();
         //if (currentPizza.Size is null) currentPizza.Size = new();
 

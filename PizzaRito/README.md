@@ -28,7 +28,11 @@ dotnet run  --framework net7.0-maccatalyst
 
 # Class Diagram
 
-![](./Resources/Raw/include.png)
+![](./Resources/Raw/class_daigram_latest.png)
+
+# Database Diagram
+
+![](./Resources/Raw/database_diagram.png)
 
 # Apple Simulator
 
