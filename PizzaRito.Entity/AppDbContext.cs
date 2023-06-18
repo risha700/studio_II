@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using PizzaRito.Entity.Models;
@@ -47,6 +48,7 @@ public class AppDbContext:DbContext
         //modelBuilder.Entity<CrustSize>()
         //             .Property(c => c.Id)
         //             .ValueGeneratedNever();
+
         modelBuilder.Entity<Order>()
            .HasMany(o => o.Items)
            .WithMany(p => p.Orders)
@@ -56,22 +58,31 @@ public class AppDbContext:DbContext
                j => j.HasOne<Order>().WithMany().HasForeignKey("OrdersId"),
                j =>
                {
-                   //j.Property<DateTime>("OrderDate").HasDefaultValueSql("CURRENT_TIMESTAMP");
+                   //j.Property<DateTime>("OrderDate").HasDefaultValueSql("getdate()");
                    j.HasKey("ItemsId", "OrdersId");
                });
 
+        modelBuilder.Entity<Pizza>()
+            .HasMany(p => p.Toppings)
+            .WithMany(t => t.Pizzas)
+            .UsingEntity<Dictionary<string, object>>(
+                "PizzaTopping",
+                j => j.HasOne<Topping>().WithMany().HasForeignKey("ToppingsId"),
+                j => j.HasOne<Pizza>().WithMany().HasForeignKey("PizzasId"),
+                j =>
+                {
+                    j.HasKey("PizzasId", "ToppingsId");
+                    //j.HasOne<CrustSize>().WithMany().HasForeignKey("SizeId");
+                });
+            //.HasOne(p => p.Size).WithMany().HasPrincipalKey("CrustSizeId");
+                   
+        //                .HasConversion(
+        //                v => JsonSerializer.Serialize(v, (JsonSerializerOptions)null),
+        //                v => JsonSerializer.Deserialize<CrustSize>(v, (JsonSerializerOptions)null));
         //modelBuilder.Entity<Pizza>()
-        //    .HasOne(p => p.Size).WithMany().HasForeignKey("SizeId").OnDelete(DeleteBehavior.Cascade);
-        //    .HasMany(p => p.Toppings)
-        //    .WithMany()
-        //    .UsingEntity<Dictionary<string, object>>(
-        //        "PizzaTopping",
-        //        j => j.HasMany<Topping>().WithMany().has("ToppingId"),
-        //        j => j.HasOne<Pizza>().WithMany().HasForeignKey("PizzaId"),
-        //        j =>
-        //        {
-        //            j.HasKey("PizzaId", "ToppingId");
-        //        });
+        //.HasOne(p => p.Size)
+        //.WithMany()
+        //.HasForeignKey("SizeId");
         base.OnModelCreating(modelBuilder);
     }
 }

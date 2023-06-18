@@ -87,6 +87,9 @@ namespace PizzaRito.Entity.Migrations
                     b.Property<string>("Img")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("IsCatalouge")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -99,7 +102,7 @@ namespace PizzaRito.Entity.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name")
+                    b.HasIndex("Id")
                         .IsUnique();
 
                     b.HasIndex("SizeId");

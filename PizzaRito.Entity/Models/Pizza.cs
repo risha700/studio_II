@@ -6,18 +6,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PizzaRito.Entity.Models;
 
-[Table("pizzas"), Index(nameof(Name), IsUnique = true)]
+[Table("pizzas"), Index(nameof(Id), IsUnique = true)]
 public class Pizza
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; set; } = new();
 
     public string Name { get; set; }
-    public string? Details { get; set; }
-    public virtual CrustSize? Size { get; set; }
     public double Price { get; set; }
-    public virtual ObservableCollection<Topping>? Toppings { get; set; }
+    public string? Details { get; set; }
     public string? Img { get; set; }
+    public bool IsCatalouge { get; set; } = false;
+    public CrustSize? Size { get; set; }
+    public virtual ObservableCollection<Topping>?Toppings { get; set; }
     public virtual ObservableCollection<Order>? Orders { get; set; } // m2m
 
 

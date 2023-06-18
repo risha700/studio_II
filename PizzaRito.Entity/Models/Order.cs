@@ -11,10 +11,8 @@ public class Order
     public Guid Id { get; set; }
     public virtual ObservableCollection<Pizza>? Items {get;set;}
 	public double Total { get; set; }
-
-	public User? Customer { get; set; }
-    // todo: auto fill
-    public DateTime OrderDate { get; set; }
+	public User? Customer { get; set; } //todo
+    public DateTime OrderDate { get; set; } = DateTime.Now;
 
 
 

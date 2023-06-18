@@ -17,7 +17,7 @@ public class Topping
         public virtual ObservableCollection<Pizza>? Pizzas { get; set; } // implicit many-to-many
 
 
-        public override string ToString()
+    public override string ToString()
         {
             return $"{Name.ToString()} - {Price.ToString()}";
         }

@@ -27,18 +27,29 @@ public partial class CheckoutViewModel:BaseViewModel
         Console.WriteLine($"lets write to db==>{order.Items.Count()}");
         try
         {
-            //databaseContext.ChangeTracker.Clear();
-            //databaseContext.Orders.Local.
-            //databaseContext.Entry(order).State = EntityState.Detached;
-            //order.Items.FirstOrDefault().Size = null;
             var pizza_qs = order.Items.ToList();
+            foreach (var pz in order.Items)
+            {
+                databaseContext.Toppings.UpdateRange(pz.Toppings);
 
-            //order.Items.Clear();
-            databaseContext.Pizzas.AttachRange(order.Items);
+                var c = pz.Size;
+                pz.IsCatalouge = false;
+                pz.Size = null;
+                
+                databaseContext.Pizzas.Add(pz);
+                pz.Size = c;
+ 
+            }
+            //databaseContext.Pizzas.UpdateRange(pizza_qs);
+
+            //databaseContext.Pizzas.AttachRange(order.Items);
+            //databaseContext.Pizzas.AddRange(order.Items);
+            //databaseContext.Pizzas.UpdateRange(order.Items);
+
             databaseContext.Orders.Add(order);
             databaseContext.SaveChanges();
             databaseContext.ChangeTracker.Clear();
-
+            
             //var orderFromDb = databaseContext.Orders.FirstOrDefault(o => o.Id == order.Id);
             //foreach (var pz in pizza_qs)
             //{

@@ -60,10 +60,11 @@ namespace PizzaRito.Entity.Migrations
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Details = table.Column<string>(type: "TEXT", nullable: true),
-                    SizeId = table.Column<int>(type: "INTEGER", nullable: true),
                     Price = table.Column<double>(type: "REAL", nullable: false),
-                    Img = table.Column<string>(type: "TEXT", nullable: true)
+                    Details = table.Column<string>(type: "TEXT", nullable: true),
+                    Img = table.Column<string>(type: "TEXT", nullable: true),
+                    IsCatalouge = table.Column<bool>(type: "INTEGER", nullable: false),
+                    SizeId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -159,9 +160,9 @@ namespace PizzaRito.Entity.Migrations
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_pizzas_Name",
+                name: "IX_pizzas_Id",
                 table: "pizzas",
-                column: "Name",
+                column: "Id",
                 unique: true);
 
             migrationBuilder.CreateIndex(

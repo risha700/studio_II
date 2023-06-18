@@ -127,7 +127,7 @@ public partial class MenuPage : ContentPage
     {
         
         var currentPizza = (e.CurrentSelection.FirstOrDefault() as Pizza);
-        //currentPizza.Id = Guid.NewGuid();
+        currentPizza.Id = Guid.NewGuid();
         //if (currentPizza.Toppings is null) currentPizza.Toppings = new();
         //if (currentPizza.Size is null) currentPizza.Size = new();
 
