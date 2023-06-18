@@ -191,7 +191,7 @@ public partial class OrderReviewPage : ContentPage, INotifyPropertyChanged
             };
             itemName.SetBinding(Label.TextProperty, "Name");
             itemPrice.SetBinding(Label.TextProperty, new Binding("Price", stringFormat:"{0:C2}"));
-            itemSize.SetBinding(Label.TextProperty, "Size.Name");
+            itemSize.SetBinding(Label.TextProperty, "CrustSize.Name");
             itemImg.SetBinding(Image.SourceProperty, "Img");
             itemToppings.SetBinding(CollectionView.ItemsSourceProperty, new Binding("Toppings"));
 

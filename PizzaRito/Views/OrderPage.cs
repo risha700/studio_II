@@ -116,7 +116,7 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
         var result = await Shell.Current.DisplayAlert("Are you sure?", "Cancel Order!", "Yes", "Continue Order");
         if (result)
         {
-            
+            // it triggers the static re-evaluation as a transient service  
             await Shell.Current.GoToAsync(nameof(MenuPage), true);
         }
 
@@ -126,7 +126,7 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
     [RelayCommand]
     async private void AddToCart()
     {
-        if(OrderVm.CurrentPizza.Size is null)
+        if(OrderVm.CurrentPizza.CrustSize is null)
         {
             await Shell.Current.DisplayAlert("Choose size", "To continue!", "Ok");
             return ;
@@ -172,7 +172,7 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
         Label pizzaPrice = new Label { FontSize = 24 };
         selectedPizzaView.BindingContext = OrderVm.CurrentPizza;
         selectedPizzaLabel.SetBinding(Label.TextProperty, new Binding("Name"));
-        selectedPizzaSizeLabel.SetBinding(Label.TextProperty, new Binding("Size"));
+        selectedPizzaSizeLabel.SetBinding(Label.TextProperty, new Binding("CrustSize"));
 
         selectedPizzaView.Children.Add(selectedPizzaSizeLabel);
         if (!String.IsNullOrEmpty(OrderVm.CurrentPizza.Img))
@@ -272,9 +272,9 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
 
             return layout;
         });
-        if (OrderVm.CurrentPizza.Size is not null)
+        if (OrderVm.CurrentPizza.CrustSize is not null)
         {
-            availableSizesView.SelectedItem = OrderVm.AllSizes.Single(s => s.Name == OrderVm.CurrentPizza.Size.Name);
+            availableSizesView.SelectedItem = OrderVm.AllSizes.Single(s => s.Name == OrderVm.CurrentPizza.CrustSize.Name);
 
         }
 
@@ -284,9 +284,9 @@ public partial class OrderPage : ContentPage, INotifyPropertyChanged
     {
         var crust = e.CurrentSelection.FirstOrDefault() as CrustSize;
 
-        OrderVm.CurrentPizza.Size = crust;
+        OrderVm.CurrentPizza.CrustSize = crust;
 
-        selectedPizzaSizeLabel.SetBinding(Label.TextProperty, new Binding("Size", source: OrderVm.CurrentPizza));
+        selectedPizzaSizeLabel.SetBinding(Label.TextProperty, new Binding("CrustSize", source: OrderVm.CurrentPizza));
 
         //Console.WriteLine($"SizesViewSelectionChanged {sender} {e.CurrentSelection.FirstOrDefault()}");
         //Console.WriteLine($"OrderVm.CurrentPizza.Size {OrderVm.CurrentPizza.Size}");

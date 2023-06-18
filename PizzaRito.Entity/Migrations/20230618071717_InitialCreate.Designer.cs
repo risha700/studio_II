@@ -11,7 +11,7 @@ using PizzaRito.Entity;
 namespace PizzaRito.Entity.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230618014417_InitialCreate")]
+    [Migration("20230618071717_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -84,6 +84,9 @@ namespace PizzaRito.Entity.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("CrustSizeId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Details")
                         .HasColumnType("TEXT");
 
@@ -100,15 +103,12 @@ namespace PizzaRito.Entity.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("REAL");
 
-                    b.Property<int?>("SizeId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("CrustSizeId");
 
                     b.HasIndex("Id")
                         .IsUnique();
-
-                    b.HasIndex("SizeId");
 
                     b.ToTable("pizzas");
                 });
@@ -197,11 +197,11 @@ namespace PizzaRito.Entity.Migrations
 
             modelBuilder.Entity("PizzaRito.Entity.Models.Pizza", b =>
                 {
-                    b.HasOne("PizzaRito.Entity.Models.CrustSize", "Size")
+                    b.HasOne("PizzaRito.Entity.Models.CrustSize", "CrustSize")
                         .WithMany()
-                        .HasForeignKey("SizeId");
+                        .HasForeignKey("CrustSizeId");
 
-                    b.Navigation("Size");
+                    b.Navigation("CrustSize");
                 });
 
             modelBuilder.Entity("PizzaTopping", b =>

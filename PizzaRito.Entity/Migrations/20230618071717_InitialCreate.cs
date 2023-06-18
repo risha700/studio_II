@@ -64,14 +64,14 @@ namespace PizzaRito.Entity.Migrations
                     Details = table.Column<string>(type: "TEXT", nullable: true),
                     Img = table.Column<string>(type: "TEXT", nullable: true),
                     IsCatalouge = table.Column<bool>(type: "INTEGER", nullable: false),
-                    SizeId = table.Column<int>(type: "INTEGER", nullable: true)
+                    CrustSizeId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_pizzas", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_pizzas_crusts_SizeId",
-                        column: x => x.SizeId,
+                        name: "FK_pizzas_crusts_CrustSizeId",
+                        column: x => x.CrustSizeId,
                         principalTable: "crusts",
                         principalColumn: "Id");
                 });
@@ -160,15 +160,15 @@ namespace PizzaRito.Entity.Migrations
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_pizzas_CrustSizeId",
+                table: "pizzas",
+                column: "CrustSizeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_pizzas_Id",
                 table: "pizzas",
                 column: "Id",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_pizzas_SizeId",
-                table: "pizzas",
-                column: "SizeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PizzaTopping_ToppingsId",

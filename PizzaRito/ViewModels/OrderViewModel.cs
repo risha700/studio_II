@@ -72,8 +72,8 @@ public partial class OrderViewModel : BaseViewModel, IQueryAttributable
         databaseContext = dbCtx;
         AllToppings = databaseContext.Toppings.AsNoTracking().OrderBy(t => t.Name).ToList();
         AllSizes = databaseContext.CrustSizes.AsNoTracking().OrderBy(t => t.Name).ToList();
-        AllPizzas = databaseContext.Pizzas.AsNoTracking().OrderBy(p => p.Name).Include(p => p.Size).Include(p => p.Toppings).ToList();
-        CurrentPizza = new Pizza { Size = new(), Toppings = new() };
+        AllPizzas = databaseContext.Pizzas.AsNoTracking().OrderBy(p => p.Name).Include(p => p.CrustSize).AsNoTracking().Include(p => p.Toppings).AsNoTracking().ToList();
+        CurrentPizza = new Pizza { CrustSize = new(), Toppings = new() };
         
     }
 

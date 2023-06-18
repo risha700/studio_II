@@ -72,10 +72,16 @@ public class AppDbContext:DbContext
                 j =>
                 {
                     j.HasKey("PizzasId", "ToppingsId");
-                    //j.HasOne<CrustSize>().WithMany().HasForeignKey("SizeId");
+
+                    //j.HasOne<CrustSize>().WithMany().HasForeignKey("CrustSizeId");
+
                 });
-            //.HasOne(p => p.Size).WithMany().HasPrincipalKey("CrustSizeId");
-                   
+
+        modelBuilder.Entity<Pizza>()
+            .HasOne(p => p.CrustSize).WithMany().HasForeignKey("CrustSizeId");
+            //.HasOne(p=>p.CrustSize).WithMany().HasForeignKey("CrustSizeId"); 
+            //.HasOne<CrustSize>().WithMany().HasForeignKey("CrustSizeId");
+
         //                .HasConversion(
         //                v => JsonSerializer.Serialize(v, (JsonSerializerOptions)null),
         //                v => JsonSerializer.Deserialize<CrustSize>(v, (JsonSerializerOptions)null));

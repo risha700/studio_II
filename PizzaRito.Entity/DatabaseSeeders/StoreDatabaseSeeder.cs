@@ -32,7 +32,7 @@ public static class StoreDatabaseSeeder
     public static List<Pizza> PizzaToSeed = new List<Pizza>
     {
         
-        new Pizza {Name="Margreta", Price=5.99, Size=CrustSizeToSeed[0],
+        new Pizza {Name="Margreta", Price=5.99, CrustSize=CrustSizeToSeed[0],
             Toppings=new ObservableCollection<Topping>(ToppingToSeed.GetRange(1,3)), IsCatalouge=true  },
 
         new Pizza {Name="Pepperoni", Price=7.99, Img="pepps.png", IsCatalouge=true},

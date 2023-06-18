@@ -26,8 +26,8 @@ public partial class MenuViewModel:BaseViewModel
 
         //availablePizza = dbCtx.Pizzas.Local.OrderBy(e => e.Name).ToList();
         //dbCtx.Entry(availablePizza).State = EntityState.Detached;
-        dbCtx.Pizzas.Where(e => e.IsCatalouge).Include(p => p.Size).Include(p => p.Toppings).Load();
-        availablePizza = dbCtx.Pizzas.Local.Where(e => e.IsCatalouge).ToList();
+        dbCtx.Pizzas.Where(e => e.IsCatalouge).Include(p => p.CrustSize).Include(p => p.Toppings).Load();
+        availablePizza = dbCtx.Pizzas.Where(e => e.IsCatalouge).ToList();
         CurrentOrder = orderVm.CurrentOrder;
 
     }

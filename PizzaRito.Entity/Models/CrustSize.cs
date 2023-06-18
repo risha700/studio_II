@@ -12,7 +12,7 @@ public class CrustSize
     public int Id { get; set; }
     public string Name { get; set; }
 	public double Price { get; set; }
-    //public ICollection<Pizza> Pizzas { get; set; } // many 2 one
+    //public ICollection<Pizza>? Pizzas { get; set; } // many 2 one
 
     public override string ToString()
     {

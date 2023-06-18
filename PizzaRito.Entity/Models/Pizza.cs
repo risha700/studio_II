@@ -17,7 +17,7 @@ public class Pizza
     public string? Details { get; set; }
     public string? Img { get; set; }
     public bool IsCatalouge { get; set; } = false;
-    public CrustSize? Size { get; set; }
+    public CrustSize? CrustSize { get; set; }
     public virtual ObservableCollection<Topping>?Toppings { get; set; }
     public virtual ObservableCollection<Order>? Orders { get; set; } // m2m
 
@@ -26,7 +26,7 @@ public class Pizza
     {
 
         double toppingCost = this.Toppings.Sum((t) => t.Price);
-        this.Price = this.Size.Price + toppingCost;
+        this.Price = this.CrustSize.Price + toppingCost;
 
         // might be any coupon discounts later
     }
