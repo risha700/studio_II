@@ -1,0 +1,273 @@
+﻿namespace Pizza_Shop
+{
+    partial class LoginPage
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.panelTop = new System.Windows.Forms.Panel();
+            this.pictureBoxPizzaShop = new System.Windows.Forms.PictureBox();
+            this.pictureBoxProfileIcon = new System.Windows.Forms.PictureBox();
+            this.panelCenter = new System.Windows.Forms.Panel();
+            this.labelPasswordCondition = new System.Windows.Forms.Label();
+            this.labelPasswordMessage = new System.Windows.Forms.Label();
+            this.labelUsernameMessage = new System.Windows.Forms.Label();
+            this.labelPassword = new System.Windows.Forms.Label();
+            this.labelUsername = new System.Windows.Forms.Label();
+            this.linkLabelForgetPassword = new System.Windows.Forms.LinkLabel();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.textBoxUsername = new System.Windows.Forms.TextBox();
+            this.buttonLogin = new System.Windows.Forms.Button();
+            this.buttonLoginTab = new System.Windows.Forms.Button();
+            this.buttonRegisterTab = new System.Windows.Forms.Button();
+            this.panelTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPizzaShop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfileIcon)).BeginInit();
+            this.panelCenter.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // panelTop
+            // 
+            this.panelTop.BackColor = System.Drawing.Color.Firebrick;
+            this.panelTop.Controls.Add(this.pictureBoxPizzaShop);
+            this.panelTop.Controls.Add(this.pictureBoxProfileIcon);
+            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTop.Location = new System.Drawing.Point(0, 0);
+            this.panelTop.Name = "panelTop";
+            this.panelTop.Size = new System.Drawing.Size(1102, 66);
+            this.panelTop.TabIndex = 0;
+            // 
+            // pictureBoxPizzaShop
+            // 
+            this.pictureBoxPizzaShop.Image = global::Pizza_Shop.Properties.Resources.symbol;
+            this.pictureBoxPizzaShop.Location = new System.Drawing.Point(21, 0);
+            this.pictureBoxPizzaShop.Name = "pictureBoxPizzaShop";
+            this.pictureBoxPizzaShop.Size = new System.Drawing.Size(109, 61);
+            this.pictureBoxPizzaShop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxPizzaShop.TabIndex = 1;
+            this.pictureBoxPizzaShop.TabStop = false;
+            // 
+            // pictureBoxProfileIcon
+            // 
+            this.pictureBoxProfileIcon.Image = global::Pizza_Shop.Properties.Resources.Profile_Symbol;
+            this.pictureBoxProfileIcon.Location = new System.Drawing.Point(966, 0);
+            this.pictureBoxProfileIcon.Name = "pictureBoxProfileIcon";
+            this.pictureBoxProfileIcon.Size = new System.Drawing.Size(72, 66);
+            this.pictureBoxProfileIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxProfileIcon.TabIndex = 0;
+            this.pictureBoxProfileIcon.TabStop = false;
+            // 
+            // panelCenter
+            // 
+            this.panelCenter.Controls.Add(this.labelPasswordCondition);
+            this.panelCenter.Controls.Add(this.labelPasswordMessage);
+            this.panelCenter.Controls.Add(this.labelUsernameMessage);
+            this.panelCenter.Controls.Add(this.labelPassword);
+            this.panelCenter.Controls.Add(this.labelUsername);
+            this.panelCenter.Controls.Add(this.linkLabelForgetPassword);
+            this.panelCenter.Controls.Add(this.textBoxPassword);
+            this.panelCenter.Controls.Add(this.textBoxUsername);
+            this.panelCenter.Controls.Add(this.buttonLogin);
+            this.panelCenter.Location = new System.Drawing.Point(72, 143);
+            this.panelCenter.Name = "panelCenter";
+            this.panelCenter.Size = new System.Drawing.Size(930, 531);
+            this.panelCenter.TabIndex = 1;
+            // 
+            // labelPasswordCondition
+            // 
+            this.labelPasswordCondition.AutoSize = true;
+            this.labelPasswordCondition.BackColor = System.Drawing.Color.Transparent;
+            this.labelPasswordCondition.Location = new System.Drawing.Point(199, 329);
+            this.labelPasswordCondition.Name = "labelPasswordCondition";
+            this.labelPasswordCondition.Size = new System.Drawing.Size(286, 32);
+            this.labelPasswordCondition.TabIndex = 14;
+            this.labelPasswordCondition.Text = "Password should be at least 6 characters long !\r\nPassword should contain at least" +
+    " one digit !";
+            this.labelPasswordCondition.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.labelPasswordCondition.Visible = false;
+            // 
+            // labelPasswordMessage
+            // 
+            this.labelPasswordMessage.AutoSize = true;
+            this.labelPasswordMessage.ForeColor = System.Drawing.Color.Firebrick;
+            this.labelPasswordMessage.Location = new System.Drawing.Point(560, 314);
+            this.labelPasswordMessage.Name = "labelPasswordMessage";
+            this.labelPasswordMessage.Size = new System.Drawing.Size(0, 16);
+            this.labelPasswordMessage.TabIndex = 13;
+            // 
+            // labelUsernameMessage
+            // 
+            this.labelUsernameMessage.AutoSize = true;
+            this.labelUsernameMessage.ForeColor = System.Drawing.Color.Firebrick;
+            this.labelUsernameMessage.Location = new System.Drawing.Point(560, 183);
+            this.labelUsernameMessage.Name = "labelUsernameMessage";
+            this.labelUsernameMessage.Size = new System.Drawing.Size(0, 16);
+            this.labelUsernameMessage.TabIndex = 12;
+            // 
+            // labelPassword
+            // 
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelPassword.Location = new System.Drawing.Point(41, 274);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(155, 32);
+            this.labelPassword.TabIndex = 11;
+            this.labelPassword.Text = "Password:";
+            // 
+            // labelUsername
+            // 
+            this.labelUsername.AutoSize = true;
+            this.labelUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelUsername.Location = new System.Drawing.Point(27, 143);
+            this.labelUsername.Name = "labelUsername";
+            this.labelUsername.Size = new System.Drawing.Size(165, 32);
+            this.labelUsername.TabIndex = 10;
+            this.labelUsername.Text = "UserName:";
+            // 
+            // linkLabelForgetPassword
+            // 
+            this.linkLabelForgetPassword.AutoSize = true;
+            this.linkLabelForgetPassword.Cursor = System.Windows.Forms.Cursors.Help;
+            this.linkLabelForgetPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.linkLabelForgetPassword.LinkVisited = true;
+            this.linkLabelForgetPassword.Location = new System.Drawing.Point(491, 341);
+            this.linkLabelForgetPassword.Name = "linkLabelForgetPassword";
+            this.linkLabelForgetPassword.Size = new System.Drawing.Size(167, 20);
+            this.linkLabelForgetPassword.TabIndex = 9;
+            this.linkLabelForgetPassword.TabStop = true;
+            this.linkLabelForgetPassword.Text = "Forgot Password ?";
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F);
+            this.textBoxPassword.Location = new System.Drawing.Point(202, 261);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(498, 51);
+            this.textBoxPassword.TabIndex = 8;
+            this.textBoxPassword.UseSystemPasswordChar = true;
+            this.textBoxPassword.Enter += new System.EventHandler(this.textBoxPassword_Enter);
+            this.textBoxPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyDown);
+            this.textBoxPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyUp);
+            this.textBoxPassword.Leave += new System.EventHandler(this.textBoxPassword_Leave);
+            this.textBoxPassword.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPassword_Validating);
+            // 
+            // textBoxUsername
+            // 
+            this.textBoxUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F);
+            this.textBoxUsername.Location = new System.Drawing.Point(202, 130);
+            this.textBoxUsername.Name = "textBoxUsername";
+            this.textBoxUsername.Size = new System.Drawing.Size(498, 51);
+            this.textBoxUsername.TabIndex = 7;
+            this.textBoxUsername.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxUsername_Validating);
+            // 
+            // buttonLogin
+            // 
+            this.buttonLogin.BackColor = System.Drawing.Color.Firebrick;
+            this.buttonLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonLogin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonLogin.Location = new System.Drawing.Point(661, 459);
+            this.buttonLogin.Name = "buttonLogin";
+            this.buttonLogin.Size = new System.Drawing.Size(241, 46);
+            this.buttonLogin.TabIndex = 4;
+            this.buttonLogin.Text = "Login";
+            this.buttonLogin.UseVisualStyleBackColor = false;
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
+            // 
+            // buttonLoginTab
+            // 
+            this.buttonLoginTab.BackColor = System.Drawing.Color.Firebrick;
+            this.buttonLoginTab.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonLoginTab.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonLoginTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonLoginTab.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonLoginTab.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonLoginTab.Location = new System.Drawing.Point(323, 72);
+            this.buttonLoginTab.Name = "buttonLoginTab";
+            this.buttonLoginTab.Size = new System.Drawing.Size(235, 44);
+            this.buttonLoginTab.TabIndex = 2;
+            this.buttonLoginTab.Text = "Login Tab";
+            this.buttonLoginTab.UseVisualStyleBackColor = false;
+            // 
+            // buttonRegisterTab
+            // 
+            this.buttonRegisterTab.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonRegisterTab.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonRegisterTab.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonRegisterTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonRegisterTab.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonRegisterTab.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonRegisterTab.Location = new System.Drawing.Point(550, 72);
+            this.buttonRegisterTab.Name = "buttonRegisterTab";
+            this.buttonRegisterTab.Size = new System.Drawing.Size(235, 44);
+            this.buttonRegisterTab.TabIndex = 3;
+            this.buttonRegisterTab.Text = "Register Tab";
+            this.buttonRegisterTab.UseVisualStyleBackColor = false;
+            this.buttonRegisterTab.Click += new System.EventHandler(this.buttonRegisterTab_Click);
+            // 
+            // LoginPage
+            // 
+            this.BackgroundImage = global::Pizza_Shop.Properties.Resources.pizzabg;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1102, 816);
+            this.Controls.Add(this.buttonRegisterTab);
+            this.Controls.Add(this.buttonLoginTab);
+            this.Controls.Add(this.panelCenter);
+            this.Controls.Add(this.panelTop);
+            this.DoubleBuffered = true;
+            this.Name = "LoginPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Pizza Shop";
+            this.panelTop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPizzaShop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfileIcon)).EndInit();
+            this.panelCenter.ResumeLayout(false);
+            this.panelCenter.PerformLayout();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Panel panelTop;
+        private System.Windows.Forms.PictureBox pictureBoxPizzaShop;
+        private System.Windows.Forms.PictureBox pictureBoxProfileIcon;
+        private System.Windows.Forms.Panel panelCenter;
+        private System.Windows.Forms.Button buttonLoginTab;
+        private System.Windows.Forms.Button buttonRegisterTab;
+        private System.Windows.Forms.Button buttonLogin;
+        private System.Windows.Forms.LinkLabel linkLabelForgetPassword;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.TextBox textBoxUsername;
+        private System.Windows.Forms.Label labelPassword;
+        private System.Windows.Forms.Label labelUsername;
+        private System.Windows.Forms.Label labelPasswordMessage;
+        private System.Windows.Forms.Label labelUsernameMessage;
+        private System.Windows.Forms.Label labelPasswordCondition;
+    }
+}
